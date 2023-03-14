@@ -1,0 +1,185 @@
+<div class="flex flex-col flex-auto min-w-0">
+
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
+        <div class="flex-1 min-w-0">
+            <!-- Breadcrumbs -->
+            <div class="flex flex-wrap items-center font-medium">
+                <div>
+                    <a class="whitespace-nowrap text-primary-500">Student</a>
+                </div>
+                <div class="flex items-center ml-1 whitespace-nowrap">
+                    <mat-icon
+                        class="icon-size-5 text-secondary"
+                        [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+                    <a class="ml-1 text-primary-500">Notifications</a>
+                </div>
+            </div>
+            <!-- Title -->
+            <div class="mt-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                    Notifications
+                </h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main -->
+    <div class="flex flex-auto justify-center w-full max-w-full mx-auto p-6 sm:p-8">
+
+        <!-- Column -->
+        <div class="flex flex-col items-start">
+
+            <!-- Post 1 -->
+            <div class="prose prose-sm max-w-5xl">
+                <ng-container *ngFor="let item of changelog">
+                    <div class="mb-12 p-8 rounded-2xl shadow bg-card">
+                        <div>
+                            <h2 class="my-0">{{item.version}}</h2>
+                            <div class="font-semibold text-md text-secondary">{{item.releaseDate}}</div>
+                        </div>
+                        <hr class="mt-6">
+                        <ng-container *ngFor="let change of item.changes">
+                            <div class="mt-8">
+                                <span class="inline-flex bg-default rounded px-3 py-1 text-secondary font-bold">{{change.type}}</span>
+                                <ul>
+                                    <ng-container *ngFor="let listItem of change.list">
+                                        <li>{{listItem}}</li>
+                                    </ng-container>
+                                </ul>
+                            </div>
+                        </ng-container>
+                    </div>
+                </ng-container>
+            </div>
+
+        </div>
+
+        <!-- Column -->
+        <div class="hidden lg:flex flex-col items-start ml-8">
+
+            <!-- Groups -->
+            <fuse-card class="flex flex-col max-w-80 w-full px-8 pt-6 pb-4">
+                <div class="flex items-center justify-between">
+                    <div class="text-2xl font-semibold leading-tight">Follow College Club</div>
+                </div>
+                <div class="flex flex-col mt-5">
+                    <div class="flex items-center">
+                        <img
+                            class="w-14 h-14 mr-4 rounded object-cover"
+                            src="assets/images/cards/coffee-shop-01-320x200.jpg"
+                            alt="Card cover image">
+                        <div class="flex flex-col min-w-0">
+                            <div class="font-medium leading-none">The Port Cafe</div>
+                            <div class="text-md truncate leading-none mt-1">Best cafe of the downtown New York</div>
+                            <div class="text-md leading-none text-secondary mt-2">1.2k followers</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center mt-6">
+                        <img
+                            class="w-14 h-14 mr-4 rounded object-cover"
+                            src="assets/images/cards/coffee-shop-02-512x512.jpg"
+                            alt="Card cover image">
+                        <div class="flex flex-col min-w-0">
+                            <div class="font-medium leading-none">Design House LLC.</div>
+                            <div class="text-md truncate leading-none mt-1">UI/UX, brand and product design</div>
+                            <div class="text-md leading-none text-secondary mt-2">957 followers</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center mt-6">
+                        <img
+                            class="w-14 h-14 mr-4 rounded object-cover"
+                            src="assets/images/cards/coffee-shop-03-320x320.jpg"
+                            alt="Card cover image">
+                        <div class="flex flex-col min-w-0">
+                            <div class="font-medium leading-none">Crax Laser Tag</div>
+                            <div class="text-md truncate leading-none mt-1">30% off with group of 6 people</div>
+                            <div class="text-md leading-none text-secondary mt-2">342 followers</div>
+                        </div>
+                    </div>
+                    <div class="flex items-center mt-6">
+                        <img
+                            class="w-14 h-14 mr-4 rounded object-cover"
+                            src="assets/images/cards/sneakers-01-320x200.jpg"
+                            alt="Card cover image">
+                        <div class="flex flex-col min-w-0">
+                            <div class="font-medium leading-none">Roadster Clothing Inc.</div>
+                            <div class="text-md truncate leading-none mt-1">$25 off on orders $500 and over</div>
+                            <div class="text-md leading-none text-secondary mt-2">4.7k followers</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center mt-6 -mx-3">
+                    <a
+                        class="px-3"
+                        mat-button
+                        [color]="'primary'"
+                        [routerLink]="['./']">
+                        See all groups
+                    </a>
+                </div>
+            </fuse-card>
+
+            <!-- Activity Feed -->
+            <fuse-card class="flex flex-col max-w-80 w-full mt-8 px-8 pt-6 pb-4">
+                <div class="flex items-center justify-between">
+                    <div class="text-2xl font-semibold leading-tight">Trending</div>
+                </div>
+                <div class="flex flex-col mt-5">
+                    <div class="flex">
+                        <img
+                            class="w-10 h-10 mr-4 rounded-full"
+                            src="assets/images/avatars/female-01.jpg"
+                            alt="Card cover image">
+                        <div class="flex flex-col min-w-0">
+                            <div class="leading-tight">#UDBHAV2023</div>
+                            <div class="text-md leading-none text-secondary mt-2">1768 posts</div>
+                        </div>
+                    </div>
+                    <div class="flex mt-8">
+                        <img
+                            class="w-10 h-10 mr-4 rounded-full"
+                            src="assets/images/avatars/male-01.jpg"
+                            alt="Card cover image">
+                        <div class="flex flex-col min-w-0">
+                            <div class="leading-tight">#Hakathan2024</div>
+                            <div class="text-md leading-none text-secondary mt-2">4893 posts</div>
+                        </div>
+                    </div>
+                    <div class="flex mt-8">
+                        <img
+                            class="w-10 h-10 mr-4 rounded-full"
+                            src="assets/images/avatars/male-15.jpg"
+                            alt="Card cover image">
+                        <div class="flex flex-col min-w-0">
+                            <div class="leading-tight">#Batch2022</div>
+                            <div class="text-md leading-none text-secondary mt-2">900 posts</div>
+                        </div>
+                    </div>
+                    <div class="flex mt-8">
+                        <img
+                            class="w-10 h-10 mr-4 rounded-full"
+                            src="assets/images/avatars/female-15.jpg"
+                            alt="Card cover image">
+                        <div class="flex flex-col min-w-0">
+                            <div class="leading-tight">#NSS Group</div>
+                            <div class="text-md leading-none text-secondary mt-2">9830 posts</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center mt-6 -mx-3">
+                    <a
+                        class="px-3"
+                        mat-button
+                        [color]="'primary'"
+                        [routerLink]="['./']">
+                        See Trending
+                    </a>
+                </div>
+            </fuse-card>
+
+        </div>
+
+    </div>
+
+</div>

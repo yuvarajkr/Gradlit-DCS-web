@@ -1,0 +1,232 @@
+<div class="flex flex-col flex-auto md:w-160 md:min-w-160 m-0">
+    <div class="group flex justify-between">
+        <span class="font-semibold leading-none m-4">Create a {{postType}}</span>
+        <button mat-flat-button matDialogClose>
+            <mat-icon [svgIcon]="'heroicons_solid:x'"></mat-icon>
+        </button>
+    </div>
+    <hr class="border-b m-0">
+    <div class="flex items-center mt-6 mb-4">
+        <img
+            class="w-10 h-10 rounded-full mr-4"
+            src="assets/images/logo/MSRIT-logo.png"
+            alt="Card cover image">
+        <div class="flex flex-col">
+            <span class="font-semibold leading-none">MSRIT</span>
+            <span class="text-sm text-secondary leading-none mt-1">College Admin</span>
+        </div>
+    </div>
+    <ng-container *ngIf="postType === 'post'">
+        <ng-container>
+            <div class="relative w-full">
+                <div class="absolute right-0 bottom-0 p-4">
+                    <button
+                        mat-icon-button
+                        (click)="removeImage()">
+                        <mat-icon
+                            class="text-white"
+                            [svgIcon]="'heroicons_outline:trash'"></mat-icon>
+                    </button>
+                </div>
+                <img
+                    class="w-full object-cover"
+                    [src]="'assets/images/cards/04-320x200.jpg'" style="max-height: 100px;">
+            </div>
+        </ng-container>
+        <div class="m-4">
+            <div class="flex w-full py-5 px-2">
+                <textarea
+                    class="w-full"
+                    [placeholder]="'Whats happening....?'"
+                    cdkTextareaAutosize></textarea>
+            </div>
+        </div>
+    </ng-container>
+    <!-- Event -->
+    <ng-container *ngIf="postType === 'event'">
+        <form class="flex flex-col mt-4 pb-4 overflow-hidden">
+            <div class="flex flex-col gt-xs:flex-row">
+                <mat-form-field
+                    [ngClass]="formFieldHelpers"
+                    class="flex-auto gt-xs:pr-3">
+                    <mat-label>Event name</mat-label>
+                    <input 
+                    matInput 
+                    placeholder="This is a placeholder">
+                </mat-form-field>
+            </div>
+            <div class="flex">
+                <mat-form-field
+                    [ngClass]="formFieldHelpers"
+                    class="flex-auto">
+                    <mat-label>Description</mat-label>
+                    <textarea
+                        matInput
+                        cdkTextareaAutosize
+                        [cdkAutosizeMinRows]="3"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="flex flex-col gt-md:flex-row">
+                <mat-form-field
+                    [ngClass]="formFieldHelpers"
+                    class="flex-auto gt-md:pr-3">
+                    <mat-label>Venue / Meeting Link</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="flex">
+                <mat-form-field
+                    [ngClass]="formFieldHelpers"
+                    class="flex-auto">
+                    <mat-label>Start date</mat-label>
+                    <input
+                        matInput
+                        [matDatepicker]="startDate">
+                    <mat-datepicker-toggle
+                        matSuffix
+                        [for]="startDate"></mat-datepicker-toggle>
+                    <mat-datepicker #startDate></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field
+                [ngClass]="formFieldHelpers"
+                class="flex-auto ml-4">
+                <mat-label>End date</mat-label>
+                <input
+                    matInput
+                    [matDatepicker]="endDate">
+                <mat-datepicker-toggle
+                    matSuffix
+                    [for]="endDate"></mat-datepicker-toggle>
+                <mat-datepicker #endDate></mat-datepicker>
+            </mat-form-field>
+            </div>
+            <div class="flex">
+                <input id="fileInput" name="file" type="file" class="ng-hide" multiple>
+            </div>
+            <div class="flex items-center mt-4">
+                <mat-checkbox
+                    class="flex items-center"
+                    [color]="'primary'" disableRipple></mat-checkbox>
+                <span class="ml-1 leading-5">Send Notification</span>
+            </div>
+        </form>
+    </ng-container>
+    <!-- Poll --> 
+    <ng-container *ngIf="postType === 'poll'">
+        <form class="flex flex-col mt-4 pb-4 overflow-hidden">
+            <div class="flex">
+                <mat-form-field
+                    [ngClass]="formFieldHelpers"
+                    class="flex-auto">
+                    <mat-label>Your Question</mat-label>
+                    <textarea
+                        matInput
+                        cdkTextareaAutosize
+                        [cdkAutosizeMinRows]="3"></textarea>
+                </mat-form-field>
+            </div>
+            <div class="flex flex-col gt-xs:flex-row">
+                <mat-form-field
+                    [ngClass]="formFieldHelpers"
+                    class="flex-auto gt-xs:pr-3">
+                    <mat-label>Option 1</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="flex flex-col gt-md:flex-row">
+                <mat-form-field
+                    [ngClass]="formFieldHelpers"
+                    class="flex-auto gt-md:pr-3">
+                    <mat-label>Option 2</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div class="flex">
+                <mat-form-field
+                [ngClass]="formFieldHelpers"
+                class="flex-auto gt-xs:pr-3">
+                <mat-label>Poll duration in weeks</mat-label>
+                <mat-select>
+                    <mat-option value="One week">One week</mat-option>
+                    <mat-option value="Two week">Two week</mat-option>
+                    <mat-option value="Three weeks">Three weeks</mat-option>
+                </mat-select>
+            </mat-form-field>
+            </div>
+            <div class="flex items-center mt-4">
+                <mat-checkbox
+                    class="flex items-center"
+                    [color]="'primary'" disableRipple></mat-checkbox>
+                <span class="ml-1 leading-5">Send Notification</span>
+            </div>
+        </form>
+    </ng-container>
+    <!-- Actions -->
+    <ng-container>
+        <div class="flex items-center justify-between mt-4">
+            <div class="flex items-center space-x-2">
+                <!-- Image -->
+                <div (click)="OnTypeSelect('post')">
+                    <input
+                        id="image-file-input"
+                        class="absolute h-0 w-0 opacity-0 invisible pointer-events-none"
+                        type="file"
+                        [multiple]="false"
+                        [accept]="'image/jpeg, image/png'"
+                        #imageFileInput>
+                    <label
+                        class="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer hover:bg-gray-400 hover:bg-opacity-20 dark:hover:bg-black dark:hover:bg-opacity-5"
+                        for="image-file-input"
+                        matRipple>
+                        <mat-icon [svgIcon]="'heroicons_outline:photograph'"></mat-icon>
+                    </label>
+                </div>
+                <!-- Video -->
+                <div (click)="OnTypeSelect('post')">
+                    <input
+                        id="video-file-input"
+                        class="absolute h-0 w-0 opacity-0 invisible pointer-events-none"
+                        type="file"
+                        [multiple]="false"
+                        [accept]="'video/mp4, video/x-m4v, video/*'"
+                        #imageFileInput>
+                    <label
+                        class="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer hover:bg-gray-400 hover:bg-opacity-20 dark:hover:bg-black dark:hover:bg-opacity-5"
+                        for="image-file-input"
+                        matRipple>
+                        <mat-icon [svgIcon]="'heroicons_outline:film'"></mat-icon>
+                    </label>
+                </div>
+                <!-- Document -->
+                <div (click)="OnTypeSelect('post')">
+                    <input
+                        id="document-file-input"
+                        class="absolute h-0 w-0 opacity-0 invisible pointer-events-none"
+                        type="file"
+                        [multiple]="false"
+                        [accept]="'application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, text/plain, application/pdf, image/*'"
+                        #imageFileInput>
+                    <label
+                        class="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer hover:bg-gray-400 hover:bg-opacity-20 dark:hover:bg-black dark:hover:bg-opacity-5"
+                        for="image-file-input"
+                        matRipple>
+                        <mat-icon [svgIcon]="'heroicons_outline:document-text'"></mat-icon>
+                    </label>
+                </div>
+                <!-- Archive -->
+                <button
+                    mat-icon-button (click)="OnTypeSelect('event')">
+                    <mat-icon [svgIcon]="'heroicons_outline:calendar'"></mat-icon>
+                </button>
+                <!-- Delete -->
+                <button
+                    mat-icon-button (click)="OnTypeSelect('poll')">
+                    <mat-icon [svgIcon]="'heroicons_outline:chart-square-bar'"></mat-icon>
+                </button>
+            </div>
+            <!-- Post -->
+            <button mat-flat-button matDialogClose>Create {{postType}}</button>
+        </div>
+    </ng-container>
+</div>
+

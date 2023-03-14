@@ -1,0 +1,59 @@
+<!-- Loading bar -->
+<fuse-loading-bar></fuse-loading-bar>
+
+<!-- Navigation -->
+<fuse-vertical-navigation
+    class="light bg-card print:hidden"
+    [mode]="isScreenSmall ? 'over' : 'side'"
+    [name]="'mainNavigation'"
+    [navigation]="navigation.default"
+    [opened]="!isScreenSmall"
+>
+
+    <div
+        class="flex flex-0 items-center justify-center h-16 pr-6 pl-2 mt-2 mb-4 opacity-12"
+    >
+        <img class="max-w-36" src="assets/images/logo/logo-text-on-dark.svg" />
+    </div>
+    <ng-container fuseVerticalNavigationContentFooter> </ng-container>
+</fuse-vertical-navigation>
+
+<!-- Wrapper -->
+<div class="flex flex-col flex-auto w-full min-w-0">
+    <!-- Header -->
+    <div
+        class="relative flex flex-0 items-center w-full h-16 px-4 md:px-6 z-49 shadow dark:shadow-none dark:border-b print:hidden"
+        style="background-color: #001E52;">
+        <!-- Navigation toggle button -->
+        <div class="flex text-white">
+            <button mat-icon-button (click)="toggleNavigation('mainNavigation')">
+                <mat-icon class="text-white" [svgIcon]="'heroicons_outline:menu'"></mat-icon>
+            </button>
+            <div class="text-3xl md:text-4xl ml-8 text-white"> | </div>
+            <search [appearance]="'bar'"></search>
+        </div>
+        <!-- Components -->
+        <div class="flex items-center pl-2 ml-auto space-x-0.5 sm:space-x-2">
+            
+            <!-- Navigation header hook -->
+            <ng-container fuseVerticalNavigationContentHeader>
+                <div class="flex items-center w-full p-4 pl-6">
+                    <!-- Components -->
+                    <div class="flex items-center ml-auto">
+                        <notifications></notifications>
+                        <user [showAvatar]="false"></user>
+                        <div class="ml-4 text-2xl md:text-3xl font-semibold text-white">RIM CAMPUS</div>
+                    </div>
+                </div>
+            </ng-container>
+            <!-- Navigation footer hook -->
+        </div>
+    </div>
+
+    <!-- Content -->
+    <div class="flex flex-col flex-auto">
+        <!-- *ngIf="true" hack is required here for router-outlet to work correctly.
+             Otherwise, layout changes won't be registered and the view won't be updated! -->
+        <router-outlet *ngIf="true"></router-outlet>
+    </div>
+</div>

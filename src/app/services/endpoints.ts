@@ -1,0 +1,40 @@
+export const endpoint = {
+    auth:{
+        getToken:'/get-direct-login-token',
+        postToken:'/direct-login',
+        refreshToken:'/refresh-token',
+        logout:'/logout'
+    },
+    club:{
+        create:'/club',
+        list:'/club-list',
+        update:'/club'
+    },
+    post:{
+        create:'/post',
+        list:'/post-list',
+        comment:{
+            save:'/comment-save',
+            postlist:'/post-comments-list',
+            update:'/comment-update',
+            getlist:'/comments-list',
+            like:'/post-like',
+            unlike:'/post-unlike',
+            share:'/post-share'
+        }
+    },
+    announcement:{
+        create:'/announcement',
+        list:'/announcement-list'
+    },
+    deportment:{
+        get:'/get-deportments'
+    },
+    event:{
+        list:'/event-list'
+    },
+    poll:{
+        get:'/poll-list'
+    }
+
+} 
