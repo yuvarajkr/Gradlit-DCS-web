@@ -18,6 +18,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 link : '/student/events'
             },
             {
+                id   : 'clubs',
+                title: 'Clubs',
+                type : 'basic',
+                icon : 'heroicons_outline:library',
+                link : '/student/clubs'
+            },
+            {
                 id   : 'assignment',
                 title: 'Assignment',
                 type : 'basic',

@@ -17,6 +17,18 @@ vedios: File,
 event_file : File
 }
 
+export interface CreateClubPayload {
+        department_id :string,
+        user_id:number,
+        name :string,
+        description :string,
+        display_name : string,
+        allow_notices : 0 | 1,
+        allow_events :0 | 1,
+        allow_delete_post:0 | 1,
+        allow_push_notification:0 | 1
+    }
+
 export interface ServerResponse {
         status: boolean,
         message: string

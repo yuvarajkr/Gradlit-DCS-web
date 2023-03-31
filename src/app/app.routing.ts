@@ -51,6 +51,8 @@ export const appRoutes: Route[] = [
             { path: 'profile', loadChildren: () => import('app/modules/student/profile/profile.module').then(m => m.ProfileModule)},
             { path: 'notifications', loadChildren: () => import('app/modules/student/notifications/notifications.module').then(m => m.NotificationsModule)},
             { path: 'settings', loadChildren: () => import('app/modules/student/settings/settings.module').then(m => m.SettingsModule)},
+            { path: 'clubs', loadChildren: () => import('app/modules/student/student-clubs/student-clubs.module').then(m => m.StudentClubsModule)},
+            
         ]
     },
 

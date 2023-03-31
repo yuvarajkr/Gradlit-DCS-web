@@ -116,6 +116,8 @@
                 <span class="ml-1 leading-5">Send Notification</span>
             </div>
         </form>
+
+        <button (click)="onCreateEventOrPoll()">Create Event</button>
     </ng-container>
     <!-- Poll --> 
     <ng-container *ngIf="postType === 'poll'">
@@ -167,6 +169,7 @@
                 <span class="ml-1 leading-5">Send Notification</span>
             </div>
         </form>
+        <button (click)="onCreateEventOrPoll()">Create Poll</button>
     </ng-container>
     <!-- Actions -->
     <ng-container>

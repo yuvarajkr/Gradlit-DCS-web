@@ -650,33 +650,19 @@
             </fuse-card> -->
 
             <!-- Post 4 -->
-            <fuse-card class="flex flex-col max-w-200 w-full mt-8">
+            <fuse-card *ngFor="let eachPost of allPosts" class="flex flex-col max-w-200 w-full mt-8">
                 <div class="flex items-center mx-6 sm:mx-8 mt-6 mb-4">
                     <img
                         class="w-10 h-10 rounded-full mr-4"
                         src="assets/images/avatars/female-01.jpg"
                         alt="Card cover image">
                     <div class="flex flex-col">
-                        <span class="font-medium leading-none">College Management</span>
-                        <span class="text-sm text-secondary leading-none mt-1">Project Exhibition on 5th December</span>
+                        <!-- <span class="font-medium leading-none">College Management</span> -->
+                        <span class="text-sm text-secondary leading-none mt-1">{{eachPost.head}}</span>
                     </div>
                 </div>
                 <div class="mx-6 sm:mx-8 mt-2 mb-6">
-                    Dear Students, <br/>
-                    Among the oldest and largest university in India, KEMU was established in 1860. It is a
-                    training center where great advances are being made in both teaching and patient care, yet
-                    never leaving behind the age old ethical and moral principles which embody the essence of
-                    any studet. Also called the Harvard of East, KEMU chairs the credit for innumerable
-                    professionally outstanding and morally sound doctors. They have been serving humanity in
-                    all countries in all ages and all levels of society.
-                    The major functions of KEMU are not sporadic events but on going story of tradition itself.
-                    We, The KAPS (Kemcolians’ Arts and Photography Society) under the great leadership and
-                    guidance of Prof Dr. Aftab Asif, have a major role in not only keeping these traditions alive but
-                    are also setting new trends for the others to follow. We have been holding Annual Arts and
-                    Photography Exhibition at the National Level for the past 9 years and the response of the
-                    various Academic schools, Colleges and Universities have been massive in this regard.
-                    To keep the tradition alive, we are pleased to announce the Kemcolians’ 13th Annual
-                    Inter-collegiate Arts & Photography Exhibition on April 17, 2019.
+                    {{eachPost.description}}
                 </div>
                 <!-- <div class="mx-6 sm:mx-8 mb-4">
                     <div class="flex flex-col rounded overflow-hidden border">
@@ -1039,7 +1025,7 @@
                         class="px-3"
                         mat-button
                         [color]="'primary'"
-                        [routerLink]="['./']">
+                        [routerLink]="['../clubs']">
                         See all groups
                     </a>
                 </div>

@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { FormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StudentDataService {
 
+  public onPostsChange = new Subject<{head:string,description:string}[]>();
   constructor(private _fb:FormBuilder) { }
 
   public getStudentPostForm(){
@@ -30,6 +32,20 @@ export class StudentDataService {
       photos: [],
       files: [],
       vedios: [],
+    });
+  }
+
+  public getCreateClubForm(){
+    return this._fb.group({
+      department_id :[],                                               
+      user_id:[],                                                
+      name :['', Validators.required],                                                
+      description :['', Validators.required],                                                
+      display_name :['' ,Validators.required],                                               
+      allow_notices :[],                                                
+      allow_events :[],                                                
+      allow_delete_post:[],                                               
+      allow_push_notification:[]                                                
     });
   }
 }

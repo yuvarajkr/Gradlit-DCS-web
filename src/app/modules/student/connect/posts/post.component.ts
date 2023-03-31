@@ -24,7 +24,8 @@ export class PostComponent {
   OnTypeSelect(type){
     this.postType = type;
     this.studentForm.get('type').setValue(type);
-    this.postType
+    this.postType === 'poll' &&  this.studentForm.get('poll_details').enable();
+    this.postType === 'event' &&  this.studentForm.get('event_details').enable();
   }
 
   link = function (scope, element, attrs) {
@@ -53,5 +54,7 @@ export class PostComponent {
     });
   }
 
-  public 
+  public onCreateEventOrPoll(){
+    this._createPost();
+  }
 }
