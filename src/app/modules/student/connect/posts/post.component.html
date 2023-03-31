@@ -116,8 +116,6 @@
                 <span class="ml-1 leading-5">Send Notification</span>
             </div>
         </form>
-
-        <button (click)="onCreateEventOrPoll()">Create Event</button>
     </ng-container>
     <!-- Poll --> 
     <ng-container *ngIf="postType === 'poll'">
@@ -169,7 +167,6 @@
                 <span class="ml-1 leading-5">Send Notification</span>
             </div>
         </form>
-        <button (click)="onCreateEventOrPoll()">Create Poll</button>
     </ng-container>
     <!-- Actions -->
     <ng-container>
@@ -238,7 +235,7 @@
                 </button>
             </div>
             <!-- Post -->
-            <button (click)="onCreateStudentPost()" mat-flat-button matDialogClose>Create {{postType}}</button>
+            <button (click)="(postType === 'poll' || postType === 'event') ?  onCreateEventOrPoll() :  onCreateStudentPost()" mat-flat-button matDialogClose>Create {{postType}}</button>
         </div>
     </ng-container>
 </div>

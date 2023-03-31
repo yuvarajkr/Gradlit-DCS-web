@@ -41,6 +41,8 @@ export class ConnectComponent implements OnInit
     nav: false
   }
   public allPosts : any []; // after backend gives mock response will add a type.
+  public latestAnnoucement : any;
+  public top4Clubs : any[];
   /* Constructor*/
   constructor(
      private _matDialog: MatDialog, private _studentUtils: StudentHttpService, private _studentData:StudentDataService
@@ -64,6 +66,24 @@ export class ConnectComponent implements OnInit
           console.log(err);
         }
       });
+
+      this._studentUtils.getAllAnnouncements().subscribe({
+        next: (allAnnouncement) => {
+          this.latestAnnoucement = allAnnouncement[0];
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      })
+
+      this._studentUtils.getAllClub().subscribe({
+        next: (allClubs) => {
+          this.top4Clubs = allClubs.length > 4 ? allClubs.slice(0,4) : allClubs;
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
   }
 
   /* Open the note dialog*/
@@ -71,6 +91,7 @@ export class ConnectComponent implements OnInit
   {
     const dialogRef =  this._matDialog.open(PostComponent, {
       autoFocus: false,
+      maxHeight: '90vh',
       data     : {
           note: {}
       }

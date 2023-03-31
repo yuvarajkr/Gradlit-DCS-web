@@ -29,6 +29,13 @@ export interface CreateClubPayload {
         allow_push_notification:0 | 1
     }
 
+export interface CreateAnnouncementsPayload{
+        heading:string,
+        group_name:string,
+        description:string,
+        file_name:File
+}
+
 export interface ServerResponse {
         status: boolean,
         message: string

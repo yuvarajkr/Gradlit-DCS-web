@@ -1,0 +1,28 @@
+<form [formGroup]="createStudentClubForm" class="flex flex-col mt-4 pb-4 overflow-hidden">
+            <div class="flex flex-col gt-xs:flex-row">
+                <mat-form-field
+                    [ngClass]="formFieldHelpers"
+                    class="flex-auto gt-xs:pr-3">
+                    <mat-label>Announcement Name</mat-label>
+                    <input 
+                    matInput
+                    formControlName="name" 
+                    placeholder="This is a placeholder">
+                </mat-form-field>
+            </div>
+            <div class="flex">
+                <mat-form-field
+                    [ngClass]="formFieldHelpers"
+                    class="flex-auto">
+                    <mat-label>Announcement Description</mat-label>
+                    <textarea
+                        matInput
+                        formControlName="description" 
+                        cdkTextareaAutosize
+                       ></textarea>
+                </mat-form-field>
+            </div>
+            <div>
+                <button (click)="onCreateClub()">Creat Announcement</button>
+            </div>
+ </form>

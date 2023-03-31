@@ -949,7 +949,7 @@
                             <mat-icon
                                 class="icon-size-5 mt-0.5 mr-2"
                                 [svgIcon]="'heroicons_solid:bell'"></mat-icon>
-                            <div>For all UG and PG programmes there will be no classes on 26/12/2022 . 22 DEC
+                            <div> {{latestAnnoucement?.details || 'Latest announcement loading...'}}
                                 <!-- <a
                                     class="text-secondary whitespace-nowrap hover:underline"
                                     [routerLink]="['./']">See details
@@ -963,7 +963,7 @@
                         class="px-3"
                         mat-button
                         [color]="'primary'"
-                        [routerLink]="['./']">
+                        [routerLink]="['../announcement']">
                         See all Circulars
                     </a>
                 </div>
@@ -975,15 +975,15 @@
                     <div class="text-2xl font-semibold leading-tight">Follow College Club</div>
                 </div>
                 <div class="flex flex-col mt-5">
-                    <div class="flex items-center">
+                    <div *ngFor="let eachClub of top4Clubs" class="flex items-center">
                         <img
                             class="w-14 h-14 mr-4 rounded object-cover"
                             src="assets/images/cards/coffee-shop-01-320x200.jpg"
                             alt="Card cover image">
                         <div class="flex flex-col min-w-0">
-                            <div class="font-medium leading-none">EDC - RIT</div>
+                            <div class="font-medium leading-none">{{eachClub?.clubName}}</div>
                             <div class="text-md truncate leading-none mt-1">Subscribe for updates</div>
-                            <div class="text-md leading-none text-secondary mt-2">1.2k followers</div>
+                            <div class="text-md leading-none text-secondary mt-2">{{eachClub?.followers}} followers</div>
                         </div>
                     </div>
                     <div class="flex items-center mt-6">
@@ -995,28 +995,6 @@
                             <div class="font-medium leading-none">DECA</div>
                             <div class="text-md truncate leading-none mt-1">Subscribe for updates</div>
                             <div class="text-md leading-none text-secondary mt-2">957 followers</div>
-                        </div>
-                    </div>
-                    <div class="flex items-center mt-6">
-                        <img
-                            class="w-14 h-14 mr-4 rounded object-cover"
-                            src="assets/images/cards/coffee-shop-03-320x320.jpg"
-                            alt="Card cover image">
-                        <div class="flex flex-col min-w-0">
-                            <div class="font-medium leading-none">Inferno</div>
-                            <div class="text-md truncate leading-none mt-1">Subscribe for updates</div>
-                            <div class="text-md leading-none text-secondary mt-2">342 followers</div>
-                        </div>
-                    </div>
-                    <div class="flex items-center mt-6">
-                        <img
-                            class="w-14 h-14 mr-4 rounded object-cover"
-                            src="assets/images/cards/sneakers-01-320x200.jpg"
-                            alt="Card cover image">
-                        <div class="flex flex-col min-w-0">
-                            <div class="font-medium leading-none">SME</div>
-                            <div class="text-md truncate leading-none mt-1">Subscribe for updates</div>
-                            <div class="text-md leading-none text-secondary mt-2">4.7k followers</div>
                         </div>
                     </div>
                 </div>

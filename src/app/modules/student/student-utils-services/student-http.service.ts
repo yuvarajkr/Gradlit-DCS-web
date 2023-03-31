@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GradlitHttpService } from 'app/services/gradlit-http.service';
-import { CreateClubPayload, CreatePostPayload, ServerResponse } from '../student-intefaces/student-interfaces';
+import { CreateAnnouncementsPayload, CreateClubPayload, CreatePostPayload, ServerResponse } from '../student-intefaces/student-interfaces';
 
 
 @Injectable({
@@ -28,5 +28,13 @@ export class StudentHttpService {
 
   public getAllClub(){
     return this._gradLitHttp.get<any[]>('club-list');
+  }
+
+  public createAnnouncements(payload:CreateAnnouncementsPayload){
+    return this._gradLitHttp.post('/announcement',payload);
+  }
+
+  public getAllAnnouncements(){
+    return this._gradLitHttp.get<any[]>('/announcement-list');
   }
 }
