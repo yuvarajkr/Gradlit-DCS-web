@@ -28,10 +28,11 @@ export class StudentDataService {
         option1:['',Validators.required],
         option2:['',Validators.required],
         poll_end_date:['',Validators.required],
+        is_notification:[false,Validators.required],
       }),
-      photos: [],
-      files: [],
-      vedios: [],
+      photos: [[]],
+      files: [[]],
+      vedios: [[]],
     });
   }
 

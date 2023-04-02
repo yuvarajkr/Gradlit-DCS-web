@@ -9,9 +9,14 @@ import { StudentHttpService } from '../../student-utils-services/student-http.se
 })
 export class PostComponent {
 
-  postType = "post";
+  public postType = "post";
+  public postSubType = 0;
   formFieldHelpers: string[] = [''];
   public studentForm;
+  public studentPostDocument: File;
+  public studentPostPhoto: File;
+  public studentPostVideo: File;
+  student_event_file: File;
   /* Constructor*/
   constructor(private _studentHttp:StudentHttpService,private _studentUtils:StudentDataService) {
     this.studentForm = this._studentUtils.getStudentPostForm();
@@ -23,7 +28,8 @@ export class PostComponent {
 
   OnTypeSelect(type){
     this.postType = type;
-    this.studentForm.get('type').setValue(type);
+    
+    //this.studentForm.get('type').setValue(type);
     this.postType === 'poll' &&  this.studentForm.get('poll_details').enable();
     this.postType === 'event' &&  this.studentForm.get('event_details').enable();
   }
@@ -38,13 +44,18 @@ export class PostComponent {
   }
 
   public onCreateStudentPost(){
-    this.studentForm.get('event_details').disable();
-    this.studentForm.get('poll_details').disable();
     this._createPost();
   }
 
   private _createPost(){
-    this._studentHttp.createPost(this.studentForm.getRawValue()).subscribe({
+   let postFormData =  new FormData();
+   this.studentPostDocument && postFormData.append('files', this.studentPostDocument);
+   this.studentPostPhoto && postFormData.append('photos', this.studentPostPhoto);
+   this.studentPostVideo && postFormData.append('vedios', this.studentPostVideo);
+   postFormData.append('head', this.studentForm.get('head').value);
+   postFormData.append('type', ''+this.postSubType);
+    this._studentHttp.createPost(postFormData
+    ).subscribe({
       next: (response)=>{
           console.log(response);
       } ,
@@ -55,6 +66,62 @@ export class PostComponent {
   }
 
   public onCreateEventOrPoll(){
-    this._createPost();
+    let postFormData =  new FormData();
+    this._studentHttp.createPost(this.postType === 'poll' ? this. _populateCreatePollPayload() :  this._populateCreateEventPayload(postFormData)
+      ).subscribe({
+        next: (response)=>{
+            console.log(response);
+        } ,
+        error : (err)=> {
+          console.log(err);
+        } 
+      });
+  }
+
+  private _populateCreateEventPayload(postFormData:FormData):FormData{
+    this.student_event_file && postFormData.append('event_file', this.student_event_file);
+    postFormData.append('head', this.studentForm.get('event_details').get('event_name').value);
+    postFormData.append('type', ''+this.postSubType);
+    postFormData.append('event_name', ''+this.studentForm.get('event_details').get('event_name').value);
+    postFormData.append('event_description', ''+this.studentForm.get('event_details').get('event_description').value);
+    postFormData.append('venue', ''+this.studentForm.get('event_details').get('venue').value);
+    postFormData.append('start_date', new Date(this.studentForm.get('event_details').get('start_date').value).toISOString());
+    postFormData.append('end_date', new Date(this.studentForm.get('event_details').get('end_date').value).toISOString());
+    postFormData.append('is_notification', ''+(this.studentForm.get('event_details').get('is_notification').value + 0));
+    return postFormData;
+  }
+
+  private _populateCreatePollPayload(){
+      const now = new Date();
+      let pollPayload = this.studentForm.get('poll_details').value;
+      now.setDate(now.getDate() + pollPayload.poll_end_date * 7);
+      pollPayload.poll_end_date = now.toISOString();
+      pollPayload.head = pollPayload.question;
+      pollPayload.type = 5; // poll type
+      pollPayload.is_notification = ''+(pollPayload.is_notification + 0);
+      
+       
+      return pollPayload;
+  }
+
+  public onFileUpload(event,postSubType){
+   if(postSubType === 2){
+    this.postSubType = postSubType;
+    const file:File = event.target.files[0];
+    this.studentPostDocument = file;
+   } else if(postSubType === 1){
+    this.postSubType = postSubType;
+    const file:File = event.target.files[0];
+    this.studentPostPhoto = file;
+   } else if(postSubType === 3){
+    this.postSubType = postSubType;
+    const file:File = event.target.files[0];
+    this.studentPostVideo = file;
+   } else if(postSubType === 4){
+    this.postSubType = postSubType;
+    const file:File = event.target.files[0];
+    this.student_event_file = file;
+   }
+   
   }
 }

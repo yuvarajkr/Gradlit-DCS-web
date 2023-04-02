@@ -40,7 +40,15 @@ export class ConnectComponent implements OnInit
     },
     nav: false
   }
-  public allPosts : any []; // after backend gives mock response will add a type.
+  public allPosts : {
+    head: string;
+    type: string;
+    created_by: {
+        id: string;
+        name: string;
+    };
+    created_at: string;
+}[]; 
   public latestAnnoucement : any;
   public top4Clubs : any[];
   /* Constructor*/
@@ -49,7 +57,7 @@ export class ConnectComponent implements OnInit
     ) {
           this._studentUtils.getAllpost().subscribe({
             next: (allPosts) => {
-              this.allPosts = allPosts;
+              this.allPosts = allPosts.data.results;
             },
             error: (err) => {
               console.log(err);
@@ -60,7 +68,7 @@ export class ConnectComponent implements OnInit
   ngOnInit(){
       this._studentData.onPostsChange.subscribe({
         next: (updatedPosts) => {
-          this.allPosts = updatedPosts;
+         // this.allPosts = updatedPosts;
         },
         error: (err) => {
           console.log(err);
@@ -69,7 +77,7 @@ export class ConnectComponent implements OnInit
 
       this._studentUtils.getAllAnnouncements().subscribe({
         next: (allAnnouncement) => {
-          this.latestAnnoucement = allAnnouncement[0];
+          this.latestAnnoucement = allAnnouncement.data.results[0];
         },
         error: (err) => {
           console.log(err);
@@ -78,7 +86,8 @@ export class ConnectComponent implements OnInit
 
       this._studentUtils.getAllClub().subscribe({
         next: (allClubs) => {
-          this.top4Clubs = allClubs.length > 4 ? allClubs.slice(0,4) : allClubs;
+          this.top4Clubs = allClubs.data.results;
+          this.top4Clubs = this.top4Clubs.length > 4 ? this.top4Clubs.slice(0,4) : this.top4Clubs;
         },
         error: (err) => {
           console.log(err);

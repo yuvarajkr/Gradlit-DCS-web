@@ -13,7 +13,7 @@ export class StudentClubsComponent {
   constructor(private _studentHttp:StudentHttpService, private _matDialog:MatDialog){
           this._studentHttp.getAllClub().subscribe({
             next: (allClubDetails)=>{
-              this.allClubs = allClubDetails;
+              this.allClubs = allClubDetails.data.results;
             }
           });
   }

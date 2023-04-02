@@ -13,7 +13,7 @@ export class AnnouncementComponent {
   constructor(private _studentHttp:StudentHttpService, private _matDialog:MatDialog){
           this._studentHttp.getAllAnnouncements().subscribe({
             next: (allAnnouncementDetails)=>{
-              this.allAnnouncement = allAnnouncementDetails;
+              this.allAnnouncement = allAnnouncementDetails.data.results;
             }
           });
   }

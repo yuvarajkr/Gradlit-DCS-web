@@ -10,12 +10,12 @@ export class StudentHttpService {
 
   constructor(private _gradLitHttp:GradlitHttpService) { }
 
-  public createPost(payload: CreatePostPayload){
+  public createPost(payload: FormData){
     return this._gradLitHttp.post<ServerResponse>('/post',payload);
   }
 
   public getAllpost(){
-    return this._gradLitHttp.get<{head:string,description:string}[]>('/post-list');
+    return this._gradLitHttp.get<{data:{results:{head:string,type:string,created_by:{id:string,name:string},created_at:string}[]}}>('/post-list');
   }
 
   public getAllEvents(){
@@ -27,7 +27,7 @@ export class StudentHttpService {
   }
 
   public getAllClub(){
-    return this._gradLitHttp.get<any[]>('club-list');
+    return this._gradLitHttp.get<any>('/club-list');
   }
 
   public createAnnouncements(payload:CreateAnnouncementsPayload){
@@ -35,6 +35,6 @@ export class StudentHttpService {
   }
 
   public getAllAnnouncements(){
-    return this._gradLitHttp.get<any[]>('/announcement-list');
+    return this._gradLitHttp.get<any>('/announcement-list');
   }
 }
