@@ -3,6 +3,7 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { catchError, Observable, throwError } from 'rxjs';
 import { AuthService } from 'app/core/auth/auth.service';
 import { AuthUtils } from 'app/core/auth/auth.utils';
+import { environment } from 'app/environments/environment';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor
@@ -39,7 +40,7 @@ export class AuthInterceptor implements HttpInterceptor
                 //headers: req.headers.set('Authorization', 'Bearer ' + this._authService.accessToken)
                 setHeaders: {
                     //Authorization :'Bearer ' + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwMjE2NTQwLCJpYXQiOjE2ODAxOTg1NDAsImp0aSI6IjE1NGY2Y2I3ODNhZDRhNjZiYjBkMzMyYTYzZWJiYjFjIiwidXNlcl9pZCI6M30.vCK6Vw8aCIgyImHwe3xhlKry4s5J2Z84Z5WnOfa0dquK1Nh3hZF6t-RDYFhBm3d3GAB3jecJq6QFC39hW3JzOA"
-                    Authorization :"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNDgyODYyLCJpYXQiOjE2ODA0NjQ4NjIsImp0aSI6ImQ3ZGI4ZDNkODlkMjRjZGI4Mzc2NzNlYmFhMTQ0YzgyIiwidXNlcl9pZCI6M30.TNmmzKts2eZbsbTqapYKAMaXmi3XIDl3V9kjFF0_5_C_atI7w7WX2F8hSKB0Gi32BzjOWksYbYMdkqkk_Pz19Q"
+                    Authorization : environment.authToken
                 }
             });
             
