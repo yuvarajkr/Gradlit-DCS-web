@@ -1,11 +1,87 @@
 <div class="flex flex-col flex-auto min-w-0">
 
-    <!-- Main -->
-    <div class="flex-auto p-6 sm:p-10">
-
-        <!-- CONTENT GOES HERE -->
-        <div class="h-400 min-h-400 max-h-400 border-2 border-dashed border-gray-300 rounded-2xl"></div>
-
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
+        <div class="flex-1 min-w-0">
+            <!-- Breadcrumbs -->
+            <div class="flex flex-wrap items-center font-medium">
+                <div>
+                    <a class="whitespace-nowrap text-primary-500">Student</a>
+                </div>
+                <div class="flex items-center ml-1 whitespace-nowrap">
+                    <mat-icon
+                        class="icon-size-5 text-secondary"
+                        [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
+                    <a class="ml-1 text-primary-500">Challenges</a>
+                </div>
+            </div> 
+            <!-- Title -->
+            <div class="mt-2">
+                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
+                    Challenges
+                </h2>
+                <button>Creat Challenges</button>
+            </div>
+        </div>
     </div>
 
+    <!-- Main -->
+    <div class="flex-auto p-6 sm:p-10">
+        <div class="flex flex-wrap items-start w-full max-w-400 -m-4">
+            <!-- Card #65 -->
+            <fuse-card class="flex flex-col max-w-80 w-full filter-article m-4">
+                <div class="flex items-center mx-6 sm:mx-8 mt-6 mb-1">
+                    <img
+                        class="w-10 h-10 rounded-full mr-4"
+                        src="assets/images/avatars/male-04.jpg"
+                        alt="Card cover image">
+                    <div class="flex flex-col">
+                        <span class="font-semibold leading-none">Challenge Name</span>
+                        <span class="text-sm text-secondary leading-none mt-1">29 minutes ago</span>
+                    </div>
+                </div>
+                <div class="m-6 sm:mx-8">
+                    <div>
+                        <p class="font-medium">Challenge Details</p><br>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </div>
+                    <hr class="border-b mx-6 sm:mx-8 mt-4 mb-6">
+                    <p><span class="font-semibold">Created By :</span>Placemnet Admin</p>
+                    <div>
+                        <div  style="background-color: lightsteelblue;
+                        padding: 10px;
+                        border: solid 1px black;
+                        border-radius: 8px;" class="flex justify-center"> <a [href]="'https://www.hackerrank.com'" target="_blank"> Take Test</a></div>
+                    </div>
+                </div>
+            </fuse-card>
+
+            <fuse-card class="flex flex-col max-w-80 w-full filter-article m-4">
+                <div class="flex items-center mx-6 sm:mx-8 mt-6 mb-1">
+                    <img
+                        class="w-10 h-10 rounded-full mr-4"
+                        src="assets/images/avatars/male-04.jpg"
+                        alt="Card cover image">
+                    <div class="flex flex-col">
+                        <span class="font-semibold leading-none">Challenge Name</span>
+                        <span class="text-sm text-secondary leading-none mt-1">29 minutes ago</span>
+                    </div>
+                </div>
+                <div class="m-6 sm:mx-8">
+                    <div>
+                        <p class="font-medium">Challenge Details</p><br>
+                        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled. Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    </div>
+                    <hr class="border-b mx-6 sm:mx-8 mt-4 mb-6">
+                    <p><span class="font-semibold">Created By :</span>Placemnet Admin</p>
+                    <div>
+                        <div  style="background-color: lightsteelblue;
+                        padding: 10px;
+                        border: solid 1px black;
+                        border-radius: 8px;" class="flex justify-center"> <a [href]="'https://www.hackerrank.com'" target="_blank"> Take Test</a></div>
+                    </div>
+                </div>
+            </fuse-card>
+        </div>
+    </div>
 </div>

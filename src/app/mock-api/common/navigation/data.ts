@@ -26,7 +26,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
             },
             {
                 id   : 'assignment',
-                title: 'Assignment',
+                title: 'Master Class',
                 type : 'basic',
                 icon : 'mat_solid:layers',
                 link : '/student/assignment'

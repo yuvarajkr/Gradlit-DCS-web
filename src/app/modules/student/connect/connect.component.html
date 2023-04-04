@@ -955,19 +955,20 @@
 
         <!-- Column -->
         <div class="hidden lg:flex flex-col items-start ml-8">
+            <div class="sticky" style="top:100px">
 
-            <!-- Circulars -->
+                 <!-- Circulars -->
             <fuse-card class="flex flex-col max-w-80 w-full px-8 pt-6 pb-4">
                 <div class="flex items-center justify-between">
                     <div class="text-2xl font-semibold leading-tight">Circulars</div>
                 </div>
 
                     <div class="flex-col mt-5">
-                        <div class="flex mt-5">
+                        <div *ngFor="let eachAnnouncement of latestAnnoucement" class="flex mt-5">
                             <mat-icon
                                 class="icon-size-5 mt-0.5 mr-2"
                                 [svgIcon]="'heroicons_solid:bell'"></mat-icon>
-                            <div> {{latestAnnoucement?.heading || 'Latest announcement loading...'}}
+                            <div> {{eachAnnouncement?.heading || 'Latest announcement loading...'}}
                                 <!-- <a
                                     class="text-secondary whitespace-nowrap hover:underline"
                                     [routerLink]="['./']">See details
@@ -1026,49 +1027,7 @@
                     </a>
                 </div>
             </fuse-card>
-
-            <!-- Activity Feed -->
-            <fuse-card class="flex flex-col max-w-80 w-full mt-8 px-8 pt-6 pb-4">
-                <div class="flex items-center justify-between">
-                    <div class="text-2xl font-semibold leading-tight">Trending</div>
-                </div>
-                <div class="flex flex-col mt-5">
-                    <div class="flex">
-                        <div class="flex flex-col min-w-0">
-                            <div class="leading-tight">#UDBHAV2023</div>
-                            <div class="text-md leading-none text-secondary mt-2">1768 posts</div>
-                        </div>
-                    </div>
-                    <div class="flex mt-8">
-                        <div class="flex flex-col min-w-0">
-                            <div class="leading-tight">#Hakathan2024</div>
-                            <div class="text-md leading-none text-secondary mt-2">4893 posts</div>
-                        </div>
-                    </div>
-                    <div class="flex mt-8">
-                        <div class="flex flex-col min-w-0">
-                            <div class="leading-tight">#Batch2022</div>
-                            <div class="text-md leading-none text-secondary mt-2">900 posts</div>
-                        </div>
-                    </div>
-                    <div class="flex mt-8">
-                        <div class="flex flex-col min-w-0">
-                            <div class="leading-tight">#NSS Group</div>
-                            <div class="text-md leading-none text-secondary mt-2">9830 posts</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="flex items-center mt-6 -mx-3">
-                    <a
-                        class="px-3"
-                        mat-button
-                        [color]="'primary'"
-                        [routerLink]="['./']">
-                        See Trending
-                    </a>
-                </div>
-            </fuse-card>
-
+            </div>
 
         </div>
 
