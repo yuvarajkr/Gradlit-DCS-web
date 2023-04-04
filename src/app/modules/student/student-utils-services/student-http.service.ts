@@ -37,4 +37,10 @@ export class StudentHttpService {
   public getAllAnnouncements(){
     return this._gradLitHttp.get<any>('/announcement-list');
   }
+
+  public getAcessToken(){
+    return this._gradLitHttp.post('/direct-login',{
+      "auth_code":"GGNAyifaIvLxPHpxRdV5gc3LSaqpTqCwSBJw91hgWyKSEEvwQR"
+  });
+  }
 }
