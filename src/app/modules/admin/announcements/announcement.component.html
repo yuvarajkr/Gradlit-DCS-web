@@ -12,61 +12,55 @@
                     <mat-icon
                         class="icon-size-5 text-secondary"
                         [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
-                    <a class="ml-1 text-primary-500">Announcement</a>
+                    <a class="ml-1 text-primary-500">Circular</a>
                 </div>
             </div> 
             <!-- Title -->
             <div class="mt-2">
                 <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
-                    Announcement
+                    Circular
                 </h2>
-                <button (click)="onCreateClub()">Create Announcement</button>
+                <button class="font-semibold" style="color:#453ac6" (click)="onCreateCircular()">Create Circular</button>
             </div>
         </div>
     </div>
 
     <!-- Main -->
     <div class="flex-auto p-6 sm:p-10">
-        <div class="flex flex-wrap items-start w-full max-w-400 -m-4">
+        <div>
             <!-- Card #65 -->
-            <fuse-card *ngFor="let eachAnnouncement of allAnnouncement" class="flex flex-col max-w-80 w-full filter-article m-4">
-                <div class="flex items-center mx-6 sm:mx-8 mt-6 mb-1">
-                    <img
-                        class="w-10 h-10 rounded-full mr-4"
-                        src="assets/images/avatars/male-04.jpg"
-                        alt="Card cover image">
-                    <div class="flex flex-col">
-                        <span class="font-semibold leading-none">{{eachAnnouncement.heading}}</span>
-                        <span class="text-sm text-secondary leading-none mt-1">29 minutes ago</span>
-                    </div>
+            <div *ngFor="let eachAnnouncement of allAnnouncement" style="border: solid 1px black;
+            padding: 10px;
+            border-radius: 10px;">
+                <div class="font-semibold flex justify-between ">
+                    {{eachAnnouncement.heading}}
+                    <button
+                    class="px-3 mr-1"
+                    mat-button>
+                    <mat-icon
+                        class="icon-size-5 text-red-500"
+                        [svgIcon]="'heroicons_solid:download'"></mat-icon>
+                        <a [href]="eachAnnouncement?.file_path" download="attachedFile.txt"><span class="ml-2">Download</span></a>
+                </button>
                 </div>
-                <div class="m-6 sm:mx-8">
-                    <div>
-                        <p class="font-semibold">Announcement Details</p>
-                        <P>{{eachAnnouncement.description}}</P>
-                    </div>
-
-                    <div>
-                        <p class="font-semibold">Announcement Group Name</p>
-                        <P>{{eachAnnouncement.group_name}}</P>
-                    </div>
-                    <div>
-                        <p class="font-semibold">Created By</p>
-                        <P>{{eachAnnouncement.created_by.name}}</P>
-                    </div>
-                    <hr class="border-b mx-6 sm:mx-8 mt-4 mb-6">
-                    <div>
-                        <button
-                        class="px-3 mr-1"
-                        mat-button>
-                        <mat-icon
-                            class="icon-size-5 text-red-500"
-                            [svgIcon]="'heroicons_solid:download'"></mat-icon>
-                            <a [href]="eachAnnouncement?.file_path" download="attachedFile.txt"><span class="ml-2">Download Attachment.</span></a>
-                    </button>
-                    </div>
+                <div>
+                    {{eachAnnouncement.description}}
                 </div>
-            </fuse-card>
+                <!-- <div>
+                    <p class="font-semibold">Created By</p>
+                    <P>{{eachAnnouncement.created_by.name}}</P>
+                </div> -->
+                <!-- <div>
+                    <button
+                    class="px-3 mr-1"
+                    mat-button>
+                    <mat-icon
+                        class="icon-size-5 text-red-500"
+                        [svgIcon]="'heroicons_solid:download'"></mat-icon>
+                        <a [href]="eachAnnouncement?.file_path" download="attachedFile.txt"><span class="ml-2"></span></a>
+                </button>
+                </div> -->
+            </div>
         </div>
     </div>
 </div>

@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AnnouncementComponent } from './announcement.component';
 import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
+import { MatInputModule } from '@angular/material/input';
 
 const announcementRoutes:Route[] = [{
   path:'',
@@ -21,6 +22,7 @@ const announcementRoutes:Route[] = [{
     FuseCardModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatInputModule,
     RouterModule.forChild(announcementRoutes)
   ]
 })

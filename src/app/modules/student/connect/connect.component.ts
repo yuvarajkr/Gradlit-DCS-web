@@ -16,7 +16,7 @@ export class ConnectComponent implements OnInit
 {
   // Owlcarousel options
   customOptions: OwlOptions = {
-    loop: true,
+    loop: false,
     mouseDrag: false,
     touchDrag: true,
     pullDrag: false,
@@ -75,7 +75,7 @@ export class ConnectComponent implements OnInit
         }
       });
 
-      this._studentUtils.getAllAnnouncements().subscribe({
+      this._studentUtils.getAllCircualrs().subscribe({
         next: (allAnnouncement) => {
           this.latestAnnoucement = allAnnouncement.data.results.length <= 3 ? allAnnouncement.data.results:  allAnnouncement.data.slice(0,4);
         },

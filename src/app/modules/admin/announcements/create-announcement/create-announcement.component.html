@@ -1,12 +1,12 @@
-<form [formGroup]="createStudentClubForm" class="flex flex-col mt-4 pb-4 overflow-hidden">
+<form [formGroup]="createStudentCircularForm" class="flex flex-col mt-4 pb-4 overflow-hidden">
             <div class="flex flex-col gt-xs:flex-row">
                 <mat-form-field
                     [ngClass]="formFieldHelpers"
                     class="flex-auto gt-xs:pr-3">
-                    <mat-label>Announcement Name</mat-label>
+                    <mat-label>Circular Name</mat-label>
                     <input 
                     matInput
-                    formControlName="name" 
+                    formControlName="heading" 
                     placeholder="This is a placeholder">
                 </mat-form-field>
             </div>
@@ -14,15 +14,48 @@
                 <mat-form-field
                     [ngClass]="formFieldHelpers"
                     class="flex-auto">
-                    <mat-label>Announcement Description</mat-label>
-                    <textarea
+                    <mat-label>Circular Description</mat-label>
+                    <input
                         matInput
                         formControlName="description" 
                         cdkTextareaAutosize
-                       ></textarea>
+                       >
+                </mat-form-field>
+            </div>
+
+            <div class="flex">
+                <mat-form-field
+                    [ngClass]="formFieldHelpers"
+                    class="flex-auto">
+                    <mat-label>Group Name</mat-label>
+                    <input
+                        matInput
+                        formControlName="group_name" 
+                        cdkTextareaAutosize
+                       >
                 </mat-form-field>
             </div>
             <div>
-                <button (click)="onCreateClub()">Creat Announcement</button>
+                <input
+                    id="document-file-input"
+                    class="absolute h-0 w-0 opacity-0 invisible pointer-events-none"
+                    type="file"
+                    #post_documet
+                    (change)="onFileUpload($event)"
+                    [multiple]="false"
+                    [accept]="'application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, text/plain, application/pdf, image/*'"
+                   >
+                <label
+                    class="flex"
+                    for="document-file-input"
+                    matRipple>
+                    <mat-icon [svgIcon]="'heroicons_outline:document-text'"></mat-icon>
+                    Attach File
+                </label>
             </div>
+            <div class="mt-4 ">
+                <button style="background-color: lightsteelblue;border-radius: 10px;
+                   width: 111px;
+                   height: 31px;" class="br-10" (click)="onCreateCircular()">Creat Circular</button>
+             </div>
  </form>

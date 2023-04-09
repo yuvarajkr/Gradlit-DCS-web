@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { GradlitHttpService } from 'app/services/gradlit-http.service';
-import { CreateAnnouncementsPayload, CreateClubPayload, CreatePostPayload, ServerResponse } from '../student-intefaces/student-interfaces';
+import { CreateAnnouncementsPayload, CreateCircularPayload, CreateClubPayload, CreatePostPayload, ServerResponse } from '../student-intefaces/student-interfaces';
 
 
 @Injectable({
@@ -30,12 +30,16 @@ export class StudentHttpService {
     return this._gradLitHttp.get<any>('/club-list');
   }
 
-  public createAnnouncements(payload:CreateAnnouncementsPayload){
-    return this._gradLitHttp.post('/announcement',payload);
+  public  createCirculars(payload:FormData){
+    return this._gradLitHttp.post('/circular',payload);
   }
 
   public getAllAnnouncements(){
     return this._gradLitHttp.get<any>('/announcement-list');
+  }
+
+  public getAllCircualrs(){
+    return this._gradLitHttp.get<any>('/circular-list');
   }
 
   public getAcessToken(){

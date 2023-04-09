@@ -36,6 +36,13 @@ export interface CreateAnnouncementsPayload{
         file_name:File
 }
 
+export interface CreateCircularPayload{
+        heading:string,
+        group_name:string,
+        description:string,
+        file_name:File
+}
+
 export interface ServerResponse {
         status: boolean,
         message: string

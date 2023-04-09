@@ -38,15 +38,28 @@ export class StudentDataService {
 
   public getCreateClubForm(){
     return this._fb.group({
-      department_id :[],                                               
-      user_id:[],                                                
+      department_id :['1'],                                               
+      user_id:['1'],                                                
       name :['', Validators.required],                                                
       description :['', Validators.required],                                                
       display_name :['' ,Validators.required],                                               
-      allow_notices :[],                                                
-      allow_events :[],                                                
-      allow_delete_post:[],                                               
-      allow_push_notification:[]                                                
+      allow_notices :[0],                                                
+      allow_events :[0],                                                
+      allow_delete_post:[0],                                               
+      allow_push_notification:[0],
+      is_all_deportments : [0],
+      password:[],
+      confirm_password:[],
+      email:[]                                        
+    });
+  }
+
+  public getCreateCircularForm(){
+    return this._fb.group({
+      heading :[''],                                               
+      group_name:[''],                                                
+      description :['', Validators.required],                                                
+      file_name :['', Validators.required],                                
     });
   }
 }

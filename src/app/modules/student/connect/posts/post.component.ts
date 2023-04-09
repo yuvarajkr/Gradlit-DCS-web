@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { StudentDataService } from '../../student-utils-services/student-data.service';
 import { StudentHttpService } from '../../student-utils-services/student-http.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-posts',
@@ -17,13 +18,18 @@ export class PostComponent {
   public studentPostPhoto: File;
   public studentPostVideo: File;
   student_event_file: File;
+  imageUrl: string | ArrayBuffer;
   /* Constructor*/
-  constructor(private _studentHttp:StudentHttpService,private _studentUtils:StudentDataService) {
+  constructor(private _studentHttp:StudentHttpService,private _studentUtils:StudentDataService,private _dialogRef: MatDialogRef<PostComponent>) {
     this.studentForm = this._studentUtils.getStudentPostForm();
   }
 
 
   removeImage(){
+  }
+
+  closeDialog(){
+    this._dialogRef.close();
   }
 
   OnTypeSelect(type){
@@ -57,6 +63,7 @@ export class PostComponent {
     this._studentHttp.createPost(postFormData
     ).subscribe({
       next: (response)=>{
+        this.closeDialog();
           console.log(response);
       } ,
       error : (err)=> {
@@ -71,6 +78,7 @@ export class PostComponent {
       ).subscribe({
         next: (response)=>{
             console.log(response);
+            this.closeDialog();
         } ,
         error : (err)=> {
           console.log(err);
@@ -113,6 +121,11 @@ export class PostComponent {
     this.postSubType = postSubType;
     const file:File = event.target.files[0];
     this.studentPostPhoto = file;
+    let reader = new FileReader(); 
+    reader.readAsDataURL(file);
+    reader.onload = () => {
+        this.imageUrl = reader.result; 
+      };
    } else if(postSubType === 3){
     this.postSubType = postSubType;
     const file:File = event.target.files[0];

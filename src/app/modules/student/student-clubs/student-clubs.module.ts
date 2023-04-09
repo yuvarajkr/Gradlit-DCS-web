@@ -7,6 +7,8 @@ import { Route, RouterModule } from '@angular/router';
 import { CreateStudentClubComponent } from './create-student-club/create-student-club.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 const studentClubRoutes:Route[] = [{
   path:'',
@@ -21,6 +23,8 @@ const studentClubRoutes:Route[] = [{
     FuseCardModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatInputModule,
+    MatCheckboxModule,
     RouterModule.forChild(studentClubRoutes)
   ]
 })

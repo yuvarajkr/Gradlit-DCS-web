@@ -23,6 +23,7 @@ export class StudentClubsComponent {
     const dialogRef =  this._matDialog.open(CreateStudentClubComponent, {
       autoFocus: false,
       maxHeight: '90vh',
+      width:'60vw',
       data     : {
           note: {}
       }
