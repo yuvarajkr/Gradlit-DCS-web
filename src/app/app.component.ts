@@ -11,10 +11,20 @@ export class AppComponent
     /**
      * Constructor
      */
+
+    auth_code ='';
     constructor(private _studentHttp:StudentHttpService)
     {
 
-        this._studentHttp.getAcessToken().subscribe({
+        this._studentHttp.getAuthCode().subscribe((res:any)=>{
+                this.auth_code = res.data.auth_code;
+                this.getAccessTokenFromAuth(this.auth_code);
+        })
+    }
+
+    public getAccessTokenFromAuth(auth_code){
+            
+        this._studentHttp.getAcessToken(auth_code).subscribe({
             next:(authdata:any)=>{
                 environment.authToken = authdata.data?.[0]?.token.access;
             },

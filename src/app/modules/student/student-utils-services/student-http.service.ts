@@ -42,9 +42,18 @@ export class StudentHttpService {
     return this._gradLitHttp.get<any>('/circular-list');
   }
 
-  public getAcessToken(){
+
+  public getAuthCode(){
+    return this._gradLitHttp.post('/get-direct-login-token',{
+      "email":"admin@nhce.com"
+  });
+  }
+  
+
+  public getAcessToken(auth_code){
+    
     return this._gradLitHttp.post('/direct-login',{
-      "auth_code":"GGNAyifaIvLxPHpxRdV5gc3LSaqpTqCwSBJw91hgWyKSEEvwQR"
+      "auth_code":auth_code
   });
   }
 }

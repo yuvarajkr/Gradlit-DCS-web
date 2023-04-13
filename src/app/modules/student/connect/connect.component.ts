@@ -77,7 +77,7 @@ export class ConnectComponent implements OnInit
 
       this._studentUtils.getAllCircualrs().subscribe({
         next: (allAnnouncement) => {
-          this.latestAnnoucement = allAnnouncement.data.results.length <= 3 ? allAnnouncement.data.results:  allAnnouncement.data.slice(0,4);
+          this.latestAnnoucement = allAnnouncement.data.results.length <= 3 ? allAnnouncement.data.results:  allAnnouncement.data.results.slice(0,4);
         },
         error: (err) => {
           console.log(err);
