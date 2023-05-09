@@ -12,28 +12,47 @@
                     <mat-icon
                         class="icon-size-5 text-secondary"
                         [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
-                    <a class="ml-1 text-primary-500">Circular</a>
+                    <a class="ml-1 text-primary-500">Circular / Announcement</a>
                 </div>
             </div> 
+            
             <!-- Title -->
             <div class="mt-2">
-                <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
-                    Circular
-                </h2>
-                <button class="font-semibold" style="color:#453ac6" (click)="onCreateCircular()">Create Circular</button>
+                
+                <mat-select (selectionChange)="onTypeSelection($event.value)" [value]="isCircular === 'announcement' ? 'Announcement' : 'Circular'" class="w-50 text-xl" style="background-color: aliceblue;" #selectedType>
+                    <mat-option  value="Circular">
+                        Circular</mat-option>
+                    <mat-option  value="Announcement">
+                        Announcement</mat-option>
+                </mat-select>
+                <!-- <mat-select [value]="'Circular'" class="w-50" style="background-color: aliceblue;">
+                    <mat-option  value="Circular" (click)="onCreateCircular('Circular')"><span class="text-blue-800">Create Circular</span></mat-option>
+                    <mat-option  value="Announcement" (click)="onCreateCircular('Announcement')"><span class="text-blue-800">Create Announcement</span></mat-option>
+                </mat-select> -->
+
+                <div class="mt-2">
+                    <button class="font-semibold" style="color:#453ac6" (click)="onCreateCircular(selectedType.value)">{{'Create' +' '+selectedType.value }}</button>
+                </div>
             </div>
         </div>
     </div>
 
     <!-- Main -->
-    <div class="flex-auto p-6 sm:p-10">
-        <div>
+    <div *ngIf="isCircular !== 'announcement'" class="flex-auto p-6 sm:p-10">
+        <div *ngIf="!isCircExpanded flex">
             <!-- Card #65 -->
-            <div *ngFor="let eachAnnouncement of allAnnouncement" style="border: solid 1px black;
+            <div *ngFor="let eachAnnouncement of allAnnouncement" style="
             padding: 10px;
             border-radius: 10px; margin-top:10px">
+    
                 <div class="font-semibold flex justify-between ">
-                    {{eachAnnouncement.heading}}
+                    <div>
+                        <span class="h-2 w-2 rounded-3xl bg-red-500 inline-block mr-1"></span>
+                        <span>{{eachAnnouncement.heading}}</span>
+                    </div>
+                    
+                    
+                    
                     <button
                     class="px-3 mr-1"
                     mat-button>
@@ -44,7 +63,7 @@
                 </button>
                 </div>
                 <div>
-                    {{eachAnnouncement.description}}
+                    {{(eachAnnouncement.description | slice:0:200)+'....'}}
                 </div>
                 <!-- <div>
                     <p class="font-semibold">Created By</p>
@@ -63,4 +82,57 @@
             </div>
         </div>
     </div>
+    <div *ngIf="isCircular === 'announcement'" class="flex-auto p-6 sm:p-10">
+        <div *ngIf="!isAnncExpanded" class="flex flex-wrap gap-1">
+            <!-- Card #65 -->
+            <fuse-card (click)="onAnncExpanded(eachAnnouncement)" *ngFor="let eachAnnouncement of allAnnouncement" class="flex flex-col md:flex-row justify-between max-w-64 min-w-80 p-4 pb-4 mx-2 my-3 filter-listing carousel-block">
+                <div class="flex flex-col flex-auto order-2 md:order-1">
+                    <div class="font-medium text-secondary">Admin</div>
+                    <div class="text-xl font-bold">{{eachAnnouncement.heading}}</div>
+                    <div class="mt-2 mb-4 leading-relaxed text-secondary">
+                        {{(eachAnnouncement.description | slice:0:50)+'....'}}
+                    </div>
+                    <div class="flex items-center mt-3 -mx-3">
+                        <a
+                            class="px-3 mr-1"
+                            mat-button
+                            [color]="'primary'"
+                            [routerLink]="['./']">
+                            View more
+                        </a>
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 w-full md:w-40 md:ml-6 mb-8 md:mb-4 rounded-lg overflow-hidden">
+                    <img
+                        class="w-full h-full object-cover"
+                        src="assets/images/cards/coffee-shop-03-320x320.jpg"
+                        alt="Card cover image">
+                        <!-- [src]="eachAnnouncement.file_path"
+                        alt="announcement image"> -->
+                </div>
+            </fuse-card>
+        </div>
+        <div *ngIf="isAnncExpanded">
+            <button (click)="isAnncExpanded = false">Go Back</button>
+            <fuse-card  class="mt-10 flex flex-col md:flex-row justify-between w-full min-w-3/4 p-4 pb-4 filter-listing carousel-block">
+                <div class="flex flex-col flex-auto order-2 md:order-1">
+                    <div class="font-medium text-secondary">Admin</div>
+                    <div class="text-xl font-bold">{{selectedAnnDetails.heading}}</div>
+                    <div class="mt-2 mb-4 leading-relaxed text-secondary">
+                        {{selectedAnnDetails.description}}
+                    </div>
+                </div>
+                <div class="order-1 md:order-2 w-full md:w-40 md:ml-6 mb-8 md:mb-4 rounded-lg overflow-hidden">
+                    <img
+                        class="w-full h-full object-cover"
+                        src="assets/images/cards/coffee-shop-03-320x320.jpg"
+                        alt="Card cover image">
+                        <!-- [src]="eachAnnouncement.file_path"
+                        alt="announcement image"> -->
+                </div>
+            </fuse-card>
+            
+        </div>
+    </div>
+    
 </div>

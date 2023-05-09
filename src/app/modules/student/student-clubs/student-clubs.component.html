@@ -29,12 +29,15 @@
     <div class="flex-auto p-6 sm:p-10">
         <div class="flex flex-wrap items-start w-full max-w-400 -m-4">
             <!-- Card #65 -->
-            <fuse-card *ngFor="let eachClub of allClubs" class="flex flex-col max-w-80 w-full filter-article m-4">
+            <fuse-card (click)="onClubCardClick()" *ngFor="let eachClub of allClubs" class="flex flex-col max-w-80 w-full filter-article m-4">
                 <div class="flex items-center mx-6 sm:mx-8 mt-6 mb-1">
-                    <img
+                    <!-- <img
                         class="w-10 h-10 rounded-full mr-4"
                         src="assets/images/avatars/male-04.jpg"
-                        alt="Card cover image">
+                        alt="Card cover image"> -->
+                        <div style= "background-color: #c7e6e7;"class="w-10 h-10 rounded-full mr-4 flex justify-center items-center">
+                            {{eachClub.display_name.slice(0,2)}}
+                        </div>
                     <div class="flex flex-col">
                         <span class="font-semibold leading-none">{{eachClub.display_name}}</span>
                         <span class="text-sm text-secondary leading-none mt-1">29 minutes ago</span>

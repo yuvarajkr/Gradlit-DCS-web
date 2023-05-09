@@ -8,6 +8,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AnnouncementComponent } from './announcement.component';
 import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { DetailsComponent } from './details/details.component';
 
 const announcementRoutes:Route[] = [{
   path:'',
@@ -15,7 +17,7 @@ const announcementRoutes:Route[] = [{
 }];
 
 @NgModule({
-  declarations: [AnnouncementComponent, CreateAnnouncementComponent],
+  declarations: [AnnouncementComponent, CreateAnnouncementComponent,DetailsComponent],
   imports: [
     CommonModule,
     MatIconModule,
@@ -23,6 +25,7 @@ const announcementRoutes:Route[] = [{
     MatFormFieldModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatSelectModule,
     RouterModule.forChild(announcementRoutes)
   ]
 })

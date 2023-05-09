@@ -1,9 +1,11 @@
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { ChangeDetectionStrategy, Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { PostComponent } from 'app/modules/student/connect/posts/post.component';
 import { StudentHttpService } from '../student-utils-services/student-http.service';
 import { StudentDataService } from '../student-utils-services/student-data.service';
+import { Router } from '@angular/router';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
     selector     : 'connect',
@@ -23,7 +25,9 @@ export class ConnectComponent implements OnInit
     margin:10,
     dots: true,
     navSpeed: 700,
-    navText: ['', ''],
+    navText: ['', 'Next'],
+    autoWidth:true,
+    responsiveRefreshRate:10,
     responsive: {
       0: {
         items: 1
@@ -32,7 +36,7 @@ export class ConnectComponent implements OnInit
         items: 2
       },
       740: {
-        items: 2
+        items: 3
       },
       940: {
         items: 3
@@ -49,11 +53,12 @@ export class ConnectComponent implements OnInit
     };
     created_at: string;
 }[]; 
-  public latestAnnoucement : any;
-  public top4Clubs : any[];
+  public latestAnnoucement = [];
+  public top4Clubs =  [];
+  allAnnouncement: any[];
   /* Constructor*/
   constructor(
-     private _matDialog: MatDialog, private _studentUtils: StudentHttpService, private _studentData:StudentDataService
+     private _matDialog: MatDialog, private _studentUtils: StudentHttpService,private ref: ChangeDetectorRef, private _studentData:StudentDataService,private _router:Router
     ) {
           this._studentUtils.getAllpost().subscribe({
             next: (allPosts) => {
@@ -93,6 +98,12 @@ export class ConnectComponent implements OnInit
           console.log(err);
         }
       });
+      this._studentUtils.getAllAnnouncements().subscribe({
+        next: (allAnnouncementDetails)=>{
+          this.allAnnouncement = allAnnouncementDetails.data.results.length <= 4 ? allAnnouncementDetails.data.results : allAnnouncementDetails.data.results.slice(0,4);
+          this.ref.detectChanges();
+        }
+      });
   }
 
   /* Open the note dialog*/
@@ -109,6 +120,10 @@ export class ConnectComponent implements OnInit
   dialogRef.afterClosed().subscribe(result => {
     console.log(`Dialog result: ${result}`);
   });
+  }
+
+  public onViewAllAnnouncement(){
+    this._router.navigate(['student/announcement'],{queryParams: {circular: 'announcement'}});
   }
 
   

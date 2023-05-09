@@ -9,7 +9,7 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./create-student-club.component.scss']
 })
 export class CreateStudentClubComponent {
-  public formFieldHelpers = ['']
+  public formFieldHelpers = [''];
   public createStudentClubForm ;
   constructor(private _studentData:StudentDataService, private _studentHttp:StudentHttpService, private _dialogeRef:MatDialogRef<CreateStudentClubComponent>){
     this.createStudentClubForm = this._studentData.getCreateClubForm();
@@ -23,6 +23,7 @@ export class CreateStudentClubComponent {
       next: (createClubResponse) => {
         this.closeDialog();
         console.log(createClubResponse);
+        
       },
       error: (err) =>{
         console.log(err);

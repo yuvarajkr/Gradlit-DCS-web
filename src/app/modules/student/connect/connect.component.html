@@ -1,143 +1,52 @@
 <div class="flex flex-col flex-auto min-w-0">
 
     <!-- Header -->
-    <div class="flex flex-col bg-card">
+    <div *ngIf="allAnnouncement" class="flex bg-card">
         <div class="flex-1 min-w-0 bg-gray-100">
-            <div class="w-full carousel-wrap">
+            <div class="felx">
                 <owl-carousel-o [options]="customOptions">
-                <ng-template carouselSlide>
-                    <fuse-card class="flex flex-col md:flex-row justify-between max-w-80 md:max-w-160 w-full p-4 pb-4 filter-listing carousel-block">
-                        <div class="flex flex-col flex-auto order-2 md:order-1">
-                            <div class="font-medium text-secondary">College Management</div>
-                            <div class="text-xl font-bold">Project Exibition on 5th December</div>
-                            <div class="mt-2 mb-4 leading-relaxed text-secondary">
-                                MSRIT 75th Project Exibition.
+                <ng-template *ngFor="let eachAnnouncement of allAnnouncement" carouselSlide>
+                    <div>
+                        <fuse-card  class="flex flex-col md:flex-row justify-between max-w-64 min-w-80 h-56 p-4 pb-4 filter-listing carousel-block">
+                            <div class="flex flex-col flex-auto order-2 md:order-1">
+                                <div class="font-medium text-secondary">Admin</div>
+                                <div class="text-xl font-bold">{{eachAnnouncement.heading}}</div>
+                                <div class="mt-2 mb-4 leading-relaxed text-secondary">
+                                    {{(eachAnnouncement.description | slice:0:50)+'....'}}
+                                </div>
+                                <div class="flex items-center mt-3 -mx-3">
+                                    <!-- <a
+                                        class="px-3 mr-1"
+                                        mat-button
+                                        [color]="'primary'"
+                                        [routerLink]="['./']">
+                                        View more
+                                    </a> -->
+                                </div>
                             </div>
-                            <div class="flex items-center mt-3 -mx-3">
-                                <a
-                                    class="px-3 mr-1"
-                                    mat-button
-                                    [color]="'primary'"
-                                    [routerLink]="['./']">
-                                    View more
-                                </a>
+                            <div class="order-1 md:order-2 w-full md:w-40 md:ml-6 mb-8 md:mb-4 rounded-lg overflow-hidden">
+                                <img
+                                    class="w-full h-full object-cover"
+                                    src="assets/images/cards/coffee-shop-03-320x320.jpg"
+                                    alt="Card cover image">
+                                    <!-- [src]="eachAnnouncement.file_path"
+                                    alt="announcement image"> -->
                             </div>
-                        </div>
-                        <div class="order-1 md:order-2 w-full md:w-40 md:ml-6 mb-8 md:mb-4 rounded-lg overflow-hidden">
-                            <img
-                                class="w-full h-full object-cover"
-                                src="assets/images/cards/coffee-shop-03-320x320.jpg"
-                                alt="Card cover image">
-                        </div>
-                    </fuse-card>
+                        </fuse-card>
+                    </div>
+                    
                 </ng-template>
                 <ng-template carouselSlide>
-                    <fuse-card class="flex flex-col md:flex-row justify-between max-w-80 md:max-w-160 w-full p-4 pb-4 filter-listing carousel-block">
-                        <div class="flex flex-col flex-auto order-2 md:order-1">
-                            <div class="font-medium text-secondary">College Management</div>
-                            <div class="text-xl font-bold">Project Exibition on 5th December</div>
-                            <div class="mt-2 mb-4 leading-relaxed text-secondary">
-                                MSRIT 75th Project Exibition.
-                            </div>
-                            <div class="flex items-center mt-3 -mx-3">
-                                <a
-                                    class="px-3 mr-1"
-                                    mat-button
-                                    [color]="'primary'"
-                                    [routerLink]="['./']">
-                                    View more
-                                </a>
-                            </div>
-                        </div>
-                        <div class="order-1 md:order-2 w-full md:w-40 md:ml-6 mb-8 md:mb-4 rounded-lg overflow-hidden">
-                            <img
-                                class="w-full h-full object-cover"
-                                src="assets/images/cards/coffee-shop-03-320x320.jpg"
-                                alt="Card cover image">
-                        </div>
-                    </fuse-card>
-                </ng-template>  
-                <ng-template carouselSlide>
-                    <fuse-card class="flex flex-col md:flex-row justify-between max-w-80 md:max-w-160 w-full p-4 pb-4 filter-listing">
-                        <div class="flex flex-col flex-auto order-2 md:order-1">
-                            <div class="font-medium text-secondary">College Management</div>
-                            <div class="text-xl font-bold">Project Exibition on 5th December</div>
-                            <div class="mt-2 mb-4 leading-relaxed text-secondary">
-                                MSRIT 75th Project Exibition.
-                            </div>
-                            <div class="flex items-center mt-3 -mx-3">
-                                <a
-                                    class="px-3 mr-1"
-                                    mat-button
-                                    [color]="'primary'"
-                                    [routerLink]="['./']">
-                                    View more
-                                </a>
-                            </div>
-                        </div>
-                        <div class="order-1 md:order-2 w-full md:w-40 md:ml-6 mb-8 md:mb-4 rounded-lg overflow-hidden">
-                            <img
-                                class="w-full h-full object-cover"
-                                src="assets/images/cards/coffee-shop-03-320x320.jpg"
-                                alt="Card cover image">
-                        </div>
-                    </fuse-card>
-                </ng-template>  
-                <ng-template carouselSlide>
-                    <fuse-card class="flex flex-col md:flex-row justify-between max-w-80 md:max-w-160 w-full p-4 pb-4 filter-listing">
-                        <div class="flex flex-col flex-auto order-2 md:order-1">
-                            <div class="font-medium text-secondary">College Management</div>
-                            <div class="text-xl font-bold">Project Exibition on 5th December</div>
-                            <div class="mt-2 mb-4 leading-relaxed text-secondary">
-                                MSRIT 75th Project Exibition.
-                            </div>
-                            <div class="flex items-center mt-3 -mx-3">
-                                <a
-                                    class="px-3 mr-1"
-                                    mat-button
-                                    [color]="'primary'"
-                                    [routerLink]="['./']">
-                                    View more
-                                </a>
-                            </div>
-                        </div>
-                        <div class="order-1 md:order-2 w-full md:w-40 md:ml-6 mb-8 md:mb-4 rounded-lg overflow-hidden">
-                            <img
-                                class="w-full h-full object-cover"
-                                src="assets/images/cards/coffee-shop-03-320x320.jpg"
-                                alt="Card cover image">
-                        </div>
-                    </fuse-card>
-                </ng-template>  
-                <!-- <ng-template carouselSlide>
-                    <fuse-card class="flex flex-col md:flex-row justify-between max-w-80 md:max-w-160 w-full p-4 pb-4 filter-listing">
-                        <div class="flex flex-col flex-auto order-2 md:order-1">
-                            <div class="font-medium text-secondary">College Management</div>
-                            <div class="text-xl font-bold">Project Exibition on 5th December</div>
-                            <div class="mt-2 mb-4 leading-relaxed text-secondary">
-                                MSRIT 75th Project Exibition.
-                            </div>
-                            <div class="flex items-center mt-3 -mx-3">
-                                <a
-                                    class="px-3 mr-1"
-                                    mat-button
-                                    [color]="'primary'"
-                                    [routerLink]="['./']">
-                                    View more
-                                </a>
-                            </div>
-                        </div>
-                        <div class="order-1 md:order-2 w-full md:w-40 md:ml-6 mb-8 md:mb-4 rounded-lg overflow-hidden">
-                            <img
-                                class="w-full h-full object-cover"
-                                src="assets/images/cards/coffee-shop-03-320x320.jpg"
-                                alt="Card cover image">
-                        </div>
-                    </fuse-card>
-                </ng-template>     -->
-
+                    <div (click)="onViewAllAnnouncement()" class="flex justify-center items-center relative cursor-pointer">
+                        <h1 class="text-xl text-blue-600 absolute top-20">view all</h1>
+                    </div>
+                    
+                </ng-template>    
+                
                 </owl-carousel-o>
+                
             </div>
+            
         </div>
     </div>
 

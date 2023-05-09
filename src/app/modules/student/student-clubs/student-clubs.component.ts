@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { StudentHttpService } from '../student-utils-services/student-http.service';
 import { CreateStudentClubComponent } from './create-student-club/create-student-club.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-student-clubs',
@@ -10,7 +11,7 @@ import { CreateStudentClubComponent } from './create-student-club/create-student
 })
 export class StudentClubsComponent {
   public allClubs:any[];
-  constructor(private _studentHttp:StudentHttpService, private _matDialog:MatDialog){
+  constructor(private _studentHttp:StudentHttpService,private _router:Router, private _matDialog:MatDialog){
           this._studentHttp.getAllClub().subscribe({
             next: (allClubDetails)=>{
               this.allClubs = allClubDetails.data.results;
@@ -30,8 +31,16 @@ export class StudentClubsComponent {
   });
 
   dialogRef.afterClosed().subscribe(result => {
-    console.log(`Dialog result: ${result}`);
+    this._studentHttp.getAllClub().subscribe({
+      next: (allClubDetails)=>{
+        this.allClubs = allClubDetails.data.results;
+      }
+    })
   });
+  }
+  
+  onClubCardClick(){
+    this._router.navigate(['/student/profile']);
   }
     
 }

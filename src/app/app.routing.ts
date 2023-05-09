@@ -53,6 +53,7 @@ export const appRoutes: Route[] = [
             { path: 'settings', loadChildren: () => import('app/modules/student/settings/settings.module').then(m => m.SettingsModule)},
             { path: 'clubs', loadChildren: () => import('app/modules/student/student-clubs/student-clubs.module').then(m => m.StudentClubsModule)},
             { path: 'announcement', loadChildren: () => import('app/modules/admin/announcements/announcement.module').then(m => m.AnnouncementModule)},
+            {path: 'groups', redirectTo:'assignment'}
         ]
     },
 

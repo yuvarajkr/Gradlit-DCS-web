@@ -3,7 +3,7 @@
                 <mat-form-field
                     [ngClass]="formFieldHelpers"
                     class="flex-auto gt-xs:pr-3">
-                    <mat-label>Circular Name</mat-label>
+                    <mat-label>{{data.type}} Name</mat-label>
                     <input 
                     matInput
                     formControlName="heading" 
@@ -14,7 +14,7 @@
                 <mat-form-field
                     [ngClass]="formFieldHelpers"
                     class="flex-auto">
-                    <mat-label>Circular Description</mat-label>
+                    <mat-label>{{data.type}} Description</mat-label>
                     <input
                         matInput
                         formControlName="description" 
@@ -56,6 +56,6 @@
             <div class="mt-4 ">
                 <button style="background-color: lightsteelblue;border-radius: 10px;
                    width: 111px;
-                   height: 31px;" class="br-10" (click)="onCreateCircular()">Creat Circular</button>
+                   height: 31px;" class="br-10" (click)="onCreateCircular()">Creat</button>
              </div>
  </form>

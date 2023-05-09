@@ -8,7 +8,9 @@ import { StudentHttpService } from '../student-utils-services/student-http.servi
 })
 export class EventsComponent {
   public dateInstance = new Date();
+  public isEventExpanded = false;
   public allEvents: { head: string; name?:string ;description?: string; venue?: string; start_date?: string; end_date?:string,file_url?:string,is_notification?:string;  type: string; created_by: { id: string; name: string; }; created_at: string; }[];
+  selectedEvent: any;
   /* Constructor*/
   constructor(private _studentUtil:StudentHttpService) {
     // this._studentUtil.getAllEvents().subscribe({
@@ -25,5 +27,11 @@ export class EventsComponent {
         console.log(err);
       }
     })
+
+    
+  }
+  public onEventExpanded(eventDetails:any){
+    this.selectedEvent = eventDetails;
+    this.isEventExpanded = true;
   }
 }

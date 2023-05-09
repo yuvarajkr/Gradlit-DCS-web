@@ -34,6 +34,10 @@ export class StudentHttpService {
     return this._gradLitHttp.post('/circular',payload);
   }
 
+  public  createAnnouncement(payload:FormData){
+    return this._gradLitHttp.post('/announcement',payload);
+  }
+
   public getAllAnnouncements(){
     return this._gradLitHttp.get<any>('/announcement-list');
   }

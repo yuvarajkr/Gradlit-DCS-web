@@ -4,15 +4,15 @@ import { StudentDataService } from 'app/modules/student/student-utils-services/s
 import { StudentHttpService } from 'app/modules/student/student-utils-services/student-http.service';
 
 @Component({
-  selector: 'app-create-announcement-club',
-  templateUrl: './create-announcement.component.html',
-  styleUrls: ['./create-announcement.component.scss']
+  selector: 'app-details',
+  templateUrl: './details.component.html',
+  styleUrls: ['./details.component.scss']
 })
-export class CreateAnnouncementComponent {
+export class DetailsComponent {
   public formFieldHelpers = [''];
   public createStudentCircularForm ;
   public file: File;
-  constructor(private _studentData:StudentDataService,@Optional() @Inject(MAT_DIALOG_DATA) public data: {type:string}, private _studentHttp:StudentHttpService, private _dialogRef:MatDialogRef<CreateAnnouncementComponent>){
+  constructor(private _studentData:StudentDataService,@Optional() @Inject(MAT_DIALOG_DATA) public data: {type:string}, private _studentHttp:StudentHttpService){
     this.createStudentCircularForm = this._studentData.getCreateCircularForm();
   }
 
@@ -20,7 +20,7 @@ export class CreateAnnouncementComponent {
     if(this.data.type === 'Circular'){
       this._studentHttp.createCirculars(this._populateData()).subscribe({
         next: (createClubResponse) => {
-          this._closeDialog();
+         
           console.log(createClubResponse);
         },
         error: (err) =>{
@@ -30,7 +30,7 @@ export class CreateAnnouncementComponent {
     } else {
       this._studentHttp.createAnnouncement(this._populateData()).subscribe({
         next: (createAnnouncementResponse) => {
-          this._closeDialog();
+          
           console.log(createAnnouncementResponse);
         },
         error: (err) =>{
@@ -51,9 +51,5 @@ export class CreateAnnouncementComponent {
 
   public onFileUpload(event){
     this.file = event.target.files[0];
-  }
-
-  private _closeDialog(){
-    this._dialogRef.close();
-  }
+}
 }

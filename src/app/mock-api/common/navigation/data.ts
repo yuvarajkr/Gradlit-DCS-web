@@ -5,7 +5,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
 
             {
                 id   : 'campusConnect',
-                title: 'Campus Connect',
+                title: 'Home',
                 type : 'basic',
                 icon : 'heroicons_outline:home',
                 link : '/student/connect'
@@ -26,7 +26,14 @@ export const defaultNavigation: FuseNavigationItem[] = [
             },
             {
                 id   : 'assignment',
-                title: 'Master Class',
+                title: 'Groups',
+                type : 'basic',
+                icon : 'mat_solid:layers',
+                link : '/student/groups'
+            },
+            {
+                id   : 'directMessage',
+                title: 'Direct Message',
                 type : 'basic',
                 icon : 'mat_solid:layers',
                 link : '/student/assignment'
