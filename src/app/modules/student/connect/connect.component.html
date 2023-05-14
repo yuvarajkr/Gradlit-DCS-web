@@ -12,7 +12,7 @@
                                 <div class="font-medium text-secondary">Admin</div>
                                 <div class="text-xl font-bold">{{(eachAnnouncement.heading | slice:0:15)+'....' }}</div>
                                 <div class="mt-2 mb-4 leading-relaxed text-secondary">
-                                    {{(eachAnnouncement.description | slice:0:50)+'....'}}
+                                    {{(eachAnnouncement.description | slice:0:20)+'....'}}
                                 </div>
                                 <div class="flex items-center mt-3 -mx-3">
                                     <!-- <a
@@ -27,10 +27,8 @@
                             <div class="order-1 md:order-2 w-full rounded-lg overflow-hidden ml-1">
                                 <img
                                     class="w-full h-full object-cover"
-                                    src="assets/images/cards/coffee-shop-03-320x320.jpg"
-                                    alt="Card cover image">
-                                    <!-- [src]="eachAnnouncement.image_url"
-                                    alt="announcement image"> -->
+                                    [src]="eachAnnouncement.image_url"
+                                    alt="announcement image">
                                     
                             </div>
                         </fuse-card>
