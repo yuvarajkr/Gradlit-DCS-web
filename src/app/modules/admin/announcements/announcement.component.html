@@ -41,9 +41,10 @@
     <div *ngIf="isCircular !== 'announcement'" class="flex-auto p-6 sm:p-10">
         <div *ngIf="!isCircExpanded flex">
             <!-- Card #65 -->
-            <div *ngFor="let eachAnnouncement of allAnnouncement" style="
+            <div *ngFor="let eachAnnouncement of allAnnouncement" class="hover:bg-slate-400 cursor-pointer" style="
             padding: 10px;
-            border-radius: 10px; margin-top:10px">
+            border-radius: 10px; margin-top:10px
+            ">
     
                 <div class="font-semibold flex justify-between ">
                     <div>
