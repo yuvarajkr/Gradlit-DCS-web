@@ -53,9 +53,27 @@
                     Attach File
                 </label>
             </div>
+            <div class="mt-2" *ngIf="data.type !== 'Circular'">
+                <input
+                    id="document-file-input"
+                    class="absolute h-0 w-0 opacity-0 invisible pointer-events-none"
+                    type="file"
+                    #post_documet
+                    (change)="onImageUpload($event)"
+                    [multiple]="false"
+                    [accept]="'application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, text/plain, application/pdf, image/*'"
+                   >
+                <label
+                    class="flex"
+                    for="document-file-input"
+                    matRipple>
+                    <mat-icon [svgIcon]="'heroicons_outline:document-text'"></mat-icon>
+                    Attach Image
+                </label>
+            </div> 
             <div class="mt-4 ">
                 <button style="background-color: lightsteelblue;border-radius: 10px;
                    width: 111px;
-                   height: 31px;" class="br-10" (click)="onCreateCircular()">Creat</button>
+                   height: 31px;" class="br-10" (click)="onCreateCircular()">Create</button>
              </div>
  </form>
