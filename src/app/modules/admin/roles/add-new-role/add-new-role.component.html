@@ -1,0 +1,49 @@
+<div [formGroup] ="roleFormGroup" class="ml-3 w-full">
+    <h2 class="pt-2 text-2xl font-semibold">Add New Role</h2>
+<div class="ml-3 mt-10">
+    <div>
+        <mat-form-field  class="flex-auto gt-xs:pr-3 w-2/3">
+            <mat-label>Role Name</mat-label>
+            <input matInput formControlName="role_name" >
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field  class="flex-auto gt-xs:pr-3  w-1/3">
+            <mat-label>Brief Description</mat-label>
+            <textarea matInput  formControlName="description"></textarea>
+        </mat-form-field>
+    </div>
+</div>
+
+<p class="ml-3 text-xl">Permissions</p>
+
+<div class="flex border ml-4 pr-16">
+    <div class="m-12 mt-8 mb-2" *ngFor="let eachPermissionHeader of permissionHeader;let i=index;">
+        <div>
+            <div class="text-lg">
+                {{eachPermissionHeader}}
+            </div>
+            <div *ngIf="i===0">
+                <div class="my-8" *ngFor="let eachModule of allModule" >
+                    {{eachModule}}
+                </div>
+            </div>
+            <div *ngIf="i!=0">
+                <div class="my-4" *ngFor="let eachModule of allModule">
+                    <mat-checkbox #checkBox [id]="eachPermissionHeader+'_'+eachModule"  class="flex items-center" [color]="'primary'"
+                     [disabled]="disableCheckBox(checkBox.id)" (change)="onPermissionChange($event.checked,checkBox.id)"></mat-checkbox>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+</div>
+
+    <div class="my-10 mr-5 flex justify-end">
+        <button mat-raised-button style="background-color: #001E52;"  color="primary" (click)="onCreateRole()">Create Role</button>
+    </div>
+</div>
+
+
+

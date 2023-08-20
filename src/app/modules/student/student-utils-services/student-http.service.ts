@@ -49,7 +49,7 @@ export class StudentHttpService {
 
   public getAuthCode(){
     return this._gradLitHttp.post('/get-direct-login-token',{
-      "email":"admin@nhce.com"
+      "email":"admin@admin.com"
   });
   }
   
@@ -59,5 +59,83 @@ export class StudentHttpService {
     return this._gradLitHttp.post('/direct-login',{
       "auth_code":auth_code
   });
+  }
+
+  public createRole(payload: {
+    role_name: string,
+    is_add_role: boolean,
+    permissions: {
+      mod_id: number,
+      actions: string
+    }[]
+  }) {
+      return this._gradLitHttp.adminPost('/add-role-permissions', payload);
+  }
+
+  public updateRole(payload: {
+    role_name: string,
+    is_add_role: boolean,
+    permissions: {
+      mod_id: number,
+      actions: string
+    }[]
+  }) {
+      return this._gradLitHttp.adminPost('/add-role-permissions', payload);
+  }
+
+  public getAllRoles(){
+    return this._gradLitHttp.adminGet('/get-roles');
+  }
+
+  public getRolePermission(role_id:number){
+    return this._gradLitHttp.adminGet(`/get-role-permissions/${role_id}`);
+  }
+
+  public deleteRole(role_id:number){
+    return this._gradLitHttp.adminDelete(`/delete-role/${role_id}`);
+  }
+
+  public getAllDepartments(){
+    return this._gradLitHttp.adminGet('/department');
+  }
+
+  public createDepartment(payload){
+    return this._gradLitHttp.adminPost('/department', payload);
+  }
+
+  public deleteDepartment(dep_id:number){
+    return this._gradLitHttp.adminDelete(`/department/${dep_id}`);
+  }
+
+  public updateDepartment(payload){
+    return this._gradLitHttp.adminPut(`/department`, payload);
+  }
+
+  public addUsersToRole(payload){
+    return this._gradLitHttp.adminPost('/bulk-role-assign', payload);
+  }
+
+  public getUsersOfRoleId(id){
+    return this._gradLitHttp.adminGet(`/get-role-users/${id}`);
+  }
+
+  public getSearchedUsers(searchKey:string){
+    return this._gradLitHttp.adminGet(`/get-users/${searchKey}`);
+  }
+
+  public createClubByAdmin(payload){
+    return this._gradLitHttp.adminPost('/club', payload);
+  }
+
+  public updateClubByAdmin(payload){
+    return this._gradLitHttp.adminPut('/club', payload);
+  }
+
+  public getAllClubsByAdmin(){
+    return this._gradLitHttp.adminGet('/club');
+  }
+
+  public deleteClubByAdmin(club_id:number){
+    return this._gradLitHttp.adminDelete(`/delete-role/${club_id}`);
   }
 }

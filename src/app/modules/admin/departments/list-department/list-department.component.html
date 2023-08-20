@@ -1,0 +1,55 @@
+<div class="w-full">
+    <div class="m-6 flex justify-between">
+        <p class="text-xl font-semibold flex">Departments</p>
+        <div>
+            <button [routerLink]="'/student/departments/add-department'" style="background-color: #001E52"  mat-raised-button  color="primary">Add Department</button>
+        </div>
+    </div>
+    
+    <div class="w-4/5 m-6">
+    
+        <mat-table #table [dataSource]="dataSource" matSort>
+            <!-- First Column ID-->
+            <ng-container matColumnDef="DepartmentName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Department Name </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.Name}} </mat-cell>
+            </ng-container>
+    
+            <!-- Second Column -->
+            <!-- <ng-container matColumnDef="TotalUser">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Total User </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element?.TotalUser}} </mat-cell>
+            </ng-container> -->
+    
+            <!-- Third Column -->
+            <!-- <ng-container matColumnDef="CreatedBy">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Created By </mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <div class="form-group">
+                        <a target="_blank" (click)="onNavigate(element.productCode)" href="#">{{element?.CreatedBy}}</a>
+                    </div>
+                </mat-cell>
+            </ng-container> -->
+            <!-- Action Column -->
+            <ng-container matColumnDef="edit">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Edit </mat-header-cell>
+                <mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Edit" class="iconbutton"
+                        color="primary" (click)="onClickEdit(element)">
+                        <mat-icon style="color: #001E52 !important">edit</mat-icon>
+                    </button> </mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="delete">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Delete </mat-header-cell>
+                <mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Delete" class="iconbutton"
+                        (click)="onClickDelete(element.Id)" color="warn">
+                        <mat-icon>delete</mat-icon>
+                    </button> </mat-cell>
+            </ng-container>
+    
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+    </div>
+</div>
+
+

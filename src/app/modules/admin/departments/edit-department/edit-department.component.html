@@ -1,0 +1,42 @@
+<div class="m-4 w-full min-h-180 relative">
+    <div class="w-2/3">
+        <div>
+            <h1 class="font-semibold text-xl mb-4">Edit Department</h1>
+        </div>
+        <div class="flex flex-col gt-xs:flex-row">
+            <mat-form-field class="flex-auto gt-xs:pr-3 w-full">
+                <mat-label>Department name</mat-label>
+                <input matInput [(ngModel)]="departmentName" placeholder="name">
+            </mat-form-field>
+        </div>
+        <div class="flex">
+            <mat-form-field class="flex-auto">
+                <mat-label>Brief Description</mat-label>
+                <textarea matInput [(ngModel)]="departmentDesc" cdkTextareaAutosize [cdkAutosizeMinRows]="3"></textarea>
+            </mat-form-field>
+        </div>
+    
+    
+        <div>
+            <input id="image-file-input" class="absolute h-0 w-0 opacity-0 invisible pointer-events-none" type="file"
+                [multiple]="false" (change)="onFileUpload($event)" [accept]="'image/jpeg, image/png'">
+            <label class="flex items-center justify-center w-24 h-10 rounded-full cursor-pointer bg-gray-300"
+                for="image-file-input" matRipple>
+                <span>Add Logo</span>
+                <!-- <mat-icon [svgIcon]="'heroicons_outline:photograph'"></mat-icon> -->
+            </label>
+        </div>
+    
+        <div *ngIf="imageUrl" class="mt-5">
+            <img class="w-full object-cover" [src]="imageUrl"
+                style="height: 200px;">
+        </div>
+    </div>
+
+    <div class="my-10 mt-8 w-full absolute bottom-6">
+        <div class="flex justify-end">
+            <button mat-raised-button style="background-color: #001E52"  color="primary" (click)="onUpdateDepartment()">Update Department</button>
+        </div>
+    </div>
+
+</div>

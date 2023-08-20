@@ -54,6 +54,14 @@ export class StudentDataService {
     });
   }
 
+  public getRolesForm(){
+    return this._fb.group({
+      role_name :[''],                                               
+      description:[''],                                                
+      permissions :['']                       
+    });
+  }
+
   public getCreateCircularForm(){
     return this._fb.group({
       heading :[''],                                               

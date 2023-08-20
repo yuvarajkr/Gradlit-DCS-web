@@ -46,8 +46,36 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 link : '/student/test'
             },
             {
-            id      : 'preferences',
-            title   : 'Preferences',
+            id      : 'adminPermissions',
+            title   : 'Admin Permissions',
+            type    : 'group',
+            children: [
+                {
+                    id   : 'departments',
+                    title: 'Departments',
+                    type : 'basic',
+                    icon : 'heroicons_outline:question-mark-circle',
+                    link : '/student/departments/list-departments'
+                },
+                {
+                    id   : 'roles',
+                    title: 'Roles',
+                    type : 'basic',
+                    icon : 'heroicons_outline:cog',
+                    link : '/student/roles/list-roles'
+                },
+                {
+                    id   : 'addClubs',
+                    title: 'Add Clubs',
+                    type : 'basic',
+                    icon : 'heroicons_outline:document-text',
+                    link : '/student/add-clubs/list-clubs'
+                }
+            ]
+        },
+        {
+            id      : 'Preference',
+            title   : 'Preference',
             type    : 'group',
             children: [
                 {

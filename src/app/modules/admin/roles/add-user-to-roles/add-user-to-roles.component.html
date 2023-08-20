@@ -1,0 +1,97 @@
+<div class="m-6" style="width: 85vw;">
+
+    <div *ngIf="!existingUserDetails || updateUsers" class="m-3 relative" style="height: 85vh;">
+        <div>
+            <div class="flex text-4xl font-semibold text-blue-900 mb-2">   
+                <h1 class="mr-2">Role -</h1> <h1>{{selectedRoleName}}</h1>
+            </div> 
+            <div class="mt-5">
+                <p>Add users for the above role</p>
+            </div>
+        
+            <div class="flex mt-13">
+            <div class="flex items-center">
+                <p>Choose File</p>
+            </div>
+                <div class="flex items-center">
+                    <input
+                        id="document-file-input"
+                        class="absolute h-0 w-0 opacity-0 invisible pointer-events-none"
+                        type="file"
+                        #post_documet
+                        (change)="onFileUpload($event)"
+                        [multiple]="false"
+                        [accept]="'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel'"
+                       >
+                    <label
+                        class="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer hover:bg-gray-400 hover:bg-opacity-20 dark:hover:bg-black dark:hover:bg-opacity-5"
+                        for="document-file-input"
+                        matRipple>
+                        <mat-icon [svgIcon]="'heroicons_outline:document-text'"></mat-icon>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="min-w-256 absolute bottom-1">
+                <div class="my-10 flex justify-end">
+                    <button mat-raised-button style="background-color: #001E52"  color="primary" (click)="onAddUsers()">Add Users</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="existingUserDetails && !updateUsers">
+        <div>
+            <div class="flex text-4xl font-semibold text-blue-900 mb-2 justify-between">  
+                <div class="flex">
+                    <h1 class="mr-2">Role -</h1> <h1>{{selectedRoleName}}</h1>
+                </div> 
+                <div>
+                    <div class="flex justify-end">
+                        <button mat-raised-button style="background-color: #001E52"  color="primary" (click)="onUpdateUsers()">Add Users</button>
+                    </div>
+                </div>
+            </div> 
+            <div class="w-4/5">
+                <mat-table  #table [dataSource]="existingUserDetails" matSort>
+                    <!-- First Column ID-->
+                    <ng-container matColumnDef="user">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> User </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="userID">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> User ID</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                    </ng-container>
+
+                    <ng-container matColumnDef="department">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Department</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.usn}} </mat-cell>
+                    </ng-container>
+
+                    <!-- Action Column -->
+                    <!-- <ng-container matColumnDef="edit">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Edit </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Edit" class="iconbutton"
+                                color="primary" (click)="onClickEdit(element)">
+                                <mat-icon style="color: #001E52 !important">edit</mat-icon>
+                            </button> </mat-cell>
+                    </ng-container> -->
+                    <ng-container matColumnDef="delete">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Delete </mat-header-cell>
+                        <mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Delete" class="iconbutton"
+                                color="warn">
+                                <mat-icon>delete</mat-icon>
+                            </button> </mat-cell>
+                    </ng-container>
+            
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                </mat-table>
+            </div>
+            
+        </div>
+    </div>
+</div>
+

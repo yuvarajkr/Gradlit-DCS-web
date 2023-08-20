@@ -27,6 +27,7 @@ export class AppComponent
         this._studentHttp.getAcessToken(auth_code).subscribe({
             next:(authdata:any)=>{
                 environment.authToken = authdata.data?.[0]?.token.access;
+                environment.adminToken = authdata.data?.[0]?.token.admin_token;
             },
             error:(err)=>{
                 console.log(err);

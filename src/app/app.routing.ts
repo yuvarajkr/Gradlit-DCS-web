@@ -53,6 +53,10 @@ export const appRoutes: Route[] = [
             { path: 'settings', loadChildren: () => import('app/modules/student/settings/settings.module').then(m => m.SettingsModule)},
             { path: 'clubs', loadChildren: () => import('app/modules/student/student-clubs/student-clubs.module').then(m => m.StudentClubsModule)},
             { path: 'announcement', loadChildren: () => import('app/modules/admin/announcements/announcement.module').then(m => m.AnnouncementModule)},
+            { path: 'roles', loadChildren: () => import('app/modules/admin/roles/roles.module').then(m => m.RolesModule)},
+            { path: 'departments', loadChildren: () => import('app/modules/admin/departments/departments.module').then(m => m.DepartmentsModule)},
+            { path: 'add-clubs', loadChildren: () => import('app/modules/admin/clubs/clubs.module').then(m => m.ClubsModule)},
+            
             {path: 'groups', redirectTo:'assignment'}
         ]
     },
