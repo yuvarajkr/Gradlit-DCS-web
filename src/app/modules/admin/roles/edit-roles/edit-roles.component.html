@@ -1,24 +1,24 @@
-<div [formGroup] ="roleFormGroup" class="ml-3 w-full">
-    <h2 class="pt-2 text-2xl font-semibold">Edit Role</h2>
+<div [formGroup] ="roleFormGroup" class="w-full">
+    <h2 class="p-6 text-3xl font-semibold header-bg-grad-lit">Edit Role</h2>
 <div class="ml-3 mt-10">
     <div>
         <mat-form-field  class="flex-auto gt-xs:pr-3 w-2/3">
-            <mat-label>Role Name</mat-label>
+            <mat-label  class="font-semibold">Role Name</mat-label>
             <input matInput formControlName="role_name" >
         </mat-form-field>
     </div>
     <div>
         <mat-form-field  class="flex-auto gt-xs:pr-3  w-1/3">
-            <mat-label>Brief Description</mat-label>
+            <mat-label  class="font-semibold">Brief Description</mat-label>
             <textarea matInput  formControlName="description"></textarea>
         </mat-form-field>
     </div>
 </div>
 
-<p class="ml-3 text-xl">Permissions</p>
+<p class="ml-3 text-xl font-semibold">Permissions</p>
 
 <div class="flex border ml-4 pr-16">
-    <div class="m-12 mt-8 mb-2" *ngFor="let eachPermissionHeader of permissionHeader;let i=index;">
+    <div class="m-12 mt-8 mb-2 font-medium" *ngFor="let eachPermissionHeader of permissionHeader;let i=index;">
         <div>
             <div class="text-lg">
                 {{eachPermissionHeader}}

@@ -1,17 +1,30 @@
-<div class="m-6" style="width: 85vw;">
+<div style="width: 85vw;">
 
-    <div *ngIf="!existingUserDetails || updateUsers" class="m-3 relative" style="height: 85vh;">
-        <div>
-            <div class="flex text-4xl font-semibold text-blue-900 mb-2">   
-                <h1 class="mr-2">Role -</h1> <h1>{{selectedRoleName}}</h1>
-            </div> 
-            <div class="mt-5">
+    <div *ngIf="!existingUserDetails || updateUsers" class=" relative" style="height: 85vh;">
+        <div class="flex text-3xl font-semibold text-blue-900 mb-2 p-6 header-bg-grad-lit">   
+            <h1 class="mr-2">Role Name -</h1> <h1>{{selectedRoleName}}</h1>
+        </div> 
+        <div class="m-4">
+            <div class="mt-1 text-base  font-medium">
                 <p>Add users for the above role</p>
             </div>
+
+            <div>
+                <div class="flex">
+                    <div>
+                        <a class="text-primary-900 font-semibold" href='assets/docs/example-user-role-assign.xlsx' download>
+                            Download a sample template 
+                            <mat-icon style="color: #001E52 !important;padding-top: 16px;">download</mat-icon>
+                         </a>
+                    </div>
+                </div>
+            </div>
+            
+            
         
             <div class="flex mt-13">
             <div class="flex items-center">
-                <p>Choose File</p>
+                <p class="text-lg">Choose File</p>
             </div>
                 <div class="flex items-center">
                     <input
@@ -29,6 +42,7 @@
                         matRipple>
                         <mat-icon [svgIcon]="'heroicons_outline:document-text'"></mat-icon>
                     </label>
+                    <span *ngIf="usersDetailFile?.name" class="text-md font-semibold">{{usersDetailFile?.name}}</span>
                 </div>
             </div>
             

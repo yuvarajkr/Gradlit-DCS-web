@@ -1,12 +1,12 @@
 <div class="w-full">
-    <div class="m-6 flex justify-between">
-        <p class="text-xl font-semibold flex">Departments</p>
+    <div class="p-6 flex justify-between header-bg-grad-lit">
+        <p class="text-3xl font-semibold flex pl-2">Departments</p>
         <div>
             <button [routerLink]="'/student/departments/add-department'" style="background-color: #001E52"  mat-raised-button  color="primary">Add Department</button>
         </div>
     </div>
     
-    <div class="w-4/5 m-6">
+    <div class="w-4/5 m-4">
     
         <mat-table #table [dataSource]="dataSource" matSort>
             <!-- First Column ID-->
@@ -31,23 +31,34 @@
                 </mat-cell>
             </ng-container> -->
             <!-- Action Column -->
-            <ng-container matColumnDef="edit">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Edit </mat-header-cell>
-                <mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Edit" class="iconbutton"
+            <ng-container matColumnDef="Actions">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
+                <mat-cell style="padding-left:0px !important" *matCellDef="let element">
+
+                     <button mat-icon-button matTooltip="Click to Edit" class="iconbutton"
                         color="primary" (click)="onClickEdit(element)">
                         <mat-icon style="color: #001E52 !important">edit</mat-icon>
-                    </button> </mat-cell>
-            </ng-container>
-            <ng-container matColumnDef="delete">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Delete </mat-header-cell>
-                <mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Delete" class="iconbutton"
+                    </button>
+
+                    <button mat-icon-button matTooltip="Click to Delete" class="iconbutton"
                         (click)="onClickDelete(element.Id)" color="warn">
                         <mat-icon>delete</mat-icon>
-                    </button> </mat-cell>
+                    </button>
+                
+                </mat-cell>
             </ng-container>
+            <!-- <ng-container matColumnDef="delete">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Delete </mat-header-cell>
+                <mat-cell *matCellDef="let element"> 
+                    <button mat-icon-button matTooltip="Click to Delete" class="iconbutton"
+                        (click)="onClickDelete(element.Id)" color="warn">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                 </mat-cell>
+            </ng-container> -->
     
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            <mat-row id="grad-lit-table-row" *matRowDef="let row; columns: displayedColumns;"></mat-row>
         </mat-table>
     </div>
 </div>
