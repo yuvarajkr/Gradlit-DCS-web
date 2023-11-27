@@ -70,7 +70,14 @@ export const defaultNavigation: FuseNavigationItem[] = [
                     type : 'basic',
                     icon : 'heroicons_outline:document-text',
                     link : '/student/add-clubs/list-clubs'
-                }
+                },
+                {
+                    id   : 'contentModeration',
+                    title: 'Content Moderation',
+                    type : 'basic',
+                    icon : 'heroicons_outline:thumb-up',
+                    link : '/student/content-moderation/content-to-be-approved'
+                },
             ]
         },
         {

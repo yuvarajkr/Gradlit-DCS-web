@@ -9,7 +9,7 @@ import { StudentHttpService } from '../student-utils-services/student-http.servi
 export class EventsComponent {
   public dateInstance = new Date();
   public isEventExpanded = false;
-  public allEvents: { head: string; name?:string ;description?: string; venue?: string; start_date?: string; end_date?:string,file_url?:string,is_notification?:string;  type: string; created_by: { id: string; name: string; }; created_at: string; }[];
+  public allEvents: { head: string; name?:string ;description?: string; venue?: string; start_date?: string; end_date?:string,file_url?:string,is_notification?:string;  post_type: string; created_by: { id: string; name: string; }; created_at: string; }[];
   selectedEvent: any;
   /* Constructor*/
   constructor(private _studentUtil:StudentHttpService) {
@@ -21,7 +21,7 @@ export class EventsComponent {
 
     this._studentUtil.getAllpost().subscribe({
       next: (allPost) => {
-        this.allEvents = allPost.data.results.filter(eachResult => +eachResult.type === 4) ;
+        this.allEvents = allPost.data.rows.filter(eachResult => +eachResult.post_type === 4) ;
       },
       error: (err)=>{
         console.log(err);

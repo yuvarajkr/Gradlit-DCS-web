@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AuthService } from 'app/core/auth/auth.service';
 import { environment } from 'app/environments/environment';
 
 
@@ -10,7 +9,7 @@ import { environment } from 'app/environments/environment';
 export class GradlitHttpService {
   baseUrl  = environment.apiURL + '/api';
   adminBaseUrl  = environment.adminBaseUrl + '/api';
-  constructor(private _http:HttpClient,private _authService: AuthService) {
+  constructor(private _http:HttpClient) {
    }
 
    public get<D>(url:string,options?:{queryParams:{[key:string]:any}}){

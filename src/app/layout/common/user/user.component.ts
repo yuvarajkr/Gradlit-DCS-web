@@ -19,7 +19,13 @@ export class UserComponent implements OnInit, OnDestroy
     /* eslint-enable @typescript-eslint/naming-convention */
 
     @Input() showAvatar: boolean = true;
-    user: User;
+    user :User  = {
+        id    : 'cfaad35d-07a3-4447-a6c3-d8c3d54fd5df',
+        name  : 'Brian Hughes',
+        email : 'hughes.brian@company.com',
+        avatar: 'assets/images/avatars/brian-hughes.jpg',
+        status: 'online'
+    };
 
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
@@ -48,6 +54,13 @@ export class UserComponent implements OnInit, OnDestroy
             .pipe(takeUntil(this._unsubscribeAll))
             .subscribe((user: User) => {
                 this.user = user;
+                this.user = {
+                    id    : 'cfaad35d-07a3-4447-a6c3-d8c3d54fd5df',
+                    name  : 'Brian Hughes',
+                    email : 'hughes.brian@company.com',
+                    avatar: 'assets/images/avatars/brian-hughes.jpg',
+                    status: 'online'
+                }
 
                 // Mark for check
                 this._changeDetectorRef.markForCheck();

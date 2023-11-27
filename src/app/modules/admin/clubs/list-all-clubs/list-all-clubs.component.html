@@ -22,7 +22,7 @@
 
             <ng-container matColumnDef="AdminID">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Admin ID </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.user[0]?.email}} </mat-cell>
+                <mat-cell *matCellDef="let element"> {{element.user ? element.user[0].email : 'NA'}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="Followers">

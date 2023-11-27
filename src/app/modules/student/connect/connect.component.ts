@@ -46,7 +46,7 @@ export class ConnectComponent implements OnInit
   }
   public allPosts : {
     head: string;
-    type: string;
+    post_type: string;
     created_by: {
         id: string;
         name: string;
@@ -60,14 +60,6 @@ export class ConnectComponent implements OnInit
   constructor(
      private _matDialog: MatDialog, private _studentUtils: StudentHttpService,private ref: ChangeDetectorRef, private _studentData:StudentDataService,private _router:Router
     ) {
-          this._studentUtils.getAllpost().subscribe({
-            next: (allPosts) => {
-              this.allPosts = allPosts.data.results;
-            },
-            error: (err) => {
-              console.log(err);
-            }
-          });
   }
 
   ngOnInit(){
@@ -80,9 +72,20 @@ export class ConnectComponent implements OnInit
         }
       });
 
+      this._studentUtils.getAllpost().subscribe({
+        next: (allPosts) => {
+          this.allPosts = allPosts.data.rows;
+          this.ref.detectChanges();
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      });
+
       this._studentUtils.getAllCircualrs().subscribe({
         next: (allAnnouncement) => {
-          this.latestAnnoucement = allAnnouncement.data.results.length <= 3 ? allAnnouncement.data.results:  allAnnouncement.data.results.slice(0,4);
+          this.latestAnnoucement = allAnnouncement.data.rows.length <= 3 ? allAnnouncement.data.results:  allAnnouncement.data.rows.slice(0,4);
+          this.ref.detectChanges();
         },
         error: (err) => {
           console.log(err);
@@ -91,19 +94,20 @@ export class ConnectComponent implements OnInit
 
       this._studentUtils.getAllClub().subscribe({
         next: (allClubs) => {
-          this.top4Clubs = allClubs.data.results;
+          this.top4Clubs = allClubs.data.rows;
           this.top4Clubs = this.top4Clubs.length > 4 ? this.top4Clubs.slice(0,4) : this.top4Clubs;
+          this.ref.detectChanges();
         },
         error: (err) => {
           console.log(err);
         }
       });
-      this._studentUtils.getAllAnnouncements().subscribe({
-        next: (allAnnouncementDetails)=>{
-          this.allAnnouncement = allAnnouncementDetails.data.results.length <= 4 ? allAnnouncementDetails.data.results : allAnnouncementDetails.data.results.slice(0,4);
-          this.ref.detectChanges();
-        }
-      });
+      // this._studentUtils.getAllAnnouncements().subscribe({
+      //   next: (allAnnouncementDetails)=>{
+      //     this.allAnnouncement = allAnnouncementDetails.data.results.length <= 4 ? allAnnouncementDetails.data.results : allAnnouncementDetails.data.results.slice(0,4);
+      //     this.ref.detectChanges();
+      //   }
+      // });
   }
 
   /* Open the note dialog*/

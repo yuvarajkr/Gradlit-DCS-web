@@ -16,10 +16,10 @@ export class AppComponent
     constructor(private _studentHttp:StudentHttpService)
     {
 
-        this._studentHttp.getAuthCode().subscribe((res:any)=>{
-                this.auth_code = res.data.auth_code;
-                this.getAccessTokenFromAuth(this.auth_code);
-        })
+        // this._studentHttp.getAuthCode().subscribe((res:any)=>{
+        //         this.auth_code = res.data.auth_code;
+        //         this.getAccessTokenFromAuth(this.auth_code);
+        // })
     }
 
     public getAccessTokenFromAuth(auth_code){

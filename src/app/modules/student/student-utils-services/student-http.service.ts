@@ -15,7 +15,7 @@ export class StudentHttpService {
   }
 
   public getAllpost(){
-    return this._gradLitHttp.get<{data:{results:{head:string,type:string,created_by:{id:string,name:string},created_at:string}[]}}>('/post-list');
+    return this._gradLitHttp.get<{data:{rows:{head:string,post_type:string,created_by:{id:string,name:string},created_at:string}[]}}>('/post');
   }
 
   public getAllEvents(){
@@ -27,7 +27,7 @@ export class StudentHttpService {
   }
 
   public getAllClub(){
-    return this._gradLitHttp.get<any>('/club-list');
+    return this._gradLitHttp.get<any>('/club');
   }
 
   public  createCirculars(payload:FormData){
@@ -43,7 +43,7 @@ export class StudentHttpService {
   }
 
   public getAllCircualrs(){
-    return this._gradLitHttp.get<any>('/circular-list');
+    return this._gradLitHttp.get<any>('/circular');
   }
 
 
@@ -138,4 +138,8 @@ export class StudentHttpService {
   public deleteClubByAdmin(club_id:number){
     return this._gradLitHttp.adminDelete(`/delete-role/${club_id}`);
   }
+
+  public adminLogin(payload){
+    return this._gradLitHttp.adminPost('/login',payload);
+   }
 }

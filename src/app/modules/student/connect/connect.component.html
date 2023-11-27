@@ -573,28 +573,28 @@
                 <div class="mx-6 sm:mx-8 mt-2 mb-6">
                     {{eachPost.head}}
                 </div>
-                <div *ngIf="!(eachPost.type === 0)" class="mx-6 sm:mx-8 mb-4">
+                <div *ngIf="!(eachPost.post_type === 0 || eachPost.post_type === 5 || eachPost.post_type === 4)" class="mx-6 sm:mx-8 mb-4">
                     <div class="flex rounded overflow-hidden border justify-between">
-                        <div class="flex">
-                            <div *ngIf="eachPost.type === 1">
+                        <div class="flex max-h-80">
+                            <div *ngIf="eachPost.post_type === 1">
                                 <img
-                                class=" w-full h-full object-cover"
-                                [src]="eachPost.files[0]?.file_url"
+                                class="object-cover"
+                                [src]="eachPost?.post_files[0]"
                                 alt="eachPost.created_by.name +' '+  post">
                             </div>
-                            <div *ngIf="eachPost.type === 3">
+                            <div *ngIf="eachPost.post_type === 3">
                                 <video controls class="object-cover">
-                                    <source [src]="eachPost.files[0]?.file_url" type="video/mp4">
+                                    <source [src]="eachPost?.post_files[0]" type="video/mp4">
                                 </video>
                             </div>
-                            <div *ngIf="eachPost.type === 2">
+                            <div *ngIf="eachPost.post_type === 2">
                                 <button
                                 class="px-3 mr-1"
                                 mat-button>
                                 <mat-icon
                                     class="icon-size-5 text-red-500"
                                     [svgIcon]="'heroicons_solid:download'"></mat-icon>
-                                    <a [href]="eachPost.files[0]?.file_url" download="attachedFile.txt"><span class="ml-2">Download Attachment.</span></a>
+                                    <a [href]="eachPost?.post_files[0]" download="attachedFile.txt"><span class="ml-2">Download Attachment.</span></a>
                             </button>
                                 
                             </div>
@@ -902,7 +902,7 @@
                     <div class="text-2xl font-semibold leading-tight">Follow College Club</div>
                 </div>
                 <div class="flex flex-col mt-5">
-                    <div *ngFor="let eachClub of top4Clubs" class="flex items-center">
+                    <div *ngFor="let eachClub of top4Clubs" class="flex items-center mb-1">
                         <img
                             class="w-14 h-14 mr-4 rounded object-cover"
                             src="assets/images/cards/coffee-shop-01-320x200.jpg"
@@ -913,7 +913,7 @@
                             <div class="text-md leading-none text-secondary mt-2">{{eachClub?.followers || 10 }} followers</div>
                         </div>
                     </div>
-                    <div class="flex items-center mt-6">
+                    <!-- <div class="flex items-center mt-6">
                         <img
                             class="w-14 h-14 mr-4 rounded object-cover"
                             src="assets/images/cards/coffee-shop-02-512x512.jpg"
@@ -923,7 +923,7 @@
                             <div class="text-md truncate leading-none mt-1">Subscribe for updates</div>
                             <div class="text-md leading-none text-secondary mt-2">957 followers</div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="flex items-center mt-6 -mx-3">
                     <a

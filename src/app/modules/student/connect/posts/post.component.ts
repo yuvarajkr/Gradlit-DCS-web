@@ -89,12 +89,13 @@ export class PostComponent {
   private _populateCreateEventPayload(postFormData:FormData):FormData{
     this.student_event_file && postFormData.append('event_file', this.student_event_file);
     postFormData.append('head', this.studentForm.get('event_details').get('event_name').value);
-    postFormData.append('type', ''+this.postSubType);
+    postFormData.append('post_type', ''+this.postSubType);
+    postFormData.append('event_type', '2');
     postFormData.append('event_name', ''+this.studentForm.get('event_details').get('event_name').value);
     postFormData.append('event_description', ''+this.studentForm.get('event_details').get('event_description').value);
     postFormData.append('venue', ''+this.studentForm.get('event_details').get('venue').value);
-    postFormData.append('start_date', new Date(this.studentForm.get('event_details').get('start_date').value).toISOString());
-    postFormData.append('end_date', new Date(this.studentForm.get('event_details').get('end_date').value).toISOString());
+    postFormData.append('start_date', new Date(this.studentForm.get('event_details').get('start_date').value).toISOString().replace('T',' ').replace('0Z',''));
+    postFormData.append('end_date', new Date(this.studentForm.get('event_details').get('end_date').value).toISOString().replace('T',' ').replace('0Z',''));
     postFormData.append('is_notification', ''+(this.studentForm.get('event_details').get('is_notification').value + 0));
     return postFormData;
   }
@@ -103,7 +104,7 @@ export class PostComponent {
       const now = new Date();
       let pollPayload = this.studentForm.get('poll_details').value;
       now.setDate(now.getDate() + pollPayload.poll_end_date * 7);
-      pollPayload.poll_end_date = now.toISOString();
+      pollPayload.poll_end_date = now.toISOString().replace('T',' ').split('.')[0] + '.00';
       pollPayload.head = pollPayload.question;
       pollPayload.type = 5; // poll type
       pollPayload.is_notification = ''+(pollPayload.is_notification + 0);

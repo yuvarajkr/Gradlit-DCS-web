@@ -1,0 +1,65 @@
+<div>
+    <div class="flex flex-col m-4">
+        <fuse-card *ngFor="let eachContent of unApprovedContent" class="flex flex-col max-w-400 w-full mt-8"> 
+            <div class="flex justify-between items-center">
+                <div class="flex items-center mx-6 sm:mx-8 mt-6 mb-4">
+                    <img
+                        class="w-10 h-10 rounded-full mr-4"
+                        src="assets/images/avatars/female-01.jpg"
+                        alt="Card cover image">
+                    <div class="flex flex-col">
+                        <span class="font-semibold leading-none">Placement Department</span>
+                        <span class="text-sm text-secondary leading-none mt-1">IT’S A RECORD - 1.25CR CTC</span>
+                    </div>
+                </div>
+                <div class="">
+                    <button (click)="onBtnClick()"
+                    class="px-3 mr-1"
+                    mat-button>
+                    <mat-icon
+                        title="approve"  
+                        class="icon-size-5 text-green-500"
+                        [svgIcon]="'heroicons_solid:thumb-up'"></mat-icon>
+                        
+                </button>
+                <button (click)="onBtnClick()"
+                class="px-3 mr-1"
+                mat-button>
+                <mat-icon
+                    title="disapprove"
+                    class="icon-size-5 text-red-500"
+                    [svgIcon]="'heroicons_solid:thumb-down'"></mat-icon>
+                    
+            </button>
+                </div>
+            </div>
+            
+            <div class="mx-6 sm:mx-8 mt-2 mb-6">
+                GOOGLE offered 1.25cr package to CS student.
+            </div>
+            <div class="mx-6 sm:mx-8 mb-4">
+                <div class="flex rounded overflow-hidden border">
+                    <div class="flex-0 w-40">
+                        <img
+                            class="w-full h-full object-cover"
+                            src="assets/images/cards/35-640x480.jpg"
+                            alt="Card cover image">
+                    </div>
+                    <div class="m-4">
+                        <div class="text-lg font-medium">The NMAM Institute of Technology campus placement</div>
+                        <div class="text-secondary mt-1">
+                            The placement cell at NMAM Institute of Technology (NMAMIT) is also known as
+                            Abhyuday. The college has a dedicated Department for counselling, welfare, training and
+                            placement which consists of a Department Head, full-time Counsellor, Office Superintendent,Placement Executive, Faculty coordinators, committed
+                        </div>
+                        <div class="text-sm text-hint mt-2">NMAM.placement.com</div>
+                    </div>
+                </div>
+            </div>
+        </fuse-card> 
+    </div>
+    <div class="text-lg flex justify-center" *ngIf="unApprovedContent.length ===0">
+        <p>Nothing to show</p>
+    </div>
+</div>
+

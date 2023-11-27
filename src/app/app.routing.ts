@@ -10,14 +10,14 @@ import { InitialDataResolver } from 'app/app.resolvers';
 export const appRoutes: Route[] = [
 
     // Redirect empty path to '/example'
-    { path: '', pathMatch : 'full', redirectTo: 'student/connect' },
+    //{ path: '', pathMatch : 'full', redirectTo: 'student/connect' },
 
     // Redirect signed-in user to the '/connect'
     //
     // After the user signs in, the sign-in page will redirect the user to the 'signed-in-redirect'
     // path. Below is another redirection for that path to redirect the user to the desired
     // location. This is a small convenience to keep all main routes together here on this file.
-    { path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'student/connect' },
+    //{ path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'student/connect' },
 
     // Auth routes for guests
     {
@@ -29,6 +29,8 @@ export const appRoutes: Route[] = [
         },
         children: [
             { path: 'sign-in', loadChildren: () => import('app/modules/auth/sign-in/sign-in.module').then(m => m.AuthSignInModule)},
+            {path:'**', redirectTo:'sign-in'}
+        ,
         ]
     },
 
@@ -56,6 +58,7 @@ export const appRoutes: Route[] = [
             { path: 'roles', loadChildren: () => import('app/modules/admin/roles/roles.module').then(m => m.RolesModule)},
             { path: 'departments', loadChildren: () => import('app/modules/admin/departments/departments.module').then(m => m.DepartmentsModule)},
             { path: 'add-clubs', loadChildren: () => import('app/modules/admin/clubs/clubs.module').then(m => m.ClubsModule)},
+            { path: 'content-moderation', loadChildren: () => import('app/modules/admin/content-moderation/content-moderation.module').then(m => m.ContentModerationModule)},
             
             {path: 'groups', redirectTo:'assignment'}
         ]

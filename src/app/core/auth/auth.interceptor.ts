@@ -40,7 +40,7 @@ export class AuthInterceptor implements HttpInterceptor
                 //headers: req.headers.set('Authorization', 'Bearer ' + this._authService.accessToken)
                 setHeaders: {
                     //Authorization :'Bearer ' + "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwMjE2NTQwLCJpYXQiOjE2ODAxOTg1NDAsImp0aSI6IjE1NGY2Y2I3ODNhZDRhNjZiYjBkMzMyYTYzZWJiYjFjIiwidXNlcl9pZCI6M30.vCK6Vw8aCIgyImHwe3xhlKry4s5J2Z84Z5WnOfa0dquK1Nh3hZF6t-RDYFhBm3d3GAB3jecJq6QFC39hW3JzOA"
-                    Authorization : req.url.includes('9874') ?   environment.adminToken :  environment.authToken
+                    Authorization : req.url.includes('9874') ?   this._authService.accessToken :  environment.authToken
                     //Authorization : environment.authToken 
                 }
             });
