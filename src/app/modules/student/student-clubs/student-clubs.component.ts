@@ -14,7 +14,7 @@ export class StudentClubsComponent {
   constructor(private _studentHttp:StudentHttpService,private _router:Router, private _matDialog:MatDialog){
           this._studentHttp.getAllClub().subscribe({
             next: (allClubDetails)=>{
-              this.allClubs = allClubDetails.data.results;
+              this.allClubs = allClubDetails.data.rows;
             }
           });
   }
@@ -33,7 +33,7 @@ export class StudentClubsComponent {
   dialogRef.afterClosed().subscribe(result => {
     this._studentHttp.getAllClub().subscribe({
       next: (allClubDetails)=>{
-        this.allClubs = allClubDetails.data.results;
+        this.allClubs = allClubDetails.data.rows;
       }
     })
   });

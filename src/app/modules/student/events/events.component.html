@@ -42,13 +42,13 @@
                     <div class="mt-1 h-36">
                         <img
                         class=" w-full h-full object-cover"
-                        [src]="eachEvent.events[0]?.file_url"
+                        [src]="eachEvent?.file_url"
                         alt="event image">
                     </div>
                     <div class="m-6 sm:mx-8">
-                        <span class="font-medium leading-none">{{eachEvent.events[0]?.name}}</span>
+                        <span class="font-medium leading-none">{{eachEvent?.name}}</span>
                         <!-- <p>
-                           {{(eachEvent.events[0]?.description | slice:0:50)+'....'}}
+                           {{(eachEvent?.description | slice:0:50)+'....'}}
                         </p> -->
                     </div>
                     <div class="relative mb-4">
@@ -70,19 +70,19 @@
                             <mat-icon
                                 class="icon-size-5 mr-3"
                                 [svgIcon]="'heroicons_solid:calendar'"></mat-icon>
-                            <span class="leading-none">Start Date: {{eachEvent.events[0]?.start_date | date:'medium'}}</span>
+                            <span class="leading-none">Start Date: {{eachEvent?.start_date | date:'medium'}}</span>
                         </div>
                         <div class="flex items-center mt-4">
                             <mat-icon
                                 class="icon-size-5 mr-3"
                                 [svgIcon]="'heroicons_solid:calendar'"></mat-icon>
-                            <span class="leading-none">End Date: {{eachEvent.events[0]?.end_date | date:'medium'}}</span>
+                            <span class="leading-none">End Date: {{eachEvent?.end_date | date:'medium'}}</span>
                         </div>
                         <div class="flex items-center mt-4">
                             <mat-icon
                                 class="icon-size-5 mr-3"
                                 [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
-                            <span class="leading-none">Venue :{{eachEvent.events[0]?.venue}} </span>
+                            <span class="leading-none">Venue :{{eachEvent?.venue}} </span>
                         </div>
                     </div>
                     <div class="flex items-center mx-3 sm:mx-5">
@@ -130,19 +130,19 @@
                             src="../../../../assets/images/avatars/female-01.jpg"
                             alt="Card cover image">
                         <div class="flex flex-col">
-                            <span class="font-semibold leading-none">{{selectedEvent.events[0]?.name}}</span>
+                            <span class="font-semibold leading-none">{{selectedEvent?.name}}</span>
                             <span class="text-sm text-secondary leading-none mt-1">5 minutes ago</span>
                         </div>
                     </div>
                     <div class="mt-1 h-80">
                         <img
                         class=" w-full h-full object-cover"
-                        [src]="selectedEvent.events[0]?.file_url"
+                        [src]="selectedEvent?.file_url"
                         alt="event image">
                     </div>
                     <div class="m-6 sm:mx-8">
                         <p>
-                           {{selectedEvent.events[0]?.description}}
+                           {{selectedEvent?.description}}
                         </p>
                     </div>
                     <div class="relative mb-4">
@@ -164,19 +164,19 @@
                             <mat-icon
                                 class="icon-size-5 mr-3"
                                 [svgIcon]="'heroicons_solid:calendar'"></mat-icon>
-                            <span class="leading-none">Start Date: {{selectedEvent.events[0]?.start_date | date:'medium'}}</span>
+                            <span class="leading-none">Start Date: {{selectedEvent?.start_date | date:'medium'}}</span>
                         </div>
                         <div class="flex items-center mt-4">
                             <mat-icon
                                 class="icon-size-5 mr-3"
                                 [svgIcon]="'heroicons_solid:calendar'"></mat-icon>
-                            <span class="leading-none">End Date: {{selectedEvent.events[0]?.end_date | date:'medium'}}</span>
+                            <span class="leading-none">End Date: {{selectedEvent?.end_date | date:'medium'}}</span>
                         </div>
                         <div class="flex items-center mt-4">
                             <mat-icon
                                 class="icon-size-5 mr-3"
                                 [svgIcon]="'heroicons_solid:location-marker'"></mat-icon>
-                            <span class="leading-none">Venue :{{selectedEvent.events[0]?.venue}} </span>
+                            <span class="leading-none">Venue :{{selectedEvent?.venue}} </span>
                         </div>
                     </div>
                     <div class="flex items-center mx-3 sm:mx-5">

@@ -59,7 +59,7 @@ export class PostComponent {
    this.studentPostPhoto && postFormData.append('photos', this.studentPostPhoto);
    this.studentPostVideo && postFormData.append('vedios', this.studentPostVideo);
    postFormData.append('head', this.studentForm.get('head').value);
-   postFormData.append('type', ''+this.postSubType);
+   postFormData.append('post_type', ''+this.postSubType);
     this._studentHttp.createPost(postFormData
     ).subscribe({
       next: (response)=>{

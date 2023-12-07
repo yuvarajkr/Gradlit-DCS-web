@@ -24,13 +24,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 icon : 'heroicons_outline:library',
                 link : '/student/clubs'
             },
-            {
-                id   : 'assignment',
-                title: 'Groups',
-                type : 'basic',
-                icon : 'mat_solid:layers',
-                link : '/student/groups'
-            },
+            // {
+            //     id   : 'assignment',
+            //     title: 'Groups',
+            //     type : 'basic',
+            //     icon : 'mat_solid:layers',
+            //     link : '/student/groups'
+            // },
             {
                 id   : 'directMessage',
                 title: 'Direct Message',
@@ -45,6 +45,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 icon : 'heroicons_outline:library',
                 link : '/student/test'
             },
+            // {
+            //     id   : 'clubAdmin',
+            //     title: 'Club Admin',
+            //     type : 'basic',
+            //     icon : 'heroicons_outline:users',
+            //     link : '/student/test'
+            // },
             {
             id      : 'adminPermissions',
             title   : 'Admin Permissions',

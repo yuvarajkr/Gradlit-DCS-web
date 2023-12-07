@@ -19,8 +19,8 @@ export class EventsComponent {
     //   }
     // });
 
-    this._studentUtil.getAllpost().subscribe({
-      next: (allPost) => {
+    this._studentUtil.getAllEvents().subscribe({
+      next: (allPost:any) => {
         this.allEvents = allPost.data.rows.filter(eachResult => +eachResult.post_type === 4) ;
       },
       error: (err)=>{

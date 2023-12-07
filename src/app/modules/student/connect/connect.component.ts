@@ -110,6 +110,10 @@ export class ConnectComponent implements OnInit
       // });
   }
 
+  onPostLike(postDetails){
+    postDetails.is_liked = !(postDetails?.is_liked);
+  }
+
   /* Open the note dialog*/
   addNewPost(): void
   {

@@ -47,14 +47,14 @@ export class AnnouncementComponent {
         this.isCircular = 'Circular';
         this._studentHttp.getAllCircualrs().subscribe({
           next: (allAnnouncementDetails)=>{
-            this.allAnnouncement = allAnnouncementDetails.data.results;
+            this.allAnnouncement = allAnnouncementDetails.data.rows;
           }
         });
       } else{
         this.isCircular = 'announcement';
         this._studentHttp.getAllAnnouncements().subscribe({
           next: (allAnnouncementDetails)=>{
-            this.allAnnouncement = allAnnouncementDetails.data.results;
+            this.allAnnouncement = allAnnouncementDetails.data.rows;
           }
         });
       }

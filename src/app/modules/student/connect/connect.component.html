@@ -1,7 +1,7 @@
 <div class="flex flex-col flex-auto min-w-0">
 
     <!-- Header -->
-    <div *ngIf="allAnnouncement" class="flex bg-card">
+    <!-- <div *ngIf="allAnnouncement" class="flex bg-card">
         <div class="flex-1 min-w-0 bg-gray-100">
             <div class="felx">
                 <owl-carousel-o [options]="customOptions">
@@ -15,13 +15,13 @@
                                     {{(eachAnnouncement.description | slice:0:20)+'....'}}
                                 </div>
                                 <div class="flex items-center mt-3 -mx-3">
-                                    <!-- <a
+                                    <a
                                         class="px-3 mr-1"
                                         mat-button
                                         [color]="'primary'"
                                         [routerLink]="['./']">
                                         View more
-                                    </a> -->
+                                    </a>
                                 </div>
                             </div>
                             <div class="order-1 md:order-2 w-full rounded-lg overflow-hidden ml-1">
@@ -47,17 +47,17 @@
             </div>
             
         </div>
-    </div>
+    </div> -->
 
 
     <!-- Main -->
-    <div class="flex flex-auto justify-center w-full max-w-full mx-auto p-6 sm:p-8">
+    <div class="flex flex-auto w-full max-w-full mx-auto p-6 sm:p-8">
 
         <!-- Column -->
-        <div class="flex flex-col items-start">
+        <div class="flex flex-col items-start min-w-3/4">
 
             <!-- Create Post -->
-            <fuse-card class="flex flex-col max-w-200 w-full p-4">
+            <fuse-card class="flex flex-col w-full p-4">
                 <!-- <div class="text-xl font-semibold">Create Post</div> -->
 
                 <mat-form-field class="flex-auto0">
@@ -559,7 +559,7 @@
 
             <!-- Post 4 -->
 
-            <fuse-card *ngFor="let eachPost of allPosts" class="flex flex-col max-w-200 w-full mt-8"> 
+            <fuse-card *ngFor="let eachPost of allPosts" class="flex flex-col w-full mt-8"> 
                 <div class="flex items-center mx-6 sm:mx-8 mt-6 mb-4">
                     <img
                         class="w-10 h-10 rounded-full mr-4"
@@ -574,11 +574,12 @@
                     {{eachPost.head}}
                 </div>
                 <div *ngIf="!(eachPost.post_type === 0 || eachPost.post_type === 5 || eachPost.post_type === 4)" class="mx-6 sm:mx-8 mb-4">
-                    <div class="flex rounded overflow-hidden border justify-between">
-                        <div class="flex max-h-80">
+                    <div class="flex rounded overflow-hidden justify-between">
+                        <div class="flex max-h-128 max-w-200">
                             <div *ngIf="eachPost.post_type === 1">
                                 <img
-                                class="object-cover"
+                                
+                                class="object-cover max-w-full max-h-full"
                                 [src]="eachPost?.post_files[0]"
                                 alt="eachPost.created_by.name +' '+  post">
                             </div>
@@ -609,12 +610,14 @@
                 </div>
                 <div class="flex items-center mx-3 sm:mx-5">
                     <button
+                        (click)="onPostLike(eachPost)"
                         class="px-3 mr-1"
                         mat-button>
                         <mat-icon
-                            class="icon-size-5 text-red-500"
+                            class="icon-size-5"
+                            [class] = "eachPost.is_liked ? 'text-red-500' : 'text-gray-500'"
                             [svgIcon]="'heroicons_solid:heart'"></mat-icon>
-                        <span class="ml-2">Unlike</span>
+                        <span class="ml-2">{{eachPost.is_liked ? 'Unlike' : 'Like'}}</span>
                     </button>
                     <button
                         class="px-3 mr-1"
@@ -652,14 +655,14 @@
                             class="w-6 h-6 m-0.5 rounded-full -ml-3 text-card ring-2 ring-white"
                             src="assets/images/avatars/male-07.jpg"
                             alt="Card cover image">
-                        <div class="text-md tracking-tight ml-3">You and 24 more liked this</div>
+                        <div class="text-md tracking-tight ml-3">{{eachPost.likes_count}} liked this</div>
                     </div>
                     <div class="hidden sm:flex flex-auto"></div>
                     <div class="flex items-center mt-4 sm:mt-0">
                         <button
                             class="px-3 mr-1 -ml-2 sm:ml-0"
                             mat-button>
-                            4 shares
+                            {{eachPost.share_count}} shares
                         </button>
                         <button
                             class="px-3 sm:-mr-3"
@@ -902,15 +905,18 @@
                     <div class="text-2xl font-semibold leading-tight">Follow College Club</div>
                 </div>
                 <div class="flex flex-col mt-5">
-                    <div *ngFor="let eachClub of top4Clubs" class="flex items-center mb-1">
-                        <img
+                    <div *ngFor="let eachClub of top4Clubs" class="flex items-center mb-4">
+                        <!-- <img
                             class="w-14 h-14 mr-4 rounded object-cover"
-                            src="assets/images/cards/coffee-shop-01-320x200.jpg"
-                            alt="Card cover image">
+                            [src]= "eachClub.logo || 'assets/images/cards/coffee-shop-01-320x200.jpg'"
+                            alt="Card cover image"> -->
+                            <div style= "background-color: #c7e6e7;"class="w-10 h-10 rounded-full mr-4 flex justify-center items-center">
+                                {{eachClub.display_name.slice(0,2)}}
+                            </div>
                         <div class="flex flex-col min-w-0">
                             <div class="font-medium leading-none">{{eachClub?.display_name}}</div>
                             <div class="text-md truncate leading-none mt-1">Subscribe for updates</div>
-                            <div class="text-md leading-none text-secondary mt-2">{{eachClub?.followers || 10 }} followers</div>
+                            <div class="text-md leading-none text-secondary mt-2">{{eachClub?.user?.length || 0 }} followers</div>
                         </div>
                     </div>
                     <!-- <div class="flex items-center mt-6">
@@ -931,7 +937,7 @@
                         mat-button
                         [color]="'primary'"
                         [routerLink]="['../clubs']">
-                        See all groups
+                        See all Clubs
                     </a>
                 </div>
             </fuse-card>

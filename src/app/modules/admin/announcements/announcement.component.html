@@ -17,7 +17,7 @@
             </div> 
             
             <!-- Title -->
-            <div class="mt-2">
+            <!-- <div class="mt-2">
                 
                 <mat-select (selectionChange)="onTypeSelection($event.value)" [value]="isCircular === 'announcement' ? 'Announcement' : 'Circular'" class="w-50 text-xl" style="background-color: aliceblue;" #selectedType>
                     <mat-option  value="Circular">
@@ -25,23 +25,26 @@
                     <mat-option  value="Announcement">
                         Announcement</mat-option>
                 </mat-select>
-                <!-- <mat-select [value]="'Circular'" class="w-50" style="background-color: aliceblue;">
+                <mat-select [value]="'Circular'" class="w-50" style="background-color: aliceblue;">
                     <mat-option  value="Circular" (click)="onCreateCircular('Circular')"><span class="text-blue-800">Create Circular</span></mat-option>
                     <mat-option  value="Announcement" (click)="onCreateCircular('Announcement')"><span class="text-blue-800">Create Announcement</span></mat-option>
-                </mat-select> -->
+                </mat-select>
 
                 <div class="mt-2">
                     <button class="font-semibold" style="color:#453ac6" (click)="onCreateCircular(selectedType.value)">{{'Create' +' '+selectedType.value }}</button>
                 </div>
+            </div> -->
+            <div class="mt-2">
+                <button class="font-semibold" style="color:#453ac6" (click)="onCreateCircular('Circular')">Create Circular</button>
             </div>
         </div>
     </div>
 
     <!-- Main -->
-    <div *ngIf="isCircular !== 'announcement'" class="flex-auto p-6 sm:p-10">
-        <div *ngIf="!isCircExpanded flex">
+    <div *ngIf="isCircular !== 'announcement'" class="flex-auto">
+        <div *ngIf="!isCircExpanded flex cursor-pointer">
             <!-- Card #65 -->
-            <div *ngFor="let eachAnnouncement of allAnnouncement" class="hover:bg-slate-400 cursor-pointer" style="
+            <div *ngFor="let eachAnnouncement of allAnnouncement" class="hover:bg-slate-200 cursor-pointer" style="
             padding: 10px;
             border-radius: 10px; margin-top:10px
             ">
@@ -83,7 +86,7 @@
             </div>
         </div>
     </div>
-    <div *ngIf="isCircular === 'announcement'" class="flex-auto p-6 sm:p-10">
+    <div *ngIf="isCircular === 'announcement'" class="flex-auto">
         <div *ngIf="!isAnncExpanded" class="flex flex-wrap gap-1">
             <!-- Card #65 -->
             <fuse-card (click)="onAnncExpanded(eachAnnouncement)" *ngFor="let eachAnnouncement of allAnnouncement" class="flex flex-col md:flex-row justify-between max-w-64 min-w-80 p-4 pb-4 mx-2 my-3 filter-listing carousel-block">

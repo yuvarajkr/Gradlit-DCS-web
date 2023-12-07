@@ -20,7 +20,7 @@
                 <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight leading-7 sm:leading-10 truncate">
                     Clubs
                 </h2>
-                <button class="font-semibold" style="color:#453ac6" (click)="onCreateClub()">Create Club</button>
+                <!-- <button class="font-semibold" style="color:#453ac6" (click)="onCreateClub()">Create Club</button> -->
             </div>
         </div>
     </div>
@@ -29,7 +29,7 @@
     <div class="flex-auto p-6 sm:p-10">
         <div class="flex flex-wrap items-start w-full max-w-400 -m-4">
             <!-- Card #65 -->
-            <fuse-card (click)="onClubCardClick()" *ngFor="let eachClub of allClubs" class="flex flex-col max-w-80 w-full filter-article m-4">
+            <fuse-card (click)="onClubCardClick()" *ngFor="let eachClub of allClubs" class="relative flex flex-col max-w-80 min-h-96 max-h-96 w-full filter-article m-4">
                 <div class="flex items-center mx-6 sm:mx-8 mt-6 mb-1">
                     <!-- <img
                         class="w-10 h-10 rounded-full mr-4"
@@ -45,12 +45,14 @@
                 </div>
                 <div class="m-6 sm:mx-8">
                     <div>
-                        <p>About this Club</p>
-                        {{eachClub.description}}
+                        {{(eachClub.description | slice:0:400)+'....'}}
                     </div>
+                    <!-- <button>Join Club</button> -->
+                </div>
+                <div class="absolute bottom-4 w-full cursor-pointer">
+                    <!-- <p class="m-3"><span class="font-semibold">Created By :</span> {{eachClub?.user[0]?.name }}</p> -->
                     <hr class="border-b mx-6 sm:mx-8 mt-4 mb-6">
-                    <p><span class="font-semibold">Created By :</span> {{eachClub.created_by.name }}</p>
-                    <button>Join Club</button>
+                    <div class="m-3 flex justify-center" style="background-color: lightsteelblue; padding: 10px; border: solid 1px black; border-radius: 8px;">Join Club</div>
                 </div>
             </fuse-card>
         </div>

@@ -7,17 +7,17 @@ import { environment } from 'app/environments/environment';
   providedIn: 'root'
 })
 export class GradlitHttpService {
-  baseUrl  = environment.apiURL + '/api';
+  oldBaseUrl  = environment.apiURL + '/api';
   adminBaseUrl  = environment.adminBaseUrl + '/api';
   constructor(private _http:HttpClient) {
    }
 
    public get<D>(url:string,options?:{queryParams:{[key:string]:any}}){
-      return this._http.get<D>(this.baseUrl+url);
+      return this._http.get<D>(this.oldBaseUrl+url);
    }
 
    public post<D>(url:string, payload:{[key:string]:any}){
-    return this._http.post<D>(this.baseUrl+url,payload);
+    return this._http.post<D>(this.oldBaseUrl+url,payload);
    }
 
    public adminGet<D>(url:string,options?:{queryParams:{[key:string]:any}}){

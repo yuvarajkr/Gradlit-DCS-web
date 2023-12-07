@@ -11,15 +11,15 @@ export class StudentHttpService {
   constructor(private _gradLitHttp:GradlitHttpService) { }
 
   public createPost(payload: FormData){
-    return this._gradLitHttp.post<ServerResponse>('/post',payload);
+    return this._gradLitHttp.adminPost<ServerResponse>('/post',payload);
   }
 
   public getAllpost(){
-    return this._gradLitHttp.get<{data:{rows:{head:string,post_type:string,created_by:{id:string,name:string},created_at:string}[]}}>('/post');
+    return this._gradLitHttp.adminGet<{data:{rows:{head:string,post_type:string,created_by:{id:string,name:string},created_at:string}[]}}>('/post');
   }
 
   public getAllEvents(){
-    return this._gradLitHttp.get<{eventDetails:string, date:string,time:string,location:string}[]>('/event-list');
+    return this._gradLitHttp.adminGet<{eventDetails:string, date:string,time:string,location:string}[]>('/event');
   }
 
   public createClub(payload:CreateClubPayload){
@@ -27,7 +27,7 @@ export class StudentHttpService {
   }
 
   public getAllClub(){
-    return this._gradLitHttp.get<any>('/club');
+    return this._gradLitHttp.adminGet<any>('/club');
   }
 
   public  createCirculars(payload:FormData){
@@ -43,7 +43,7 @@ export class StudentHttpService {
   }
 
   public getAllCircualrs(){
-    return this._gradLitHttp.get<any>('/circular');
+    return this._gradLitHttp.adminGet<any>('/circular');
   }
 
 
@@ -140,6 +140,6 @@ export class StudentHttpService {
   }
 
   public adminLogin(payload){
-    return this._gradLitHttp.adminPost('/login',payload);
+    return this._gradLitHttp.post('/login',payload);
    }
 }
