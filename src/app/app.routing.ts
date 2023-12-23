@@ -59,6 +59,7 @@ export const appRoutes: Route[] = [
             { path: 'departments', loadChildren: () => import('app/modules/admin/departments/departments.module').then(m => m.DepartmentsModule)},
             { path: 'add-clubs', loadChildren: () => import('app/modules/admin/clubs/clubs.module').then(m => m.ClubsModule)},
             { path: 'content-moderation', loadChildren: () => import('app/modules/admin/content-moderation/content-moderation.module').then(m => m.ContentModerationModule)},
+            { path: 'super-admin', loadChildren: () => import('app/modules/admin/super-admin/all-colleges/all-colleges.module').then(m => m.AllCollegesModule)},
             
             {path: 'groups', redirectTo:'assignment'}
         ]

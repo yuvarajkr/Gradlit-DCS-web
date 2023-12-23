@@ -23,7 +23,7 @@
                 </mat-form-field>
             </div>
 
-            <div class="flex">
+            <!-- <div class="flex">
                 <mat-form-field
                     [ngClass]="formFieldHelpers"
                     class="flex-auto">
@@ -34,7 +34,7 @@
                         cdkTextareaAutosize
                        >
                 </mat-form-field>
-            </div>
+            </div> -->
             <div>
                 <input
                     id="document-file-input"
@@ -43,7 +43,7 @@
                     #post_documet
                     (change)="onFileUpload($event)"
                     [multiple]="false"
-                    [accept]="'application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint, text/plain, application/pdf, image/*'"
+                    [accept]="'application/pdf'"
                    >
                 <label
                     class="flex"
@@ -52,6 +52,8 @@
                     <mat-icon [svgIcon]="'heroicons_outline:document-text'"></mat-icon>
                     Attach File
                 </label>
+
+                <span *ngIf="file?.name" class="text-md font-semibold">{{file?.name}}</span>
             </div>
             <div class="mt-2" *ngIf="data.type !== 'Circular'">
                 <input

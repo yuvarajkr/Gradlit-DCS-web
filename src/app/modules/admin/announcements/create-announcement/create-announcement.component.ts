@@ -22,7 +22,7 @@ export class CreateAnnouncementComponent {
       this._studentHttp.createCirculars(this._populateData()).subscribe({
         next: (createClubResponse) => {
           this._closeDialog();
-          console.log(createClubResponse);
+          document.location.reload();
         },
         error: (err) =>{
           console.log(err);
@@ -46,7 +46,7 @@ export class CreateAnnouncementComponent {
     this.file && formData.append('file_name',this.file);
     this.image_file && formData.append('image_name',this.image_file);
     formData.append('heading',this.createStudentCircularForm.get('heading').value);
-    formData.append('group_name',this.createStudentCircularForm.get('group_name').value);
+    //formData.append('group_name',this.createStudentCircularForm.get('group_name').value);
     formData.append('description',this.createStudentCircularForm.get('description').value);
     return formData;
   }

@@ -27,9 +27,8 @@
             </label>
         </div>
     
-        <div *ngIf="imageUrl" class="mt-5">
-            <img class="w-full object-cover" [src]="imageUrl"
-                style="height: 200px;">
+        <div class="flex mt-5 max-w-48 max-h-44" *ngIf="imageUrl">
+            <img [src]="imageUrl">
         </div>
     </div>
 

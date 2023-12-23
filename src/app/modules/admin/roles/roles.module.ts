@@ -16,6 +16,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { EditRolesComponent } from './edit-roles/edit-roles.component';
 import { AddUserToRolesComponent } from './add-user-to-roles/add-user-to-roles.component';
+import { RoleNotificationComponent } from './role-notification/role-notification.component';
 
 const rolesRoutes: Route[] = [{
   path:'', 
@@ -46,7 +47,8 @@ const rolesRoutes: Route[] = [{
     AddNewRoleComponent,
     ListRolesComponent,
     EditRolesComponent,
-    AddUserToRolesComponent
+    AddUserToRolesComponent,
+    RoleNotificationComponent
   ],
   imports: [
     CommonModule,
@@ -55,7 +57,6 @@ const rolesRoutes: Route[] = [{
     MatFormFieldModule,
     MatCheckboxModule,
     MatInputModule,
-    MatButtonModule,
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,

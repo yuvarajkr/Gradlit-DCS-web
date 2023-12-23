@@ -47,7 +47,7 @@
             </div>
             
             <div class="min-w-256 absolute bottom-1">
-                <div class="my-10 flex justify-end">
+                <div class="my-10 flex justify-end mt-2">
                     <button mat-raised-button style="background-color: #001E52"  color="primary" (click)="onAddUsers()">Add Users</button>
                 </div>
             </div>
@@ -56,7 +56,7 @@
 
     <div *ngIf="existingUserDetails && !updateUsers">
         <div>
-            <div class="flex text-4xl font-semibold text-blue-900 mb-2 justify-between">  
+            <div class="flex text-4xl font-semibold text-blue-900 m-2 p-2 justify-between">  
                 <div class="flex">
                     <h1 class="mr-2">Role -</h1> <h1>{{selectedRoleName}}</h1>
                 </div> 
@@ -66,7 +66,7 @@
                     </div>
                 </div>
             </div> 
-            <div class="w-4/5">
+            <div class="w-4/5 m-2 p-2">
                 <mat-table  #table [dataSource]="existingUserDetails" matSort>
                     <!-- First Column ID-->
                     <ng-container matColumnDef="user">

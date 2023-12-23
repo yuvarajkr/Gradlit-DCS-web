@@ -14,12 +14,14 @@
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Department Name </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.Name}} </mat-cell>
             </ng-container>
+
+            
     
             <!-- Second Column -->
-            <!-- <ng-container matColumnDef="TotalUser">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Total User </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element?.TotalUser}} </mat-cell>
-            </ng-container> -->
+            <ng-container matColumnDef="Department_ID">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Department ID </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element?.Id}} </mat-cell>
+            </ng-container>
     
             <!-- Third Column -->
             <!-- <ng-container matColumnDef="CreatedBy">

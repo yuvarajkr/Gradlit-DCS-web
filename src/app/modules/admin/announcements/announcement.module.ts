@@ -10,6 +10,7 @@ import { CreateAnnouncementComponent } from './create-announcement/create-announ
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { DetailsComponent } from './details/details.component';
+import { MatButtonModule } from '@angular/material/button';
 
 const announcementRoutes:Route[] = [{
   path:'',
@@ -26,6 +27,7 @@ const announcementRoutes:Route[] = [{
     ReactiveFormsModule,
     MatInputModule,
     MatSelectModule,
+    MatButtonModule,
     RouterModule.forChild(announcementRoutes)
   ]
 })

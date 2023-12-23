@@ -1,91 +1,41 @@
 <div class="flex flex-col flex-auto min-w-0">
 
     <!-- Header -->
-    <div class="flex flex-col sm:flex-row flex-0 sm:items-center sm:justify-between p-6 sm:py-8 sm:px-10 border-b bg-card dark:bg-transparent">
-        <div class="flex-1 min-w-0">
-            <!-- Breadcrumbs -->
-            <div class="flex flex-wrap items-center font-medium">
-                <div>
-                    <a class="whitespace-nowrap text-primary-500">Student</a>
-                </div>
-                <div class="flex items-center ml-1 whitespace-nowrap">
-                    <mat-icon
-                        class="icon-size-5 text-secondary"
-                        [svgIcon]="'heroicons_solid:chevron-right'"></mat-icon>
-                    <a class="ml-1 text-primary-500">Circular / Announcement</a>
-                </div>
-            </div> 
-            
-            <!-- Title -->
-            <!-- <div class="mt-2">
-                
-                <mat-select (selectionChange)="onTypeSelection($event.value)" [value]="isCircular === 'announcement' ? 'Announcement' : 'Circular'" class="w-50 text-xl" style="background-color: aliceblue;" #selectedType>
-                    <mat-option  value="Circular">
-                        Circular</mat-option>
-                    <mat-option  value="Announcement">
-                        Announcement</mat-option>
-                </mat-select>
-                <mat-select [value]="'Circular'" class="w-50" style="background-color: aliceblue;">
-                    <mat-option  value="Circular" (click)="onCreateCircular('Circular')"><span class="text-blue-800">Create Circular</span></mat-option>
-                    <mat-option  value="Announcement" (click)="onCreateCircular('Announcement')"><span class="text-blue-800">Create Announcement</span></mat-option>
-                </mat-select>
+    <div class="p-6 flex justify-between header-bg-grad-lit">
+        <p class="text-3xl font-semibold flex">Circulars</p>
+        <div>
+            <button (click)="onCreateCircular('Circular')"  mat-raised-button style="background-color: #001E52; color: white;">Add Circular</button>
+        </div>
+    </div>
 
-                <div class="mt-2">
-                    <button class="font-semibold" style="color:#453ac6" (click)="onCreateCircular(selectedType.value)">{{'Create' +' '+selectedType.value }}</button>
+    <div *ngIf="isCircular !== 'announcement'" class="flex-auto p-6 sm:p-10">
+        <div class="flex flex-wrap items-start w-full max-w-400 -m-4">
+            <!-- Card #65 -->
+            <fuse-card *ngFor="let eachAnnouncement of allAnnouncement" class="flex flex-col max-w-80 w-full filter-article m-4 min-h-96 max-h-96 relative">
+                <div class="flex items-center mx-6 sm:mx-8 mt-6 mb-1">
+                    <div class="flex flex-col">
+                        <span class="font-semibold leading-none">{{(eachAnnouncement.heading | slice:0:30)}}</span>
+                    </div>
                 </div>
-            </div> -->
-            <div class="mt-2">
-                <button class="font-semibold" style="color:#453ac6" (click)="onCreateCircular('Circular')">Create Circular</button>
-            </div>
+                <div class="m-6 sm:mx-8">
+                    <div>
+                        {{(eachAnnouncement.description | slice:0:300)}}
+                    </div>
+                    
+                </div>
+                <div class="absolute bottom-0 w-full">
+                    <div  style="background-color: lightsteelblue;
+                    padding: 10px;" class="flex justify-center"> <mat-icon
+                    class="icon-size-5 text-red-500"
+                    [svgIcon]="'heroicons_solid:download'"></mat-icon>
+                    <a [href]="eachAnnouncement?.file_path" download="attachedFile.txt"><span class="ml-2">Download Attachment</span></a></div>
+                </div>
+            </fuse-card>
         </div>
     </div>
 
     <!-- Main -->
-    <div *ngIf="isCircular !== 'announcement'" class="flex-auto">
-        <div *ngIf="!isCircExpanded flex cursor-pointer">
-            <!-- Card #65 -->
-            <div *ngFor="let eachAnnouncement of allAnnouncement" class="hover:bg-slate-200 cursor-pointer" style="
-            padding: 10px;
-            border-radius: 10px; margin-top:10px
-            ">
     
-                <div class="font-semibold flex justify-between ">
-                    <div>
-                        <span class="h-2 w-2 rounded-3xl bg-red-500 inline-block mr-1"></span>
-                        <span>{{(eachAnnouncement.heading | slice:0:15)+'....'}}</span>
-                    </div>
-                    
-                    
-                    
-                    <button
-                    class="px-3 mr-1"
-                    mat-button>
-                    <mat-icon
-                        class="icon-size-5 text-red-500"
-                        [svgIcon]="'heroicons_solid:download'"></mat-icon>
-                        <a [href]="eachAnnouncement?.file_path" download="attachedFile.txt"><span class="ml-2">Download</span></a>
-                </button>
-                </div>
-                <div>
-                    {{(eachAnnouncement.description | slice:0:200)+'....'}}
-                </div>
-                <!-- <div>
-                    <p class="font-semibold">Created By</p>
-                    <P>{{eachAnnouncement.created_by.name}}</P>
-                </div> -->
-                <!-- <div>
-                    <button
-                    class="px-3 mr-1"
-                    mat-button>
-                    <mat-icon
-                        class="icon-size-5 text-red-500"
-                        [svgIcon]="'heroicons_solid:download'"></mat-icon>
-                        <a [href]="eachAnnouncement?.file_path" download="attachedFile.txt"><span class="ml-2"></span></a>
-                </button>
-                </div> -->
-            </div>
-        </div>
-    </div>
     <div *ngIf="isCircular === 'announcement'" class="flex-auto">
         <div *ngIf="!isAnncExpanded" class="flex flex-wrap gap-1">
             <!-- Card #65 -->

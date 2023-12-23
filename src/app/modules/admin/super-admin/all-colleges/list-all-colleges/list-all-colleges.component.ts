@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { RoleNotificationComponent } from 'app/modules/admin/roles/role-notification/role-notification.component';
 import { StudentHttpService } from 'app/modules/student/student-utils-services/student-http.service';
-import { RoleNotificationComponent } from '../role-notification/role-notification.component';
 
 export interface RoleDetails {
   name: string;
@@ -42,13 +42,13 @@ export const products = [];
 // ];
 
 @Component({
-  selector: 'app-list-roles',
-  templateUrl: './list-roles.component.html',
-  styleUrls: ['./list-roles.component.scss']
+  selector: 'app-list-all-colleges',
+  templateUrl: './list-all-colleges.component.html',
+  styleUrls: ['./list-all-colleges.component.scss']
 })
 
 
-export class ListRolesComponent implements OnInit {
+export class ListAllCollegesComponent implements OnInit {
 
   
   displayedColumns = ['name', 'Actions'];
@@ -131,3 +131,4 @@ export class ListRolesComponent implements OnInit {
 
 
 }
+

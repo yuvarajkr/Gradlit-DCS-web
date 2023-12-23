@@ -1,8 +1,8 @@
 <div class="w-full">
     <div class="p-6 flex justify-between header-bg-grad-lit">
-        <p class="text-3xl font-semibold flex">Roles</p>
+        <p class="text-3xl font-semibold flex">All Colleges</p>
         <div>
-            <button [routerLink]="'/student/roles/add-roles'" mat-raised-button style="background-color: #001E52; color: white;">Add Role</button>
+            <button [routerLink]="'/student/super-admin/add-new-college'" mat-raised-button style="background-color: #001E52; color: white;">Add College</button>
         </div>
     </div>
     
@@ -11,7 +11,7 @@
         <mat-table #table [dataSource]="dataSource" matSort>
             <!-- First Column ID-->
             <ng-container matColumnDef="name">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Role Name </mat-header-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header> College Name </mat-header-cell>
                 <mat-cell class="cursor-pointer" (click)="onRoleClick(element)" *matCellDef="let element"> {{element.Name}} </mat-cell>
             </ng-container>
     
@@ -55,5 +55,3 @@
         </mat-table>
     </div>
 </div>
-
-

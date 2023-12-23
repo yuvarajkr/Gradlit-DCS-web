@@ -70,4 +70,13 @@ export class StudentDataService {
       file_name :['', Validators.required],                                
     });
   }
+
+  public getCreateNewCollegeForm(){
+    return this._fb.group({
+      name :[''],                                               
+      id:[''],                                                
+      description :['', Validators.required],                                                
+      logo :['', Validators.required],                                
+    });
+  }
 }

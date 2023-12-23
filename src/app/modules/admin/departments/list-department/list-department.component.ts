@@ -19,7 +19,7 @@ export const products = [];
 export class ListDepartmentComponent {
 
   
-  displayedColumns = ['DepartmentName','Actions'];
+  displayedColumns = ['DepartmentName','Department_ID','Actions'];
   products: RoleDetails[] = products;
   dataSource = products;
 

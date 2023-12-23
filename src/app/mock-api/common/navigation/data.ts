@@ -32,11 +32,11 @@ export const defaultNavigation: FuseNavigationItem[] = [
             //     link : '/student/groups'
             // },
             {
-                id   : 'directMessage',
-                title: 'Direct Message',
+                id   : 'circulars',
+                title: 'Circulars',
                 type : 'basic',
                 icon : 'mat_solid:layers',
-                link : '/student/assignment'
+                link : '/student/announcement'
             },
             {
                 id   : 'challenges',
