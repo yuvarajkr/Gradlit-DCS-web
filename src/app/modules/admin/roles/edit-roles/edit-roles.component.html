@@ -21,6 +21,7 @@
     <div class="m-12 mt-8 mb-2 font-medium" *ngFor="let eachPermissionHeader of permissionHeader;let i=index;">
         <div>
             <div class="text-lg">
+                <mat-icon [matTooltip]="permissionHeaderToolTips[i]" class="icon-size-3.5" style="color: rgb(91, 92, 94);">info</mat-icon>
                 {{eachPermissionHeader}}
             </div>
             <div *ngIf="i===0">

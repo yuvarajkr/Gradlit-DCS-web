@@ -49,7 +49,7 @@ export class AddNewRoleComponent {
     'Modules in roles', 
     'Grants permission to create feeds, events, announcement, circular, clubs, profile to this role',
      'Grants permission to View modules to this role', 
-     'Grants permission to Edit modules expect Feeds module (only creater of feeds are allowed to edit)', 
+     'Grants permission to Edit modules except Feeds module (only creater of feeds are allowed to edit)', 
      'Grants permission to Delete modules',
      'Needs Approval of content moderator to make any of this roles posts visible',
      'Grants permission to do content Moderation to this role'];
