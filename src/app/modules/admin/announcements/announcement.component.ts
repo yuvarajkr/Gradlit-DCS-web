@@ -47,7 +47,8 @@ export class AnnouncementComponent {
         this.isCircular = 'Circular';
         this._studentHttp.getAllCircualrs().subscribe({
           next: (allAnnouncementDetails)=>{
-            this.allAnnouncement = allAnnouncementDetails.data.rows;
+            this.allAnnouncement = allAnnouncementDetails?.data?.rows;
+            this.allAnnouncement = this.allAnnouncement?.sort((a, b) => -a.updated_at.localeCompare(b.updated_at));
           }
         });
       } else{
