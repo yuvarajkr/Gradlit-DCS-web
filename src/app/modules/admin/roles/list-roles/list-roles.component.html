@@ -42,13 +42,13 @@
                     <mat-icon>delete</mat-icon>
                 </button>  </mat-cell>
             </ng-container>
-            <!-- <ng-container matColumnDef="delete">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Delete </mat-header-cell>
-                <mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Delete" class="iconbutton"
-                        (click)="onClickDelete(element.id)" color="warn">
-                        <mat-icon>delete</mat-icon>
+            <ng-container matColumnDef="add_users">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Add Users </mat-header-cell>
+                <mat-cell *matCellDef="let element"> <button mat-icon-button class="iconbutton"
+                    (click)="onRoleClick(element)" color="normal">
+                        <mat-icon>supervisor_account</mat-icon>
                     </button> </mat-cell>
-            </ng-container> -->
+            </ng-container>
     
             <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
             <mat-row id="grad-lit-table-row" *matRowDef="let row; columns: displayedColumns;"></mat-row>

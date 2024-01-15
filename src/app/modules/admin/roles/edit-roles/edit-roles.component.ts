@@ -38,18 +38,20 @@ export class EditRolesComponent implements AfterViewInit {
     },
   ];
 
-  permissionHeader: string[] = ['Module', 'Create', 'View', 'Edit', 'Delete', 'Approve'];
+  permissionHeader: string[] = ['Module', 'Create', 'View', 'Edit', 'Delete', 'Approval','Moderation'];
   roleFormGroup:any;
   rolesData:any;
   selectedRoleId:any;
 
   allModule = ['Feed','Events','Announcement','Circular','Clubs','Profile'];
+  is_moderator: boolean;
   constructor(private _http:StudentHttpService,private _studentDataService:StudentDataService, private _router:Router, private _actvRoute:ActivatedRoute){
 
     this._http.getRolePermission(+this._actvRoute.snapshot.paramMap.get('id')).subscribe({
       next:(res:any)=>{
         this.selectedRoleId = +this._actvRoute.snapshot.paramMap.get('id');
         this.rolesData = res?.data[0].sub_modules;
+        this.is_moderator = res?.data[0].is_moderator || false;
         this.assignAllPermissions(this.rolesData);
         //this.permission = res?.data[0].sub_modules;
         this.roleFormGroup.get('role_name').setValue(res?.data[0]?.name || 'Admin Test');
@@ -74,6 +76,10 @@ export class EditRolesComponent implements AfterViewInit {
   
 
   public onPermissionChange(checked:boolean, selectedPermission:string ){
+    if(selectedPermission === 'Moderation_Feed') {
+      this.is_moderator = checked;
+      return;
+    }
     let permissionType = selectedPermission.split('_')[0];
     let permIndex = this.permissionHeader.findIndex((eachPerm) => eachPerm === permissionType);
     
@@ -136,6 +142,7 @@ export class EditRolesComponent implements AfterViewInit {
     let payload = this.roleFormGroup.getRawValue();
     payload.permissions = this.permission;
     payload.is_add_role = false;
+    payload.is_moderator = this.is_moderator;
     payload.role_id = this.selectedRoleId;
     this._http.updateRole(payload).subscribe({
       next: (res)=>{
@@ -208,7 +215,7 @@ export class EditRolesComponent implements AfterViewInit {
             this.setPermission(this.allModule.findIndex(ele => ele === moduleName),4);
           break;
           case  5:
-            (document.getElementById('Approve'+'_'+moduleName+'-input') as HTMLInputElement) .checked = true;
+            (document.getElementById('Approval'+'_'+moduleName+'-input') as HTMLInputElement) .checked = true;
             this.setPermission(this.allModule.findIndex(ele => ele === moduleName),5);
           break;
       }
@@ -222,9 +229,11 @@ export class EditRolesComponent implements AfterViewInit {
     if(id.includes('Edit_Feed')){
       return true;
      }
-    if (id.includes('Approve')){
-      return  id !== 'Approve_Feed';
-    }
+     if (id.includes('Approval') || id.includes('Moderation')){
+      if(id === 'Approval_Feed' || id === 'Moderation_Feed'){
+        return false;
+      } else { return true;}
+ }
    
 }
 

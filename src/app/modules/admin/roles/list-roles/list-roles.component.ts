@@ -51,7 +51,7 @@ export const products = [];
 export class ListRolesComponent implements OnInit {
 
   
-  displayedColumns = ['name', 'Actions'];
+  displayedColumns = ['name', 'Actions', 'add_users'];
   products: RoleDetails[] = products;
   dataSource = products;
 

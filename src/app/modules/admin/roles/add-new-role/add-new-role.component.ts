@@ -36,6 +36,7 @@ export class AddNewRoleComponent {
       "actions": ""
     },
   ];
+  is_moderator: boolean;
 
   constructor(private _studentDataService:StudentDataService,private _router:Router, private _http:StudentHttpService){
     this.roleFormGroup = this._studentDataService.getRolesForm();
@@ -43,11 +44,23 @@ export class AddNewRoleComponent {
 
   
 
-  permissionHeader: string[] = ['Module', 'Create', 'View', 'Edit', 'Delete', 'Approve'];
+  permissionHeader: string[] = ['Module', 'Create', 'View', 'Edit', 'Delete', 'Approval','Moderation'];
+  permissionHeaderToolTips: string[] = [
+    'Modules in roles', 
+    'Grants permission to create feeds, events, announcement, circular, clubs, profile to this role',
+     'Grants permission to View modules to this role', 
+     'Grants permission to Edit modules expect Feeds module (only creater of feeds are allowed to edit)', 
+     'Grants permission to Delete modules',
+     'Needs Approval of content moderator to make any of this roles posts visible',
+     'Grants permission to do content Moderation to this role'];
 
   allModule = ['Feed','Events','Announcement','Circular','Clubs','Profile'];
 
   public onPermissionChange(checked:boolean, selectedPermission:string ){
+    if(selectedPermission === 'Moderation_Feed') {
+      this.is_moderator = checked;
+      return;
+    }
     let permissionType = selectedPermission.split('_')[0];
     let permIndex = this.permissionHeader.findIndex((eachPerm) => eachPerm === permissionType);
     
@@ -110,6 +123,7 @@ export class AddNewRoleComponent {
     let payload = this.roleFormGroup.getRawValue();
     payload.permissions = this.permission;
     payload.is_add_role = true;
+    payload.is_moderator = this.is_moderator;
     this._http.createRole(payload).subscribe({
       next: (res)=>{
       console.log('created role');
@@ -118,15 +132,15 @@ export class AddNewRoleComponent {
     error: (err) => console.log('role creation failed..!')});
   }
   
-  public disableCheckBox(id:string){
+  public disableCheckBox(id:any){
     
       if(id.includes('Edit_Feed')){
         return true;
        }
-      if (id.includes('Approve')){
-        return  id !== 'Approve_Feed';
+      if (id.includes('Approval') || id.includes('Moderation')){
+           if(id === 'Approval_Feed' || id === 'Moderation_Feed'){
+             return false;
+           } else { return true;}
       }
-     
   }
-
 }

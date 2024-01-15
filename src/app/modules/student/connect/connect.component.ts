@@ -95,7 +95,7 @@ export class ConnectComponent implements OnInit
       this._studentUtils.getAllClub().subscribe({
         next: (allClubs) => {
           this.top4Clubs = allClubs.data.rows;
-          this.top4Clubs = this.top4Clubs.length > 4 ? this.top4Clubs.slice(0,4) : this.top4Clubs;
+          this.top4Clubs = this.top4Clubs?.length > 4 ? this.top4Clubs?.slice(0,4) : this.top4Clubs;
           this.ref.detectChanges();
         },
         error: (err) => {

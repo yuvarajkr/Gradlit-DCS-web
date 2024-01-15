@@ -38,13 +38,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 icon : 'mat_solid:layers',
                 link : '/student/announcement'
             },
-            {
-                id   : 'challenges',
-                title: 'Challenges',
-                type : 'basic',
-                icon : 'heroicons_outline:library',
-                link : '/student/test'
-            },
+            // {
+            //     id   : 'challenges',
+            //     title: 'Challenges',
+            //     type : 'basic',
+            //     icon : 'heroicons_outline:library',
+            //     link : '/student/test'
+            // },
             // {
             //     id   : 'clubAdmin',
             //     title: 'Club Admin',
@@ -78,13 +78,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
                     icon : 'heroicons_outline:document-text',
                     link : '/student/add-clubs/list-clubs'
                 },
-                {
-                    id   : 'contentModeration',
-                    title: 'Content Moderation',
-                    type : 'basic',
-                    icon : 'heroicons_outline:thumb-up',
-                    link : '/student/content-moderation/content-to-be-approved'
-                },
+                // {
+                //     id   : 'contentModeration',
+                //     title: 'Content Moderation',
+                //     type : 'basic',
+                //     icon : 'heroicons_outline:thumb-up',
+                //     link : '/student/content-moderation/content-to-be-approved'
+                // },
             ]
         },
         {
