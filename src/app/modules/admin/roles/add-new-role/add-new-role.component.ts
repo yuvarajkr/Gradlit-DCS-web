@@ -36,7 +36,8 @@ export class AddNewRoleComponent {
       "actions": ""
     },
   ];
-  is_moderator: boolean;
+  is_moderator = false;
+  is_need_approval = false;
 
   constructor(private _studentDataService:StudentDataService,private _router:Router, private _http:StudentHttpService){
     this.roleFormGroup = this._studentDataService.getRolesForm();
@@ -45,6 +46,7 @@ export class AddNewRoleComponent {
   
 
   permissionHeader: string[] = ['Module', 'Create', 'View', 'Edit', 'Delete', 'Approval','Moderation'];
+  actions: string[] = ['Moderation', 'Create', 'View', 'Edit', 'Delete', 'Approval',];
   permissionHeaderToolTips: string[] = [
     'Modules in roles', 
     'Grants permission to create feeds, events, announcement, circular, clubs, profile to this role',
@@ -58,15 +60,24 @@ export class AddNewRoleComponent {
 
   public onPermissionChange(checked:boolean, selectedPermission:string ){
     if(selectedPermission === 'Moderation_Feed') {
-      this.is_moderator = checked;
-      return;
+      this.is_moderator = true;
+      this.is_need_approval = !this.is_moderator;
+    }
+    if(selectedPermission === 'Approval_Feed') {
+      this.is_need_approval = true;
+      this.is_moderator  = !this.is_need_approval;
     }
     let permissionType = selectedPermission.split('_')[0];
-    let permIndex = this.permissionHeader.findIndex((eachPerm) => eachPerm === permissionType);
+    let permIndex = (this.actions.findIndex((eachPerm) => eachPerm === permissionType))+1;
     
       switch (selectedPermission.split('_').pop()) {
         case 'Feed':
           checked ? this.setPermission(0,permIndex) : this.removePermission(0,permIndex);
+          if(this.is_need_approval || this.is_moderator) {
+            setTimeout(() => {
+              this.toggleApproveAndModerator()
+            }, 100);
+          }
           break;
 
           case 'Events':
@@ -114,7 +125,7 @@ export class AddNewRoleComponent {
     if(this.permission[i].actions) {
       let tempArr = this.permission[i].actions.split(',');
       let tempIndex = tempArr.findIndex(eachele => eachele === String(permIndex));
-      tempArr.splice(tempIndex,1);
+      if(tempIndex >= 0)tempArr.splice(tempIndex,1);
       this.permission[i].actions =  tempArr.toString();
     } 
   }
@@ -143,4 +154,25 @@ export class AddNewRoleComponent {
            } else { return true;}
       }
   }
+
+  public toggleApproveAndModerator(){
+    if(this.is_need_approval || this.is_moderator){
+      if(this.is_need_approval) {
+         (document.getElementById('Approval_Feed-input') as HTMLInputElement) .checked = true; 
+        } else {
+          (document.getElementById('Approval_Feed-input') as HTMLInputElement) .checked = false;
+          this.removePermission(0,6);
+        }
+      if(this.is_moderator){
+        (document.getElementById('Moderation_Feed-input') as HTMLInputElement) .checked = true
+      } else {
+        (document.getElementById('Moderation_Feed-input') as HTMLInputElement) .checked = false;
+        this.removePermission(0,1);
+      }
+        
+    }
+    
+  }
 }
+
+

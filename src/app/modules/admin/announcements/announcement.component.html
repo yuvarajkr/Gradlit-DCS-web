@@ -17,7 +17,10 @@
                         <span class="font-semibold leading-none">{{(eachAnnouncement.heading | slice:0:45)}}</span>
                     </div>
                     <div>
-                       <span class="font-medium">Last updated at:</span> {{eachAnnouncement?.updated_at | date:'medium'}}
+                       <button mat-icon-button class="iconbutton"
+                     (click)="onDeleteCircular(eachAnnouncement?.Id)" color="warn">
+                    <mat-icon>delete</mat-icon>
+                </button> 
                     </div>
                 </div>
                 <div class="m-6 sm:mx-8">
@@ -26,12 +29,16 @@
                     </div>
                     
                 </div>
-                <div class="absolute bottom-0 w-full">
+                <div class="absolute bottom-0 w-full flex justify-between">
                     <div  style="
                     padding: 10px;" class="flex justify-start"> <mat-icon
                     class="icon-size-5 text-red-500"
                     [svgIcon]="'heroicons_solid:download'"></mat-icon>
-                    <a [href]="eachAnnouncement?.file_path" download="attachedFile.txt"><span class="ml-2">Download Attachment</span></a></div>
+                    <a [href]="eachAnnouncement?.file_path" download="attachedFile.txt"><span class="ml-2">Download Attachment</span></a>
+                </div>
+                    <div>
+                        <span class="font-medium">Last updated at:</span> {{eachAnnouncement?.updated_at | date:'medium'}}  
+                    </div>
                 </div>
             </fuse-card>
         </div>

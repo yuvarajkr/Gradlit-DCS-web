@@ -34,6 +34,10 @@ export class StudentHttpService {
     return this._gradLitHttp.post('/circular',payload);
   }
 
+  public  deleteCircular(id){
+    return this._gradLitHttp.adminPost(`/delete-circular/${id}`,{});
+  }
+
   public  createAnnouncement(payload:FormData){
     return this._gradLitHttp.post('/announcement',payload);
   }

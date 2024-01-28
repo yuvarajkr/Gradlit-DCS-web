@@ -12,7 +12,7 @@
             <div>
                 <div class="flex">
                     <div>
-                        <a class="text-primary-900 font-semibold" href='assets/docs/example-user-role-assign.xlsx' download>
+                        <a class="text-primary-900 font-semibold" href='assets/docs/gradlit_user_role_assign.xlsx' download>
                             Download a sample template 
                             <mat-icon style="color: #001E52 !important;padding-top: 16px;">download</mat-icon>
                          </a>
@@ -81,7 +81,7 @@
 
                     <ng-container matColumnDef="department">
                         <mat-header-cell *matHeaderCellDef mat-sort-header> Department</mat-header-cell>
-                        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                        <mat-cell *matCellDef="let element"> {{element?.department?.Id}} </mat-cell>
                     </ng-container>
 
                     <!-- Action Column -->

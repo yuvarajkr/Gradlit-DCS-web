@@ -65,5 +65,16 @@ export class AnnouncementComponent {
       this.isAnncExpanded = true;
       this.selectedAnnDetails= anncDetails;
   }
+
+  public onDeleteCircular(circularId){
+    this._studentHttp.deleteCircular(circularId).subscribe({
+      next: (res)=>{
+        this.onTypeSelection('Circular');
+      },
+      error:(err)=>{
+        console.log(err);
+      }
+    })
+  }
     
 }
