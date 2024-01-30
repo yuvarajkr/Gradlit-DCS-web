@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { StudentHttpService } from 'app/modules/student/student-utils-services/student-http.service';
 export const products = [];
 @Component({
@@ -17,7 +17,7 @@ export class AddUserToRolesComponent {
   displayedColumns = ['user', 'userID', 'department', 'delete'];
   products = products;
   dataSource = products;
-  constructor(private _route:ActivatedRoute, private _studentHttp:StudentHttpService){
+  constructor(private _route:ActivatedRoute, private _studentHttp:StudentHttpService, private _router:Router){
     this.selectedRoleName = this._route.snapshot.params.name;
     this.selectedRoleDes = this._route.snapshot.params.description;
     this.selectedRoleId = this._route.snapshot.params.id;
@@ -51,7 +51,7 @@ export class AddUserToRolesComponent {
      this._studentHttp.addUsersToRole(postFormData
      ).subscribe({
        next: (response)=>{
-           console.log(response);
+        this._router.navigate([`student/roles/list-roles`]);
        } ,
        error : (err)=> {
          console.log(err);

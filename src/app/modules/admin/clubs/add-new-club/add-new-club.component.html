@@ -8,14 +8,14 @@
             <div class="flex flex-col gt-xs:flex-row w-1/2">
                 <mat-form-field class="flex-auto gt-xs:pr-3 w-full">
                     <mat-label>Club name</mat-label>
-                    <input matInput [(ngModel)]="clubName" placeholder="club name">
+                    <input required matInput [(ngModel)]="clubName" placeholder="club name">
                 </mat-form-field>
             </div>
 
             <div class="flex flex-col gt-xs:flex-row ml-8 w-1/2">
                 <mat-form-field class="flex-auto gt-xs:pr-3 w-full">
                     <mat-label>Display Name</mat-label>
-                    <input matInput [(ngModel)]="clubDisplayName" placeholder="display name">
+                    <input required matInput [(ngModel)]="clubDisplayName" placeholder="display name">
                 </mat-form-field>
             </div>
         </div>
@@ -24,19 +24,19 @@
         <div class="flex">
             <mat-form-field class="flex-auto">
                 <mat-label>Brief Description</mat-label>
-                <textarea matInput [(ngModel)]="clubDesc" cdkTextareaAutosize [cdkAutosizeMinRows]="3"></textarea>
+                <textarea required matInput [(ngModel)]="clubDesc" cdkTextareaAutosize [cdkAutosizeMinRows]="3"></textarea>
             </mat-form-field>
         </div>
 
         <div class="flex flex-col gt-xs:flex-row">
             <mat-form-field class="flex-auto gt-xs:pr-3 w-full">
                 <mat-label>Email</mat-label>
-                <input matInput [(ngModel)]="email" placeholder="email">
+                <input required matInput [(ngModel)]="email" placeholder="email">
             </mat-form-field>
         </div>
         <div class="flex flex-col gt-xs:flex-row">
             <div class="font-medium">Select Admins</div>
-            <ng-select (add)="onAdminSelected($event)"  [loading]="false" (remove)="onUserRemoved($event)"  [hideSelected]="true" (search)="onUserSearched($event)" [multiple]="true">
+            <ng-select required (add)="onAdminSelected($event)"  [loading]="false" (remove)="onUserRemoved($event)"  [hideSelected]="true" (search)="onUserSearched($event)" [multiple]="true">
                 <ng-option *ngFor="let eachUser of searchedUserResult" [value]="eachUser.id">{{eachUser.name}}</ng-option>
              </ng-select>
         </div>
