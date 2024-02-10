@@ -21,6 +21,10 @@ export class AddUserToRolesComponent {
     this.selectedRoleName = this._route.snapshot.params.name;
     this.selectedRoleDes = this._route.snapshot.params.description;
     this.selectedRoleId = this._route.snapshot.params.id;
+    this.getAllUsersOfRole();
+  }
+
+  public getAllUsersOfRole(){
     this._studentHttp.getUsersOfRoleId(this.selectedRoleId).subscribe({
       next: (userListDetails:any)=>{
         this.existingUserDetails = userListDetails.data?.rows;
@@ -39,6 +43,17 @@ export class AddUserToRolesComponent {
 
    public onUpdateUsers(){
     this.updateUsers = true;
+   }
+
+   public onDeleteUser(userData){
+      this._studentHttp.deactivateUserByAdmin({user_id: userData.id, status:2}).subscribe({
+        next: (data)=>{
+
+        },
+        error: (err)=>{
+          console.log(err);
+        }
+      })
    }
 
    

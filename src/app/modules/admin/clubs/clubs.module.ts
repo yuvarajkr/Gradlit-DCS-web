@@ -16,6 +16,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { ClubNotificationComponent } from './club-notification/club-notification.component';
 
 const clubsRoutes: Route[] = [{
   path:'', 
@@ -43,7 +44,8 @@ const clubsRoutes: Route[] = [{
     ClubsComponent,
     ListAllClubsComponent,
     EditClubComponent,
-    AddNewClubComponent
+    AddNewClubComponent,
+    ClubNotificationComponent
   ],
   imports: [
     CommonModule,

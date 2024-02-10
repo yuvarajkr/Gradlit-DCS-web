@@ -94,10 +94,11 @@
                     </ng-container> -->
                     <ng-container matColumnDef="delete">
                         <mat-header-cell *matHeaderCellDef mat-sort-header> Delete </mat-header-cell>
-                        <mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Delete" class="iconbutton"
+                        <mat-cell *matCellDef="let element"> <button (click)="onDeleteUser(element)" mat-icon-button matTooltip="Click to Delete" class="iconbutton"
                                 color="warn">
                                 <mat-icon>delete</mat-icon>
-                            </button> </mat-cell>
+                            </button> 
+                        </mat-cell>
                     </ng-container>
             
                     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

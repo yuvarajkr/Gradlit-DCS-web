@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { StudentHttpService } from 'app/modules/student/student-utils-services/student-http.service';
+import { ClubNotificationComponent } from '../club-notification/club-notification.component';
 
 export const products = [];
 
@@ -23,7 +25,7 @@ export class ListAllClubsComponent {
   dataSource = products;
   allClubs = [];
 
-  constructor(private _http:StudentHttpService, private _router:Router){
+  constructor(private _http:StudentHttpService, private _router:Router,private _matDialog:MatDialog){
     this._http.getAllClubsByAdmin().subscribe({
       next: (clubData:any)=>{
        this.allClubs = clubData.data.rows;
@@ -39,7 +41,28 @@ export class ListAllClubsComponent {
     //this._router.navigate(['/student/profile']);
   }
 
-  onClickDelete(clubId:any){
+  public notifiyLoadedUserDelete(dataType:string): void
+  {
+    const dialogRef =  this._matDialog.open(ClubNotificationComponent, {
+      autoFocus: false,
+      maxHeight: '80vh',
+      width: '30vw',
+      data     : {
+         type: dataType
+      }
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    console.log(`Dialog result: ${result}`);
+  });
+  }
+
+  onClickDelete(element:any){
+    let clubId = element.Id;
+    if(element.user?.length > 0){
+      this.notifiyLoadedUserDelete('');
+      return;
+    }
       this._http.deleteClubByAdmin(clubId).subscribe({
         next:(res)=> {
             console.log(res);

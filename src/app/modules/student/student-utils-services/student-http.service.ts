@@ -140,7 +140,11 @@ export class StudentHttpService {
   }
 
   public deleteClubByAdmin(club_id:number){
-    return this._gradLitHttp.adminDelete(`/delete-role/${club_id}`);
+    return this._gradLitHttp.adminDelete(`/club/${club_id}`);
+  }
+
+  public deactivateUserByAdmin(payload:any){
+    return this._gradLitHttp.adminPost(`/user-status`,payload);
   }
 
   public adminLogin(payload){

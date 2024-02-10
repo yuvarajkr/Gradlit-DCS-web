@@ -15,6 +15,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { DeparmentsComponent } from './deparments/deparments.component';
+import { DepartmentNotificationComponent } from './department-notification/department-notification.component';
 
 const departmentsRoutes: Route[] = [{
   path:'', 
@@ -41,7 +42,8 @@ const departmentsRoutes: Route[] = [{
     AddNewDepartmentComponent,
     ListDepartmentComponent,
     EditDepartmentComponent,
-    DeparmentsComponent
+    DeparmentsComponent,
+    DepartmentNotificationComponent
   ],
   imports: [
     CommonModule,
