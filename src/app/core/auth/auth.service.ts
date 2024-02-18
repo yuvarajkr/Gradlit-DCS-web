@@ -103,18 +103,27 @@ export class AuthService
             switchMap((response: any) => {
                 //this.accessToken ='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoxLCJyb2xlX2lkIjoxLCJ1dWlkIjoiZTYwYzU3NDYtYjY0MS00ZTJhLThhNzUtYzg3ZmI0NTVhN2VjIiwiZXhwIjoxODIwNzQwNDUxfQ.4Z8ToI7NWXQnmFwCGDMdLIbV8Y9cIkmI88zv6UpxkLc';
                 
-                return this._studentHttp.adminLogin(credentials).pipe(
+                return this._studentHttp.login(credentials).pipe(
                     switchMap((realData: any) => {
         
                         // Store the access token in the local storage
-                        this.accessToken = realData?.data[0].token.access;
-                        this.adminToken = realData?.data[0].token.admin_token;
+                        // this.accessToken = realData?.data[0].token.access;
+                        this.accessToken = realData?.data?.token;
+                        // this.adminToken = realData?.data[0].token.admin_token;
+                        this.adminToken = realData?.data?.token;
         
                         // Set the authenticated flag to true
                         this._authenticated = true;
         
                         // Store the user on the user service
-                        this._userService.user = response.user;
+                        let userDetails = {
+                            id: realData?.data.profile_info?.id || response.user.id,
+                            name: realData?.data.profile_info?.name || response.user.name,
+                            email: realData?.data.profile_info?.email || response.user.email,
+                            avatar: realData?.data.profile_info?.photo || response.user.avatar
+                        }
+                        this._userService.user = userDetails;
+                        ;
                         //response.accessToken = realData?.data[0].token.admin_token;
         
                         // Return a new observable with the response

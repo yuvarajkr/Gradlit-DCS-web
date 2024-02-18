@@ -46,7 +46,7 @@ export class AddUserToRolesComponent {
    }
 
    public onDeleteUser(userData){
-      this._studentHttp.deactivateUserByAdmin({user_id: userData.id, status:2}).subscribe({
+      this._studentHttp.deactivateUserByAdmin({user_id: userData.id,role_id:this.selectedRoleId,status:2}).subscribe({
         next: (data)=>{
 
         },

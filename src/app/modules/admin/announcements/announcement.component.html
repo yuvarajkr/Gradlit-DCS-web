@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <div *ngIf="isCircular !== 'announcement'" class="flex-auto p-6 sm:p-10">
+    <div *ngIf="isCircular !== 'announcement'" class="flex-auto p-3">
         <div class="items-start w-full -m-4">
             <!-- Card #65 -->
             <fuse-card *ngFor="let eachAnnouncement of allAnnouncement" class="flex flex-col w-full filter-article m-4 min-h-52 max-h-96 relative">
@@ -36,8 +36,8 @@
                     [svgIcon]="'heroicons_solid:download'"></mat-icon>
                     <a [href]="eachAnnouncement?.file_path" download="attachedFile.txt"><span class="ml-2">Download Attachment</span></a>
                 </div>
-                    <div>
-                        <span class="font-medium">Last updated at:</span> {{eachAnnouncement?.updated_at | date:'medium'}}  
+                    <div class="p-4">
+                        <span class="font-medium">Created at:</span> {{eachAnnouncement?.created_at | date:'medium'}}  
                     </div>
                 </div>
             </fuse-card>

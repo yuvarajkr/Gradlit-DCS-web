@@ -136,7 +136,7 @@ export class StudentHttpService {
   }
 
   public getAllClubsByAdmin(){
-    return this._gradLitHttp.adminGet('/club');
+    return this._gradLitHttp.adminGet('/clubs');
   }
 
   public deleteClubByAdmin(club_id:number){
@@ -149,5 +149,8 @@ export class StudentHttpService {
 
   public adminLogin(payload){
     return this._gradLitHttp.post('/login',payload);
+   }
+   public login(payload){
+    return this._gradLitHttp.adminPost('/login',payload);
    }
 }
