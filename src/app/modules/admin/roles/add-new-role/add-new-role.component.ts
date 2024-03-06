@@ -35,12 +35,19 @@ export class AddNewRoleComponent {
       "mod_id": 7,
       "actions": ""
     },
+    {
+      "mod_id": 8,
+      "actions": ""
+    },
   ];
   is_moderator = false;
   is_need_approval = false;
 
   constructor(private _studentDataService:StudentDataService,private _router:Router, private _http:StudentHttpService){
     this.roleFormGroup = this._studentDataService.getRolesForm();
+    this._http.getActions().subscribe(data=>{
+
+    });
   }
 
   
@@ -56,7 +63,7 @@ export class AddNewRoleComponent {
      'Needs Approval of content moderator to make any of this roles posts visible',
      'Grants permission to do content Moderation to this role'];
 
-  allModule = ['Feed','Events','Announcement','Circular','Clubs','Profile'];
+  allModule = ['Feed','Events','Announcement','Circular','Clubs','Profile','Chat'];
 
   public onPermissionChange(checked:boolean, selectedPermission:string ){
     if(selectedPermission === 'Moderation_Feed') {
@@ -104,6 +111,9 @@ export class AddNewRoleComponent {
 
           case 'Profile':
             checked ? this.setPermission(5,permIndex) : this.removePermission(5,permIndex);
+
+          case 'Chat':
+            checked ? this.setPermission(6,permIndex) : this.removePermission(6,permIndex);
             
           
           break;

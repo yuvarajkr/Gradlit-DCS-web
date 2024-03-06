@@ -76,6 +76,10 @@ export class StudentHttpService {
       return this._gradLitHttp.adminPost('/add-role-permissions', payload);
   }
 
+  public getActions(){
+    return this._gradLitHttp.adminGet('/get-actions');
+  }
+
   public updateRole(payload: {
     role_name: string,
     is_add_role: boolean,

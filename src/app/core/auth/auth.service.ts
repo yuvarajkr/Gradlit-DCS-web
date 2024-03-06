@@ -4,6 +4,7 @@ import { catchError, Observable, of, switchMap, throwError } from 'rxjs';
 import { AuthUtils } from 'app/core/auth/auth.utils';
 import { UserService } from 'app/core/user/user.service';
 import { StudentHttpService } from 'app/modules/student/student-utils-services/student-http.service';
+import { StudentDataService } from 'app/modules/student/student-utils-services/student-data.service';
 
 @Injectable()
 export class AuthService
@@ -16,7 +17,8 @@ export class AuthService
     constructor(
         private _httpClient: HttpClient,
         private _userService: UserService,
-        private _studentHttp : StudentHttpService
+        private _studentHttp : StudentHttpService,
+        private _studentDataService:StudentDataService
     )
     {
         this._userService.user = {
@@ -123,11 +125,12 @@ export class AuthService
                             avatar: realData?.data.profile_info?.photo || response.user.avatar
                         }
                         this._userService.user = userDetails;
-                        ;
+                        this._studentDataService.userPermissions = realData.data.permissions[0].sub_modules;
                         //response.accessToken = realData?.data[0].token.admin_token;
         
                         // Return a new observable with the response
                         return of({...response,...realData});
+
                     })
                 );
             })

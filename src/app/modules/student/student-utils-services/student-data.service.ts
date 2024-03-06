@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 })
 export class StudentDataService {
 
+  public userPermissions:any[];
   public onPostsChange = new Subject<{head:string,description:string}[]>();
   constructor(private _fb:FormBuilder) { }
 

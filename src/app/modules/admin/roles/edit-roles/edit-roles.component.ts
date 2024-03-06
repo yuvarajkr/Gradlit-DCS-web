@@ -36,6 +36,10 @@ export class EditRolesComponent implements AfterViewInit {
       "mod_id": 7,
       "actions": ""
     },
+    {
+      "mod_id": 8,
+      "actions": ""
+    },
   ];
   is_moderator = false;
   is_need_approval = false;
@@ -54,7 +58,7 @@ export class EditRolesComponent implements AfterViewInit {
   rolesData:any;
   selectedRoleId:any;
 
-  allModule = ['Feed','Events','Announcement','Circular','Clubs','Profile'];
+  allModule = ['Feed','Events','Announcement','Circular','Clubs','Profile','Chat'];
   constructor(private _http:StudentHttpService,private _studentDataService:StudentDataService, private _router:Router, private _actvRoute:ActivatedRoute){
 
     this._http.getRolePermission(+this._actvRoute.snapshot.paramMap.get('id')).subscribe({
@@ -132,7 +136,8 @@ export class EditRolesComponent implements AfterViewInit {
         case 'Profile':
           checked ? this.setPermission(5,permIndex) : this.removePermission(5,permIndex);
           
-        
+        case 'Chat':
+            checked ? this.setPermission(6,permIndex) : this.removePermission(6,permIndex);
         break;
     }
   }
