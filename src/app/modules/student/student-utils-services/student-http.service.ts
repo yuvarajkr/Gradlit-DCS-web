@@ -31,7 +31,7 @@ export class StudentHttpService {
   }
 
   public  createCirculars(payload:FormData){
-    return this._gradLitHttp.post('/circular',payload);
+    return this._gradLitHttp.adminPost('/circular',payload);
   }
 
   public  deleteCircular(id){

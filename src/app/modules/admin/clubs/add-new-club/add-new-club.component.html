@@ -8,14 +8,14 @@
             <div class="flex flex-col gt-xs:flex-row w-1/2">
                 <mat-form-field class="flex-auto gt-xs:pr-3 w-full">
                     <mat-label>Club name</mat-label>
-                    <input required matInput [(ngModel)]="clubName" placeholder="club name">
+                    <input required matInput [maxlength]="20" [(ngModel)]="clubName" placeholder="club name">
                 </mat-form-field>
             </div>
 
             <div class="flex flex-col gt-xs:flex-row ml-8 w-1/2">
                 <mat-form-field class="flex-auto gt-xs:pr-3 w-full">
                     <mat-label>Display Name</mat-label>
-                    <input required matInput [(ngModel)]="clubDisplayName" placeholder="display name">
+                    <input required matInput [maxlength]="20" [(ngModel)]="clubDisplayName" placeholder="display name">
                 </mat-form-field>
             </div>
         </div>
@@ -24,7 +24,7 @@
         <div class="flex">
             <mat-form-field class="flex-auto">
                 <mat-label>Brief Description</mat-label>
-                <textarea required matInput [(ngModel)]="clubDesc" cdkTextareaAutosize [cdkAutosizeMinRows]="3"></textarea>
+                <textarea required matInput  [maxlength]="500" [(ngModel)]="clubDesc" cdkTextareaAutosize [cdkAutosizeMinRows]="3"></textarea>
             </mat-form-field>
         </div>
 

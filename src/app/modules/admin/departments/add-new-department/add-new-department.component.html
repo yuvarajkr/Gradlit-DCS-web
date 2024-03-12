@@ -6,19 +6,19 @@
         <div class="flex flex-col gt-xs:flex-row">
             <mat-form-field class="flex-auto gt-xs:pr-3 w-full">
                 <mat-label class="font-semibold">Department name</mat-label>
-                <input matInput [(ngModel)]="departmentName" placeholder="name">
+                <input matInput required [(ngModel)]="departmentName" placeholder="name">
             </mat-form-field>
         </div>
         <div class="flex">
             <mat-form-field class="flex-auto">
                 <mat-label class="font-semibold">Brief Description</mat-label>
-                <textarea matInput [(ngModel)]="departmentDesc" cdkTextareaAutosize [cdkAutosizeMinRows]="3"></textarea>
+                <textarea required matInput [(ngModel)]="departmentDesc" cdkTextareaAutosize [cdkAutosizeMinRows]="3"></textarea>
             </mat-form-field>
         </div>
     
     
         <div>
-            <input id="image-file-input" class="absolute h-0 w-0 opacity-0 invisible pointer-events-none" type="file"
+            <input required id="image-file-input" class="absolute h-0 w-0 opacity-0 invisible pointer-events-none" type="file"
                 [multiple]="false" (change)="onFileUpload($event)" [accept]="'image/jpeg, image/png'">
             <label class="flex items-center justify-center w-24 h-10 rounded-full cursor-pointer bg-gray-300"
                 for="image-file-input" matRipple>

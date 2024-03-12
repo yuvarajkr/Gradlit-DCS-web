@@ -5,6 +5,7 @@
                     class="flex-auto gt-xs:pr-3">
                     <mat-label>{{data.type}} Name</mat-label>
                     <input 
+                    required
                     matInput
                     formControlName="heading" 
                     placeholder="This is a placeholder">
@@ -15,11 +16,12 @@
                     [ngClass]="formFieldHelpers"
                     class="flex-auto">
                     <mat-label>{{data.type}} Description</mat-label>
-                    <input
+                    <textarea
+                    required
                         matInput
                         formControlName="description" 
                         cdkTextareaAutosize
-                       >
+                       ></textarea>
                 </mat-form-field>
             </div>
 
@@ -37,6 +39,7 @@
             </div> -->
             <div>
                 <input
+                required
                     id="document-file-input"
                     class="absolute h-0 w-0 opacity-0 invisible pointer-events-none"
                     type="file"
