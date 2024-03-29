@@ -9,6 +9,7 @@ export class StudentDataService {
 
   public userPermissions:any[];
   public onPostsChange = new Subject<{head:string,description:string}[]>();
+  public selectedRoleData:any;
   constructor(private _fb:FormBuilder) { }
 
   public getStudentPostForm(){

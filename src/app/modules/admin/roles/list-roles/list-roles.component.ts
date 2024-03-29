@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { StudentHttpService } from 'app/modules/student/student-utils-services/student-http.service';
 import { RoleNotificationComponent } from '../role-notification/role-notification.component';
+import { StudentDataService } from 'app/modules/student/student-utils-services/student-data.service';
 
 export interface RoleDetails {
   name: string;
@@ -55,7 +56,7 @@ export class ListRolesComponent implements OnInit {
   products: RoleDetails[] = products;
   dataSource = products;
 
-  constructor(private _http:StudentHttpService,private _router:Router,private _matDialog:MatDialog){
+  constructor(private _http:StudentHttpService,private _router:Router,private _matDialog:MatDialog,private _studentDataService:StudentDataService){
     
   }
 
@@ -79,6 +80,7 @@ export class ListRolesComponent implements OnInit {
   }
 
   onClickEdit(roleDetails:any){
+    this._studentDataService.selectedRoleData = roleDetails;
     this._router.navigate([`/student/roles/edit-roles/${roleDetails.id}`]);
     //this._router.navigate(['/student/profile']);
   }

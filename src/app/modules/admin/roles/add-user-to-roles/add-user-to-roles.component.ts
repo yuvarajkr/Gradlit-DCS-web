@@ -14,7 +14,7 @@ export class AddUserToRolesComponent {
   existingUserDetails:any;
   public usersDetailFile: File;
   updateUsers = false;
-  displayedColumns = ['user', 'userID', 'department', 'delete'];
+  displayedColumns = ['user', 'userID','email', 'department', 'delete'];
   products = products;
   dataSource = products;
   constructor(private _route:ActivatedRoute, private _studentHttp:StudentHttpService, private _router:Router){
@@ -46,9 +46,9 @@ export class AddUserToRolesComponent {
    }
 
    public onDeleteUser(userData){
-      this._studentHttp.deactivateUserByAdmin({user_id: userData.id,role_id:this.selectedRoleId,status:2}).subscribe({
+      this._studentHttp.deactivateUserByAdmin({user_id: userData.id,status:2}).subscribe({
         next: (data)=>{
-
+          this.getAllUsersOfRole();
         },
         error: (err)=>{
           console.log(err);

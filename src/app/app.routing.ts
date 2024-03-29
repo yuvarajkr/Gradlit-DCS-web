@@ -50,6 +50,7 @@ export const appRoutes: Route[] = [
             { path: 'test', loadChildren: () => import('app/modules/student/test/test.module').then(m => m.TestModule)},
             { path: 'support', loadChildren: () => import('app/modules/student/support/support.module').then(m => m.SupportModule)},
             { path: 'privacy-policy', loadChildren: () => import('app/modules/student/privacy-policy/privacy-policy.module').then(m => m.PrivacyPolicyModule)},
+            { path: 'terms-and-condition', loadChildren: () => import('app/modules/student/terms-and-condition/terms-and-condition.module').then(m => m.TermsAndConditionModule)},
             { path: 'profile', loadChildren: () => import('app/modules/student/profile/profile.module').then(m => m.ProfileModule)},
             { path: 'notifications', loadChildren: () => import('app/modules/student/notifications/notifications.module').then(m => m.NotificationsModule)},
             { path: 'settings', loadChildren: () => import('app/modules/student/settings/settings.module').then(m => m.SettingsModule)},

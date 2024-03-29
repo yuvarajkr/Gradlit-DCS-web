@@ -30,6 +30,7 @@ export class UserService
     {
         // Store the value
         this._user.next(value);
+        //localStorage.setItem('user',JSON.stringify(value))
     }
 
     get user$(): Observable<User>

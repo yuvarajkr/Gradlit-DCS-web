@@ -1,4 +1,4 @@
-import { AfterViewInit, Component } from '@angular/core';
+import { AfterViewInit, Component, Input } from '@angular/core';
 import { ActivatedRoute, ActivatedRouteSnapshot, Router } from '@angular/router';
 import { StudentDataService } from 'app/modules/student/student-utils-services/student-data.service';
 import { StudentHttpService } from 'app/modules/student/student-utils-services/student-http.service';
@@ -68,8 +68,8 @@ export class EditRolesComponent implements AfterViewInit {
         this.is_moderator = res?.data[0].is_moderator || false;
         this.assignAllPermissions(this.rolesData);
         //this.permission = res?.data[0].sub_modules;
-        this.roleFormGroup.get('role_name').setValue(res?.data[0]?.name || 'Admin Test');
-        this.roleFormGroup.get('description').setValue(res?.data[0]?.description || 'Admin Description');
+        this.roleFormGroup.get('role_name').setValue(this._studentDataService.selectedRoleData?.Name || 'Role Name Fetch Failed');
+        this.roleFormGroup.get('description').setValue(this._studentDataService.selectedRoleData?.Description || 'Role Description Fetch Failed');
         
         
       }, 

@@ -119,12 +119,14 @@ export class AuthService
         
                         // Store the user on the user service
                         let userDetails = {
-                            id: realData?.data.profile_info?.id || response.user.id,
-                            name: realData?.data.profile_info?.name || response.user.name,
-                            email: realData?.data.profile_info?.email || response.user.email,
-                            avatar: realData?.data.profile_info?.photo || response.user.avatar
+                            id: realData?.data?.id || response.user.id,
+                            name: realData?.data?.name || response.user.name,
+                            email: realData?.data?.email || response.user.email,
+                            avatar: realData?.data?.photo || response.user.avatar
                         }
                         this._userService.user = userDetails;
+                        localStorage.setItem('user',JSON.stringify(userDetails));
+                        localStorage.setItem('userPermission',JSON.stringify(realData?.data?.permissions[0]?.sub_modules))
                         this._studentDataService.userPermissions = realData.data.permissions[0].sub_modules;
                         //response.accessToken = realData?.data[0].token.admin_token;
         
@@ -199,6 +201,7 @@ export class AuthService
     {
         // Remove the access token from the local storage
         localStorage.removeItem('accessToken');
+        localStorage.clear();
 
         // Set the authenticated flag to false
         this._authenticated = false;

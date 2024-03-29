@@ -51,6 +51,8 @@ export class AuthUnlockSessionComponent implements OnInit
         this._userService.user$.subscribe((user) => {
             this.name = user.name;
             this._email = user.email;
+            this.name = user ? user.name : JSON.parse(localStorage.getItem('user')).name;
+            this._email = user ? user.email : JSON.parse(localStorage.getItem('user')).email;
         });
 
         // Create the form

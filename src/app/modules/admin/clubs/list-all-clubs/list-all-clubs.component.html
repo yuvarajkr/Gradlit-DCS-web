@@ -21,8 +21,8 @@
             </ng-container>
 
             <ng-container matColumnDef="AdminID">
-                <mat-header-cell *matHeaderCellDef mat-sort-header> Admin ID </mat-header-cell>
-                <mat-cell *matCellDef="let element"> {{element.user ? element.user[0].email : 'NA'}} </mat-cell>
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Admin </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.user ? element.user[0].name : 'NA'}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="Followers">

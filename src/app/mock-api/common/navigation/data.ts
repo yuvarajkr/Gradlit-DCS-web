@@ -1,29 +1,23 @@
 /* tslint:disable:max-line-length */
 import { FuseNavigationItem } from '@fuse/components/navigation';
+let permissonArray = [];
 
 export const defaultNavigation: FuseNavigationItem[] = [
 
             {
                 id   : 'campusConnect',
-                title: 'Home',
+                title: 'Dashboard',
                 type : 'basic',
                 icon : 'heroicons_outline:home',
                 link : '/student/connect'
             },
-            {
-                id   : 'events',
-                title: 'Events',
-                type : 'basic',
-                icon : 'heroicons_outline:cube',
-                link : '/student/events'
-            },
-            {
-                id   : 'clubs',
-                title: 'Clubs',
-                type : 'basic',
-                icon : 'heroicons_outline:library',
-                link : '/student/clubs'
-            },
+            // {
+            //     id   : 'clubs',
+            //     title: 'Clubs',
+            //     type : 'basic',
+            //     icon : 'heroicons_outline:library',
+            //     link : '/student/clubs'
+            // },
             // {
             //     id   : 'assignment',
             //     title: 'Groups',
@@ -31,13 +25,13 @@ export const defaultNavigation: FuseNavigationItem[] = [
             //     icon : 'mat_solid:layers',
             //     link : '/student/groups'
             // },
-            {
-                id   : 'circulars',
-                title: 'Circulars',
-                type : 'basic',
-                icon : 'mat_solid:layers',
-                link : '/student/announcement'
-            },
+            // {
+            //     id   : 'circulars',
+            //     title: 'Circulars',
+            //     type : 'basic',
+            //     icon : 'mat_solid:layers',
+            //     link : '/student/announcement'
+            // },
             // {
             //     id   : 'challenges',
             //     title: 'Challenges',
@@ -56,28 +50,43 @@ export const defaultNavigation: FuseNavigationItem[] = [
             id      : 'adminPermissions',
             title   : 'Admin Permissions',
             type    : 'group',
-            children: [
-                {
-                    id   : 'departments',
-                    title: 'Departments',
-                    type : 'basic',
-                    icon : 'heroicons_outline:question-mark-circle',
-                    link : '/student/departments/list-departments'
-                },
-                {
-                    id   : 'roles',
-                    title: 'Roles',
-                    type : 'basic',
-                    icon : 'heroicons_outline:cog',
-                    link : '/student/roles/list-roles'
-                },
-                {
-                    id   : 'addClubs',
-                    title: 'Add Clubs',
-                    type : 'basic',
-                    icon : 'heroicons_outline:document-text',
-                    link : '/student/add-clubs/list-clubs'
-                },
+            children: getPermissionArray(),
+            // children: [
+            //     {
+            //         id   : 'departments',
+            //         title: 'Departments',
+            //         type : 'basic',
+            //         icon : 'heroicons_outline:question-mark-circle',
+            //         link : '/student/departments/list-departments'
+            //     },
+            //     {
+            //         id   : 'roles',
+            //         title: 'Roles',
+            //         type : 'basic',
+            //         icon : 'heroicons_outline:cog',
+            //         link : '/student/roles/list-roles'
+            //     },
+            //     {
+            //         id   : 'addClubs',
+            //         title: 'Add Clubs',
+            //         type : 'basic',
+            //         icon : 'heroicons_outline:document-text',
+            //         link : '/student/add-clubs/list-clubs'
+            //     },
+            //     {
+            //         id   : 'circulars',
+            //         title: 'Circulars',
+            //         type : 'basic',
+            //         icon : 'mat_solid:layers',
+            //         link : '/student/announcement'
+            //     },
+            //     {
+            //         id   : 'events',
+            //         title: 'Events',
+            //         type : 'basic',
+            //         icon : 'heroicons_outline:cube',
+            //         link : '/student/events'
+            //     },
                 // {
                 //     id   : 'contentModeration',
                 //     title: 'Content Moderation',
@@ -85,34 +94,40 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 //     icon : 'heroicons_outline:thumb-up',
                 //     link : '/student/content-moderation/content-to-be-approved'
                 // },
-            ]
         },
         {
             id      : 'Preference',
             title   : 'Preference',
             type    : 'group',
             children: [
-                {
-                    id   : 'support',
-                    title: 'Support',
-                    type : 'basic',
-                    icon : 'heroicons_outline:question-mark-circle',
-                    link : '/student/support'
-                },
-                {
-                    id   : 'settings',
-                    title: 'Settings',
-                    type : 'basic',
-                    icon : 'heroicons_outline:cog',
-                    link : '/student/settings'
-                },
+                // {
+                //     id   : 'support',
+                //     title: 'Support',
+                //     type : 'basic',
+                //     icon : 'heroicons_outline:question-mark-circle',
+                //     link : '/student/support'
+                // },
                 {
                     id   : 'privacy-policy',
                     title: 'Privacy Policy',
                     type : 'basic',
                     icon : 'heroicons_outline:document-text',
                     link : '/student/privacy-policy'
-                }
+                },
+                {
+                    id   : 'terms',
+                    title: 'Terms and conditions',
+                    type : 'basic',
+                    icon : 'heroicons_outline:document-text',
+                    link : '/student/terms-and-condition'
+                },
+                {
+                    id   : 'sign-out',
+                    title: 'Sign-out',
+                    type : 'basic',
+                    icon : 'heroicons_outline:logout',
+                    link : '/sign-out'
+                },
             ]
         } 
 
@@ -144,3 +159,59 @@ export const horizontalNavigation: FuseNavigationItem[] = [
         link : '/example'
     }
 ];
+
+function getPermissionArray(){
+    let allPermissionArray = JSON.parse(localStorage.getItem('userPermission'));
+    allPermissionArray?.forEach(element => {
+        switch (element.name) {
+                case 'Events':
+                    permissonArray.push({
+                        id   : 'events',
+                        title: 'Events',
+                        type : 'basic',
+                        icon : 'heroicons_outline:cube',
+                        link : '/student/events'
+                    },)
+                break;
+                case 'Circular':
+                    permissonArray.push({
+                        id   : 'circulars',
+                        title: 'Circulars',
+                        type : 'basic',
+                        icon : 'mat_solid:layers',
+                        link : '/student/announcement'
+                    },)
+                break;
+                case 'Clubs':
+                    permissonArray.push({
+                        id   : 'addClubs',
+                        title: 'Add Clubs',
+                        type : 'basic',
+                        icon : 'heroicons_outline:document-text',
+                        link : '/student/add-clubs/list-clubs'
+                    },)
+                break;
+                case 'Profile':
+                    permissonArray.push({
+                        id   : 'roles',
+                        title: 'Roles',
+                        type : 'basic',
+                        icon : 'heroicons_outline:cog',
+                        link : '/student/roles/list-roles'
+                    },
+                    );
+                    permissonArray.push({
+                        id   : 'departments',
+                        title: 'Departments',
+                        type : 'basic',
+                        icon : 'heroicons_outline:question-mark-circle',
+                        link : '/student/departments/list-departments'
+                    })
+                break;
+        
+            default:
+                break;
+        }
+    });
+    return permissonArray;
+}

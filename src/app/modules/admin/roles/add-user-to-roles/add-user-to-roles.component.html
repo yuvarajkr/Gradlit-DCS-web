@@ -79,6 +79,11 @@
                         <mat-cell *matCellDef="let element"> {{element.usn}} </mat-cell>
                     </ng-container>
 
+                    <ng-container matColumnDef="email">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+                    </ng-container>
+
                     <ng-container matColumnDef="department">
                         <mat-header-cell *matHeaderCellDef mat-sort-header> Department</mat-header-cell>
                         <mat-cell *matCellDef="let element"> {{element?.department?.Name}} </mat-cell>
