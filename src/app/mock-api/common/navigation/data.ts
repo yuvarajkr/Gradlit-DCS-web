@@ -163,7 +163,8 @@ export const horizontalNavigation: FuseNavigationItem[] = [
 function getPermissionArray(){
     let allPermissionArray = JSON.parse(localStorage.getItem('userPermission'));
     allPermissionArray?.forEach(element => {
-        switch (element.name) {
+        if(element.allowed_actions?.find(each=> each.action_id === 2 && each.assigned)){
+            switch (element.name) {
                 case 'Events':
                     permissonArray.push({
                         id   : 'events',
@@ -211,6 +212,7 @@ function getPermissionArray(){
         
             default:
                 break;
+        }
         }
     });
     return permissonArray;
