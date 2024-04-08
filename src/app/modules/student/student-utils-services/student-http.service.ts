@@ -139,6 +139,10 @@ export class StudentHttpService {
     return this._gradLitHttp.adminPut('/club', payload);
   }
 
+  public updateStudentByAdmin(payload){
+    return this._gradLitHttp.adminPut('/user', payload);
+  }
+
   public getAllClubsByAdmin(){
     return this._gradLitHttp.adminGet('/clubs');
   }
@@ -149,6 +153,14 @@ export class StudentHttpService {
 
   public deactivateUserByAdmin(payload:any){
     return this._gradLitHttp.adminPost(`/user-status`,payload);
+  }
+
+  public sendWelcomeMailByAdmin(payload:any){
+    return this._gradLitHttp.adminPost(`/send-email`,payload);
+  }
+
+  public getDashBoardDataByAdmin(){
+    return this._gradLitHttp.adminGet(`/dashboard`);
   }
 
   public adminLogin(payload){

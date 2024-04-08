@@ -20,7 +20,7 @@ export interface RoleDetails {
   styleUrls: ['./list-all-clubs.component.scss']
 })
 export class ListAllClubsComponent {
-  displayedColumns = ['ClubName', 'ProfileName', 'AdminID', 'Followers', 'Actions'];
+  displayedColumns = ['ProfileImage','ClubName', 'AdminID', 'emailId', 'Followers', 'Actions'];
   products: RoleDetails[] = products;
   dataSource = products;
   allClubs = [];
@@ -59,10 +59,10 @@ export class ListAllClubsComponent {
 
   onClickDelete(element:any){
     let clubId = element.Id;
-    if(element.user?.length > 0){
-      this.notifiyLoadedUserDelete('');
-      return;
-    }
+    // if(element.user?.length > 0){
+    //   this.notifiyLoadedUserDelete('');
+    //   return;
+    // }
       this._http.deleteClubByAdmin(clubId).subscribe({
         next:(res)=> {
             console.log(res);
@@ -71,7 +71,7 @@ export class ListAllClubsComponent {
                 this.allClubs = clubData.data.rows;
               },
               error: (err)=>{
-                console.log('fetching roles failed...');
+                console.log('fetching clubs failed...');
               }
             })
             

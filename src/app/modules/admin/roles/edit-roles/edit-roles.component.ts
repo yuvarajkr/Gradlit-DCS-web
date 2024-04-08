@@ -58,7 +58,7 @@ export class EditRolesComponent implements AfterViewInit {
   rolesData:any;
   selectedRoleId:any;
 
-  allModule = ['Feed','Events','Announcement','Circular','Clubs','Profile','Chat'];
+  allModule = ['Feed','Events','Circular','Clubs','Profile','Chat'];
   constructor(private _http:StudentHttpService,private _studentDataService:StudentDataService, private _router:Router, private _actvRoute:ActivatedRoute){
 
     this._http.getRolePermission(+this._actvRoute.snapshot.paramMap.get('id')).subscribe({
@@ -92,11 +92,11 @@ export class EditRolesComponent implements AfterViewInit {
   public onPermissionChange(checked:boolean, selectedPermission:string ){
     if(selectedPermission === 'Moderation_Feed') {
       this.is_moderator = true;
-      this.is_need_approval = !this.is_moderator;
+      //this.is_need_approval = !this.is_moderator;
     }
     if(selectedPermission === 'Approval_Feed') {
       this.is_need_approval = true;
-      this.is_moderator  = !this.is_need_approval;
+      //this.is_moderator  = !this.is_need_approval;
     }
     let permissionType = selectedPermission.split('_')[0];
     let permIndex = this.actions.findIndex((eachPerm) => eachPerm === permissionType)+1;

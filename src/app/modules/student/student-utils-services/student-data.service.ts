@@ -6,7 +6,7 @@ import { Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class StudentDataService {
-
+  public selectedUserData:any;
   public userPermissions:any[];
   public onPostsChange = new Subject<{head:string,description:string}[]>();
   public selectedRoleData:any;

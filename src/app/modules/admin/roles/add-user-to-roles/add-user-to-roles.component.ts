@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { StudentDataService } from 'app/modules/student/student-utils-services/student-data.service';
 import { StudentHttpService } from 'app/modules/student/student-utils-services/student-http.service';
 export const products = [];
 @Component({
@@ -14,10 +15,12 @@ export class AddUserToRolesComponent {
   existingUserDetails:any;
   public usersDetailFile: File;
   updateUsers = false;
-  displayedColumns = ['user', 'userID','email', 'department', 'delete'];
+  displayedColumns = ['user', 'userID','email','department','emailStatus','Actions'];
   products = products;
   dataSource = products;
-  constructor(private _route:ActivatedRoute, private _studentHttp:StudentHttpService, private _router:Router){
+  allUsersSelected: boolean;
+  selectedUserByAdmin = new Set();
+  constructor(private _route:ActivatedRoute, private _studentHttp:StudentHttpService, private _studentDataService:StudentDataService, private _router:Router){
     this.selectedRoleName = this._route.snapshot.params.name;
     this.selectedRoleDes = this._route.snapshot.params.description;
     this.selectedRoleId = this._route.snapshot.params.id;
@@ -28,7 +31,7 @@ export class AddUserToRolesComponent {
     this._studentHttp.getUsersOfRoleId(this.selectedRoleId).subscribe({
       next: (userListDetails:any)=>{
         this.existingUserDetails = userListDetails.data?.rows;
-        
+        //this.selectedUserByAdmin = structuredClone(this.existingUserDetails);
       },
       error: (err)=>{
         console.log(err);
@@ -45,7 +48,7 @@ export class AddUserToRolesComponent {
     this.updateUsers = true;
    }
 
-   public onDeleteUser(userData){
+   public onClickDelete(userData){
       this._studentHttp.deactivateUserByAdmin({user_id: userData.id,status:2}).subscribe({
         next: (data)=>{
           this.getAllUsersOfRole();
@@ -54,6 +57,42 @@ export class AddUserToRolesComponent {
           console.log(err);
         }
       })
+   }
+
+   public onSelectAllUser(checkedData){
+    this.allUsersSelected = checkedData.checked;
+    if(checkedData.checked){
+      this.existingUserDetails.forEach(e=> this.selectedUserByAdmin?.add(e.id))
+    }else{
+      this.selectedUserByAdmin = new Set();
+    }
+   }
+
+   public onUserSelect(checkedData,userData){
+    if(checkedData.checked){
+      this.selectedUserByAdmin.add(userData.id);
+    }else{
+      this.selectedUserByAdmin.delete(userData.id);
+    }
+   }
+
+   public onSendEmail(){
+    this._studentHttp.sendWelcomeMailByAdmin({users_list:Array.from(this.selectedUserByAdmin).join(',')}
+    ).subscribe({
+      next: (response)=>{
+          console.log(response);
+          this._router.navigate([`/student/roles/list-roles`]);
+      } ,
+      error : (err)=> {
+        console.log(err);
+        this._router.navigate([`/student/roles/list-roles`]);
+      } 
+    });
+   }
+
+   public onClickEdit(data){
+    this._studentDataService.selectedUserData = data;
+    this._router.navigate([`/student/roles/edit-user/${data.id}/${data.name}`]);
    }
 
    

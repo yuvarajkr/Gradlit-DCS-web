@@ -1,5 +1,5 @@
 <div class="m-4 w-full min-h-180 relative">
-    <div class="w-4/5">
+    <div class="w-full">
         <div>
             <h1 class="font-semibold text-xl mb-4">Edit Club</h1>
         </div>
@@ -36,7 +36,7 @@
         </div>
         <div class="flex flex-col gt-xs:flex-row">
             <div class="font-medium">Select Admins</div>
-            <ng-select (add)="onAdminSelected($event)" [bindValue]="1"  [loading]="false" (remove)="onUserRemoved($event)"  [hideSelected]="true" (search)="onUserSearched($event)" [multiple]="true">
+            <ng-select (add)="onAdminSelected($event)"  (clear)="resetCalculations()"  [loading]="false" (remove)="onUserRemoved($event)"  (search)="onUserSearched($event)" [multiple]="true">
                 <ng-option *ngFor="let eachUser of searchedUserResult" [value]="eachUser.id">{{eachUser.name}}</ng-option>
              </ng-select>
         </div>

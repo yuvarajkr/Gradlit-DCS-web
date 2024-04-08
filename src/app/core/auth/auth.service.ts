@@ -126,7 +126,8 @@ export class AuthService
                         }
                         this._userService.user = userDetails;
                         localStorage.setItem('user',JSON.stringify(userDetails));
-                        localStorage.setItem('userPermission',JSON.stringify(realData?.data?.permissions[0]?.sub_modules))
+                        localStorage.setItem('userPermission',JSON.stringify(realData?.data?.permissions[0]?.sub_modules));
+                        localStorage.setItem('reloaded','no');
                         this._studentDataService.userPermissions = realData.data.permissions[0].sub_modules;
                         //response.accessToken = realData?.data[0].token.admin_token;
         

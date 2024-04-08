@@ -46,7 +46,7 @@
                 </div>
             </div>
             
-            <div class="min-w-256 absolute bottom-1">
+            <div class="min-w-256 w-11/12 absolute bottom-1">
                 <div class="my-10 flex justify-end mt-2">
                     <button mat-raised-button style="background-color: #001E52"  color="primary" (click)="onAddUsers()">Add Users</button>
                 </div>
@@ -60,24 +60,43 @@
                 <div class="flex">
                     <h1 class="mr-2">Role -</h1> <h1>{{selectedRoleName}}</h1>
                 </div> 
-                <div>
-                    <div class="flex justify-end">
-                        <button mat-raised-button style="background-color: #001E52"  color="primary" (click)="onUpdateUsers()">Add Users</button>
+                <div class="flex">
+                    <div class="mr-3">
+                        <div class="flex justify-end">
+                            <button mat-raised-button style="background-color: #001E52"  color="primary" (click)="onSendEmail()">Send email to selected users</button>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="flex justify-end">
+                            <button mat-raised-button style="background-color: #001E52"  color="primary" (click)="onUpdateUsers()">Add Users</button>
+                        </div>
                     </div>
                 </div>
+                
             </div> 
-            <div class="w-4/5 m-2 p-2">
+            <div class="w-full m-2 p-2">
                 <mat-table  #table [dataSource]="existingUserDetails" matSort>
                     <!-- First Column ID-->
                     <ng-container matColumnDef="user">
-                        <mat-header-cell *matHeaderCellDef mat-sort-header> User </mat-header-cell>
-                        <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>
+                            <mat-checkbox (change)="onSelectAllUser($event)"  class="flex items-center" [color]="'primary'"
+                            disableRipple >User
+                        </mat-checkbox>  
+                             
+                            </mat-header-cell>
+                        <mat-cell *matCellDef="let element">
+                            <mat-checkbox  (change)="onUserSelect($event,element)" [checked]="allUsersSelected"  class="flex items-center" [color]="'primary'"
+                            disableRipple >{{element.name}} 
+                        </mat-checkbox> 
+                        </mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="userID">
                         <mat-header-cell *matHeaderCellDef mat-sort-header> User ID</mat-header-cell>
                         <mat-cell *matCellDef="let element"> {{element.usn}} </mat-cell>
                     </ng-container>
+
+                    
 
                     <ng-container matColumnDef="email">
                         <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
@@ -89,14 +108,35 @@
                         <mat-cell *matCellDef="let element"> {{element?.department?.Name}} </mat-cell>
                     </ng-container>
 
+                    <ng-container class="w-fit" matColumnDef="emailStatus">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header>Email Status</mat-header-cell>
+                        <mat-cell *matCellDef="let element"> {{element.email_send}} </mat-cell>
+                    </ng-container>
+
                     <!-- Action Column -->
+
+                    <ng-container matColumnDef="Actions">
+                        <mat-header-cell *matHeaderCellDef mat-sort-header> Actions </mat-header-cell>
+                        <mat-cell style="padding-left:0px !important" *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Edit" class="iconbutton"
+                                color="primary" (click)="onClickEdit(element)">
+                                <mat-icon style="color: #001E52 !important">edit</mat-icon>
+                            </button>
+                            <button mat-icon-button class="iconbutton"
+                                (click)="onClickDelete(element)" color="warn">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+                        
+                        </mat-cell>
+                    </ng-container>
+
+
                     <!-- <ng-container matColumnDef="edit">
                         <mat-header-cell *matHeaderCellDef mat-sort-header> Edit </mat-header-cell>
-                        <mat-cell *matCellDef="let element"> <button mat-icon-button matTooltip="Click to Edit" class="iconbutton"
+                        <mat-cell *matCellDef="let element"> <button mat-icon-button class="iconbutton"
                                 color="primary" (click)="onClickEdit(element)">
                                 <mat-icon style="color: #001E52 !important">edit</mat-icon>
                             </button> </mat-cell>
-                    </ng-container> -->
+                    </ng-container>
                     <ng-container matColumnDef="delete">
                         <mat-header-cell *matHeaderCellDef mat-sort-header> Delete </mat-header-cell>
                         <mat-cell *matCellDef="let element"> <button (click)="onDeleteUser(element)" mat-icon-button matTooltip="Click to Delete" class="iconbutton"
@@ -104,7 +144,7 @@
                                 <mat-icon>delete</mat-icon>
                             </button> 
                         </mat-cell>
-                    </ng-container>
+                    </ng-container> -->
             
                     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
                     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

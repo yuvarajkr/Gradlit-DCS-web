@@ -63,16 +63,16 @@ export class AddNewRoleComponent {
      'Needs Approval of content moderator to make any of this roles posts visible',
      'Grants permission to do content Moderation to this role'];
 
-  allModule = ['Feed','Events','Announcement','Circular','Clubs','Profile','Chat'];
+  allModule = ['Feed','Events','Circular','Clubs','Profile','Chat'];
 
   public onPermissionChange(checked:boolean, selectedPermission:string ){
     if(selectedPermission === 'Moderation_Feed') {
       this.is_moderator = true;
-      this.is_need_approval = !this.is_moderator;
+      //this.is_need_approval = !this.is_moderator;
     }
     if(selectedPermission === 'Approval_Feed') {
       this.is_need_approval = true;
-      this.is_moderator  = !this.is_need_approval;
+      //this.is_moderator  = !this.is_need_approval;
     }
     let permissionType = selectedPermission.split('_')[0];
     let permIndex = (this.actions.findIndex((eachPerm) => eachPerm === permissionType))+1;

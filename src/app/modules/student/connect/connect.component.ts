@@ -56,6 +56,7 @@ export class ConnectComponent implements OnInit
   public latestAnnoucement = [];
   public top4Clubs =  [];
   allAnnouncement: any[];
+  dashBoardData: any;
   /* Constructor*/
   constructor(
      private _matDialog: MatDialog, private _studentUtils: StudentHttpService,private ref: ChangeDetectorRef, private _studentData:StudentDataService,private _router:Router
@@ -63,40 +64,53 @@ export class ConnectComponent implements OnInit
   }
 
   ngOnInit(){
-      this._studentData.onPostsChange.subscribe({
-        next: (updatedPosts) => {
-         // this.allPosts = updatedPosts;
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      });
+    if(localStorage.getItem('reloaded')==='no'){
+      window.location.reload();
+      localStorage.setItem('reloaded','yes');
+    }
+      // this._studentData.onPostsChange.subscribe({
+      //   next: (updatedPosts) => {
+      //    // this.allPosts = updatedPosts;
+      //   },
+      //   error: (err) => {
+      //     console.log(err);
+      //   }
+      // });
 
-      this._studentUtils.getAllpost().subscribe({
-        next: (allPosts) => {
-          this.allPosts = allPosts.data.rows;
-          this.ref.detectChanges();
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      });
+      // this._studentUtils.getAllpost().subscribe({
+      //   next: (allPosts) => {
+      //     this.allPosts = allPosts.data.rows;
+      //     this.ref.detectChanges();
+      //   },
+      //   error: (err) => {
+      //     console.log(err);
+      //   }
+      // });
 
-      this._studentUtils.getAllCircualrs().subscribe({
-        next: (allAnnouncement) => {
-          this.latestAnnoucement = allAnnouncement.data.rows.length <= 3 ? allAnnouncement.data.results:  allAnnouncement.data.rows.slice(0,4);
-          this.ref.detectChanges();
-        },
-        error: (err) => {
-          console.log(err);
-        }
-      })
+      // this._studentUtils.getAllCircualrs().subscribe({
+      //   next: (allAnnouncement) => {
+      //     this.latestAnnoucement = allAnnouncement.data.rows.length <= 3 ? allAnnouncement.data.results:  allAnnouncement.data.rows.slice(0,4);
+      //     this.ref.detectChanges();
+      //   },
+      //   error: (err) => {
+      //     console.log(err);
+      //   }
+      // }) 
 
-      this._studentUtils.getAllClub().subscribe({
-        next: (allClubs) => {
-          this.top4Clubs = allClubs.data.rows;
-          this.top4Clubs = this.top4Clubs?.length > 4 ? this.top4Clubs?.slice(0,4) : this.top4Clubs;
-          this.ref.detectChanges();
+      // this._studentUtils.getAllClub().subscribe({
+      //   next: (allClubs) => {
+      //     this.top4Clubs = allClubs.data.rows;
+      //     this.top4Clubs = this.top4Clubs?.length > 4 ? this.top4Clubs?.slice(0,4) : this.top4Clubs;
+      //     this.ref.detectChanges();
+      //   },
+      //   error: (err) => {
+      //     console.log(err);
+      //   }
+      // });
+
+      this._studentUtils.getDashBoardDataByAdmin().subscribe({
+        next: (dashboardData:any) => {
+          this.dashBoardData = dashboardData?.data;
         },
         error: (err) => {
           console.log(err);

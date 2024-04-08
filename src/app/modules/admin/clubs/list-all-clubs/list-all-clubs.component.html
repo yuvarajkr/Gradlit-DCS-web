@@ -6,23 +6,35 @@
         </div>
     </div>
     
-    <div class="w-4/5 m-6">
+    <div class="w-full m-6">
     
         <mat-table #table [dataSource]="allClubs" matSort>
             <!-- First Column ID-->
+            <ng-container matColumnDef="ProfileImage">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>Club Image</mat-header-cell>
+                <mat-cell *matCellDef="let element">
+                    <img class="max-h-16 max-w-16 rounded-3xl m-2" [src]="element.logo" alt="club_img">
+                </mat-cell>
+            </ng-container>
+
             <ng-container matColumnDef="ClubName">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Club Name </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
             </ng-container>
 
-            <ng-container matColumnDef="ProfileName">
+            <!-- <ng-container matColumnDef="ProfileName">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Profile Name </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.display_name}} </mat-cell>
-            </ng-container>
+            </ng-container> -->
 
             <ng-container matColumnDef="AdminID">
                 <mat-header-cell *matHeaderCellDef mat-sort-header> Admin </mat-header-cell>
                 <mat-cell *matCellDef="let element"> {{element.user ? element.user[0].name : 'NA'}} </mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="emailId">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Email ID </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
             </ng-container>
 
             <ng-container matColumnDef="Followers">

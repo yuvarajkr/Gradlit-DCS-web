@@ -107,4 +107,8 @@ export class EditClubComponent {
       });
    }
 
+   resetCalculations() {
+    this.selectedUsersID = structuredClone(this.selectedUsersID);
+  }
+
 }

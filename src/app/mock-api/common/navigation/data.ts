@@ -165,15 +165,15 @@ function getPermissionArray(){
     allPermissionArray?.forEach(element => {
         if(element.allowed_actions?.find(each=> each.action_id === 2 && each.assigned)){
             switch (element.name) {
-                case 'Events':
-                    permissonArray.push({
-                        id   : 'events',
-                        title: 'Events',
-                        type : 'basic',
-                        icon : 'heroicons_outline:cube',
-                        link : '/student/events'
-                    },)
-                break;
+                // case 'Events':
+                //     permissonArray.push({
+                //         id   : 'events',
+                //         title: 'Events',
+                //         type : 'basic',
+                //         icon : 'heroicons_outline:cube',
+                //         link : '/student/events'
+                //     },)
+                // break;
                 case 'Circular':
                     permissonArray.push({
                         id   : 'circulars',

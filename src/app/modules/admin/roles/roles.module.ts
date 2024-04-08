@@ -17,6 +17,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { EditRolesComponent } from './edit-roles/edit-roles.component';
 import { AddUserToRolesComponent } from './add-user-to-roles/add-user-to-roles.component';
 import { RoleNotificationComponent } from './role-notification/role-notification.component';
+import { EditUserInARoleComponent } from './edit-user-in-a-role/edit-user-in-a-role.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 const rolesRoutes: Route[] = [{
   path:'', 
@@ -37,6 +39,10 @@ const rolesRoutes: Route[] = [{
     {
       path:'add-users-to-role/:id',
       component:AddUserToRolesComponent
+    },
+    {
+      path:'edit-user/:id/:name',
+      component:EditUserInARoleComponent
     }
   ]
 }];
@@ -48,7 +54,8 @@ const rolesRoutes: Route[] = [{
     ListRolesComponent,
     EditRolesComponent,
     AddUserToRolesComponent,
-    RoleNotificationComponent
+    RoleNotificationComponent,
+    EditUserInARoleComponent
   ],
   imports: [
     CommonModule,
@@ -67,6 +74,7 @@ const rolesRoutes: Route[] = [{
     MatSortModule,
     MatInputModule,
     MatProgressSpinnerModule,
+    NgSelectModule
   ]
 })
 export class RolesModule { }

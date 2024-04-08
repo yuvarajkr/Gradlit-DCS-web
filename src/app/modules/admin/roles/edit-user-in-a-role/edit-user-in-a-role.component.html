@@ -1,0 +1,44 @@
+<div class="m-4 w-full min-h-180 relative">
+    <div class="w-full">
+        <div>
+            <h1 class="font-semibold text-xl mb-4">Edit User : {{studentDataService?.selectedUserData?.name}}</h1>
+        </div>
+
+        <div class="flex">
+            <div class="flex flex-col gt-xs:flex-row w-1/2">
+                <mat-form-field class="flex-auto gt-xs:pr-3 w-full">
+                    <mat-label>Student Name</mat-label>
+                    <input matInput [(ngModel)]="studentName" placeholder="student name">
+                </mat-form-field>
+            </div>
+
+            <div class="flex flex-col gt-xs:flex-row ml-8 w-1/2">
+                <mat-form-field class="flex-auto gt-xs:pr-3 w-full">
+                    <mat-label>USN</mat-label>
+                    <input matInput [(ngModel)]="usn" placeholder="USN">
+                </mat-form-field>
+            </div>
+        </div>
+
+        <div class="flex">
+            <div class="flex flex-col gt-xs:flex-row w-1/2">
+                <mat-form-field class="flex-auto gt-xs:pr-3 w-full">
+                    <mat-label>Email</mat-label>
+                    <input matInput [(ngModel)]="email" placeholder="email">
+                </mat-form-field>
+            </div>
+            <div class="flex flex-col gt-xs:flex-row ml-8 w-1/2">
+                <div class="font-medium">Depatrment ID</div>
+                <ng-select [(ngModel)]="selectedDepId">
+                    <ng-option *ngFor="let eachdeps of departments" [value]="eachdeps.Id">{{eachdeps.Id}}</ng-option>
+                 </ng-select>
+            </div>
+        </div>
+
+    <div class="my-10 mt-8 w-full absolute bottom-6">
+        <div class="flex justify-end">
+            <button style="background-color: #001E52; width: 150px;" (click)="onEditStudentSave()" mat-raised-button color="primary">Update student data</button>
+        </div>
+    </div>
+
+</div>
