@@ -253,7 +253,7 @@ export class EditRolesComponent implements AfterViewInit {
   }
 
   public disableCheckBox(id:string){
-    
+    return;
     if(id.includes('Edit_Feed')){
       return true;
      }
@@ -266,6 +266,7 @@ export class EditRolesComponent implements AfterViewInit {
 }
 
 public toggleApproveAndModerator(){
+  return;
   if(this.is_need_approval || this.is_moderator){
     if(this.is_need_approval) {
        (document.getElementById('Approval_Feed-input') as HTMLInputElement) .checked = true; 

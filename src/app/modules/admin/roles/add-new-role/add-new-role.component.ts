@@ -154,7 +154,7 @@ export class AddNewRoleComponent {
   }
   
   public disableCheckBox(id:any){
-    
+    return;
       if(id.includes('Edit_Feed')){
         return true;
        }
@@ -166,6 +166,7 @@ export class AddNewRoleComponent {
   }
 
   public toggleApproveAndModerator(){
+    return;
     if(this.is_need_approval || this.is_moderator){
       if(this.is_need_approval) {
          (document.getElementById('Approval_Feed-input') as HTMLInputElement) .checked = true; 
