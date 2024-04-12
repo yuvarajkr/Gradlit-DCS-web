@@ -63,7 +63,7 @@
                 <div class="flex">
                     <div class="mr-3">
                         <div class="flex justify-end">
-                            <button mat-raised-button style="background-color: #001E52"  color="primary" (click)="onSendEmail()">Send email to selected users</button>
+                            <button mat-raised-button style="background-color: #001E52"  color="primary" [disabled]="selectedUserByAdmin.size === 0" (click)="onSendEmail()">Send email to selected users</button>
                         </div>
                     </div>
                     <div>
@@ -79,28 +79,29 @@
                     <!-- First Column ID-->
                     <ng-container matColumnDef="user">
                         <mat-header-cell *matHeaderCellDef mat-sort-header>
+                            
                             <mat-checkbox (change)="onSelectAllUser($event)"  class="flex items-center" [color]="'primary'"
                             disableRipple >User
                         </mat-checkbox>  
                              
                             </mat-header-cell>
                         <mat-cell *matCellDef="let element">
-                            <mat-checkbox  (change)="onUserSelect($event,element)" [checked]="allUsersSelected"  class="flex items-center" [color]="'primary'"
-                            disableRipple >{{element.name}} 
+                            <mat-checkbox  [disabled]="element.email_send === 2 || element?.email_send === 1" (change)="onUserSelect($event,element)" [checked]="allUsersSelected && !(element.email_send === 2 || element?.email_send === 1)"  class="flex items-center" [color]="'primary'"
+                            disableRipple >{{element?.name}}
                         </mat-checkbox> 
                         </mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="userID">
                         <mat-header-cell *matHeaderCellDef mat-sort-header> User ID</mat-header-cell>
-                        <mat-cell *matCellDef="let element"> {{element.usn}} </mat-cell>
+                        <mat-cell *matCellDef="let element"> {{element?.usn}} </mat-cell>
                     </ng-container>
 
                     
 
                     <ng-container matColumnDef="email">
                         <mat-header-cell *matHeaderCellDef mat-sort-header>Email</mat-header-cell>
-                        <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+                        <mat-cell *matCellDef="let element"> {{element?.email}} </mat-cell>
                     </ng-container>
 
                     <ng-container matColumnDef="department">
@@ -110,7 +111,7 @@
 
                     <ng-container class="w-fit" matColumnDef="emailStatus">
                         <mat-header-cell *matHeaderCellDef mat-sort-header>Email Status</mat-header-cell>
-                        <mat-cell *matCellDef="let element"> {{element.email_send}} </mat-cell>
+                        <mat-cell *matCellDef="let element"> {{(element?.email_send === 2) ? 'Sent' : ((element?.email_send === 1) ? 'in-progress': 'not sent' )}} </mat-cell>
                     </ng-container>
 
                     <!-- Action Column -->

@@ -192,7 +192,7 @@ function getPermissionArray(){
                         link : '/student/add-clubs/list-clubs'
                     },)
                 break;
-                case 'Profile':
+                case 'Roles':
                     permissonArray.push({
                         id   : 'roles',
                         title: 'Roles',
@@ -201,13 +201,15 @@ function getPermissionArray(){
                         link : '/student/roles/list-roles'
                     },
                     );
-                    permissonArray.push({
-                        id   : 'departments',
-                        title: 'Departments',
-                        type : 'basic',
-                        icon : 'heroicons_outline:question-mark-circle',
-                        link : '/student/departments/list-departments'
-                    })
+                break;
+                case 'Departments':
+                permissonArray.push({
+                    id   : 'departments',
+                    title: 'Departments',
+                    type : 'basic',
+                    icon : 'heroicons_outline:question-mark-circle',
+                    link : '/student/departments/list-departments'
+                })
                 break;
         
             default:

@@ -34,7 +34,7 @@ export class EditClubComponent {
       this.searchedUserResult = this.selectedClubDetials.user;
       let selectedID = '';
       this.searchedUserResult.forEach(element => {
-        this.selectedUsersID.push(element.id);
+        this.selectedUsersID.add(element.id);
       });
       },
       error: (err)=>{
@@ -50,7 +50,7 @@ export class EditClubComponent {
   public clubDisplayName = '';
   imageUrl: string | ArrayBuffer;
   public searchedUserResult: userDetails[] = [];
-  public selectedUsersID = [];
+  public selectedUsersID = new Set();
 
   public onFileUpload(event){
     const file:File = event.target.files[0];
@@ -63,13 +63,12 @@ export class EditClubComponent {
    }
 
    public  onAdminSelected(addedUserId){
-    this.selectedUsersID.push(addedUserId);
+    new Set().add
+    this.selectedUsersID.add(addedUserId);
    }
 
    public onUserRemoved(removedUserID){
-    let removedId = this.selectedUsersID.indexOf(removedUserID.value);
-    this.selectedUsersID.splice(removedId,1);
-    
+    this.selectedUsersID.delete(removedUserID.value);
    }
 
    public onUserSearched(searchKey:any){
@@ -92,7 +91,7 @@ export class EditClubComponent {
     postFormData.append('description', this.clubDesc);
     postFormData.append('display_name', this.clubDisplayName);
     postFormData.append('email', this.email);
-    postFormData.append('User', this.selectedUsersID.join(','));
+    postFormData.append('User', [...this.selectedUsersID].join(','));
     this.clubLogo && postFormData.append('logo', this.clubLogo);
     this._http.updateClubByAdmin(postFormData
       ).subscribe({

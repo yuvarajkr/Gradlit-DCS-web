@@ -1,7 +1,7 @@
-<div class="flex flex-wrap">
+<div class="flex flex-wrap max-h-140">
     <fuse-card  class="flex min-w-2/3 flex-col max-w-2/3 max-h-60 filter-article m-4 hover:shadow-xl hover:cursor-pointer"> 
         <div class="flex justify-between">
-            <p class="text-gray-500 font-semibold m-3">Total Events</p>
+            <div class="text-gray-500 font-semibold m-3">Total Events</div>
             <div>
                 <div class="h-10 flex justify-center items-center mr-9">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-orange-400">
@@ -12,7 +12,7 @@
             </div>
         </div>
         <div class="felx ml-10 mt-2">
-            <p class="text-6xl">{{dashBoardData.upcoming_event_count + dashBoardData.past_event_count}}</p>  
+            <div class="text-6xl">{{dashBoardData?.upcoming_event_count + dashBoardData?.past_event_count}}</div>  
         </div>
         <div class="flex justify-between mt-2">
             <div class="felx w-1/2 justify-center bg-purple-100 m-4 rounded-2xl">
@@ -28,7 +28,7 @@
                                 </div>
                         </div>
                         <div class="ml-8 text-6xl">
-                            {{dashBoardData.upcoming_event_count}}
+                            {{dashBoardData?.upcoming_event_count}}
                         </div>
                     </div>
                 </div>  
@@ -47,14 +47,14 @@
                                 </div>
                         </div>
                         <div class="ml-8 text-6xl">
-                            {{dashBoardData.past_event_count}}
+                            {{dashBoardData?.past_event_count}}
                         </div>
                     </div>
                 </div>  
             </div>
         </div>
     </fuse-card> 
-    <fuse-card  class="flex min-w-1/4 max-w-1/4 flex-col h-60  filter-article m-4 hover:shadow-xl hover:cursor-pointer"> 
+    <fuse-card  class="flex min-w-1/4 max-w-1/4 flex-col  filter-article m-4 hover:shadow-xl hover:cursor-pointer"> 
         <div>
             <div class="h-10 flex justify-center items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8 text-orange-400">
@@ -64,13 +64,13 @@
         </div>
         
         <div class="felx justify-center items-center">
-            <p class="text-center text-9xl">{{dashBoardData.circulars_count}}</p>  
+            <div class="text-center text-8xl">{{dashBoardData?.circulars_count}}</div>  
         </div>
         <div class="flex justify-center">
-            <p class="text-gray-500 font-semibold m-3">Total Circulars Posted</p>
+            <div class="text-gray-500 font-semibold m-3">Total Circulars Posted</div>
         </div>
     </fuse-card> 
-    <fuse-card  class="flex min-w-1/3 max-w-1/3 flex-col h-60 w-full filter-article ml-4 hover:shadow-xl hover:cursor-pointer"> 
+    <fuse-card  class="flex min-w-1/3 max-w-1/3 flex-col h-44 w-full filter-article ml-4 hover:shadow-xl hover:cursor-pointer"> 
         <div>
             <div class="h-10 flex justify-center items-center">
                 
@@ -82,13 +82,13 @@
         </div>
         
         <div class="felx justify-center items-center">
-            <p class="text-center text-9xl">{{dashBoardData.user_count}}</p>  
+            <div class="text-center text-8xl">{{dashBoardData?.user_count}}</div>  
         </div>
         <div class="flex justify-center">
-            <p class="text-gray-500 font-semibold m-3">Total Users</p>
+            <div class="text-gray-500 font-semibold m-3">Total Users</div>
         </div>
     </fuse-card> 
-    <fuse-card  class="flex min-w-1/3 max-w-1/3 flex-col h-60 w-full filter-article ml-4 hover:shadow-xl hover:cursor-pointer"> 
+    <fuse-card  class="flex min-w-1/3 max-w-1/3 flex-col h-44 w-full filter-article ml-4 hover:shadow-xl hover:cursor-pointer"> 
         <div>
             <div class="h-10 flex justify-center items-center">
                 
@@ -100,13 +100,13 @@
         </div>
         
         <div class="felx justify-center items-center">
-            <p class="text-center text-9xl">{{dashBoardData.department_count}}</p>  
+            <div class="text-center text-8xl">{{dashBoardData?.department_count}}</div>  
         </div>
         <div class="flex justify-center">
-            <p class="text-gray-500 font-semibold m-3">Total Depatrments</p>
+            <div class="text-gray-500 font-semibold m-3">Total Depatrments</div>
         </div>
     </fuse-card> 
-    <fuse-card  class="flex min-w-1/4 max-w-1/4 flex-col h-60 w-full filter-article ml-4 hover:shadow-xl hover:cursor-pointer"> 
+    <fuse-card  class="flex min-w-1/4 max-w-1/4 flex-col h-44 w-full filter-article ml-4 hover:shadow-xl hover:cursor-pointer"> 
         <div>
             <div class="h-10 flex justify-center items-center">
                 
@@ -119,13 +119,13 @@
         </div>
         
         <div class="felx justify-center items-center">
-            <p class="text-center text-9xl">{{dashBoardData.club_count}}</p>  
+            <div class="text-center text-8xl">{{dashBoardData?.club_count}}</div>  
         </div>
         <div class="flex justify-center">
-            <p class="text-gray-500 font-semibold m-3">Total Clubs</p>
+            <div class="text-gray-500 font-semibold m-3">Total Clubs</div>
         </div>
     </fuse-card> 
-    <fuse-card  class="flex  min-w-1/4 max-w-1/4 flex-col h-60 w-full filter-article m-4 hover:shadow-xl hover:cursor-pointer"> 
+    <fuse-card  class="flex  min-w-1/4 max-w-1/4 flex-col w-full filter-article m-4 hover:shadow-xl hover:cursor-pointer"> 
         <div>
             <div class="h-10 flex justify-center items-center">
                 
@@ -137,16 +137,16 @@
         </div>
         
         <div class="felx justify-center items-center">
-            <p class="text-center text-9xl">NA</p>  
+            <div class="text-center text-8xl">{{dashBoardData?.moderater_count}}</div>
         </div>
         <div class="flex justify-center">
-            <p class="text-gray-500 font-semibold m-3">Total Moderators</p>
+            <div class="text-gray-500 font-semibold m-3">Total Moderators</div>
         </div>
     </fuse-card> 
     <fuse-card  class="flex min-w-2/3 flex-col max-w-2/3 h-60 filter-article m-4 hover:shadow-xl hover:cursor-pointer"> 
         
         <div class="flex justify-between">
-            <p class="text-gray-500 font-semibold m-3">Total Posts</p>
+            <div class="text-gray-500 font-semibold m-3">Total Posts</div>
             <div>
                 <div class="h-10 flex justify-center items-center mr-9">
                     
@@ -161,7 +161,7 @@
         </div>
         
         <div class="felx ml-10 mt-2">
-            <p class="text-6xl">{{dashBoardData.under_moderation_post_count + dashBoardData.approved_post_count + dashBoardData.rejected_post_count}}</p>  
+            <div class="text-6xl">{{dashBoardData?.under_moderation_post_count + dashBoardData?.approved_post_count + dashBoardData?.rejected_post_count}}</div>  
         </div>
         
         <div class="flex justify-between mt-2">
@@ -171,7 +171,7 @@
                     <div class="flex  text-center">
                        
                         <div class="ml-2 text-6xl">
-                            {{dashBoardData.approved_post_count}}
+                            {{dashBoardData?.approved_post_count}}
                         </div>
                     </div>
                 </div>  
@@ -182,7 +182,7 @@
                     <div class="flex text-center">
                         
                         <div class="ml-2 text-6xl">
-                            {{dashBoardData.rejected_post_count}}
+                            {{dashBoardData?.rejected_post_count}}
                         </div>
                     </div>
                 </div>  
@@ -192,7 +192,7 @@
                     <div>Under moderation</div>
                     <div class="flex text-center">
                         <div class="ml-2 text-6xl">
-                            {{dashBoardData.under_moderation_post_count}}
+                            {{dashBoardData?.under_moderation_post_count}}
                         </div>
                     </div>
                 </div>  

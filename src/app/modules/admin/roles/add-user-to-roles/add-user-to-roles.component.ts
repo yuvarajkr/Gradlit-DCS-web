@@ -60,9 +60,10 @@ export class AddUserToRolesComponent {
    }
 
    public onSelectAllUser(checkedData){
+    this.selectedUserByAdmin = new Set();
     this.allUsersSelected = checkedData.checked;
     if(checkedData.checked){
-      this.existingUserDetails.forEach(e=> this.selectedUserByAdmin?.add(e.id))
+      this.existingUserDetails.forEach(e=> !(e?.email_send === 2 || e?.email_send === 1) &&  this.selectedUserByAdmin?.add(e.id))
     }else{
       this.selectedUserByAdmin = new Set();
     }

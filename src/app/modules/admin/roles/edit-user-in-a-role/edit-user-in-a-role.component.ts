@@ -10,7 +10,6 @@ import { StudentHttpService } from 'app/modules/student/student-utils-services/s
 })
 export class EditUserInARoleComponent {
   selectedStudentId:any;
-  selectedDepId:any;
   selectedClubDetials:any;
   allClubs = [];
   departments: any;
@@ -28,10 +27,11 @@ export class EditUserInARoleComponent {
     this.studentDataService.selectedUserData;
 
   }
-  public studentName = '';
-  public usn = '';
+  public studentName = this.studentDataService.selectedUserData?.name;
+  public usn = this.studentDataService.selectedUserData?.usn;
   public clubLogo: File;
-  public email = '';
+  public email = this.studentDataService.selectedUserData?.email;
+  public selectedDepId= this.studentDataService.selectedUserData?.department?.Id;
   public clubDisplayName = '';
   imageUrl: string | ArrayBuffer;
   public searchedUserResult: any[] = [];

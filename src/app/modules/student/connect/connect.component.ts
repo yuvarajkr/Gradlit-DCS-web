@@ -56,9 +56,10 @@ export class ConnectComponent implements OnInit
   public latestAnnoucement = [];
   public top4Clubs =  [];
   allAnnouncement: any[];
-  dashBoardData: any;
+  dashBoardData:any = {};
   /* Constructor*/
   constructor(
+    private changeDetectorRef:ChangeDetectorRef,
      private _matDialog: MatDialog, private _studentUtils: StudentHttpService,private ref: ChangeDetectorRef, private _studentData:StudentDataService,private _router:Router
     ) {
   }
@@ -111,6 +112,7 @@ export class ConnectComponent implements OnInit
       this._studentUtils.getDashBoardDataByAdmin().subscribe({
         next: (dashboardData:any) => {
           this.dashBoardData = dashboardData?.data;
+          this.changeDetectorRef.detectChanges();
         },
         error: (err) => {
           console.log(err);
