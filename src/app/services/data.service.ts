@@ -11,6 +11,7 @@ import { environment } from 'app/environments/environment';
 export class DataService {
 
   serverUrl = environment.apiURL + '/api';
+  allDepartments: any;
 
   constructor(private http: HttpClient) { }
 
@@ -61,5 +62,9 @@ export class DataService {
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     return throwError(errorMessage);
+  }
+
+  setAllDepartments(deps){
+    this.allDepartments = deps;
   }
 }
