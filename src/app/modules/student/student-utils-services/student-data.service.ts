@@ -67,9 +67,10 @@ export class StudentDataService {
   public getCreateCircularForm(){
     return this._fb.group({
       heading :[''],                                               
-      group_name:[''],                                                
+      group_name:['grp_name'],                                                
       description :['', Validators.required],                                                
-      file_name :['', Validators.required],                                
+      file_name :['', Validators.required],  
+      selectedDepId:['',Validators.required]                              
     });
   }
 

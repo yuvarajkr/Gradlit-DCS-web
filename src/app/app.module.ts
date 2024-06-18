@@ -12,6 +12,7 @@ import { LayoutModule } from 'app/layout/layout.module';
 import { AppComponent } from 'app/app.component';
 import { appRoutes } from 'app/app.routing';
 import { EventsModule } from './modules/student/events/events.module';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 const routerConfig: ExtraOptions = {
@@ -39,7 +40,8 @@ const routerConfig: ExtraOptions = {
 
         // Layout module of your application
         LayoutModule,
-        EventsModule
+        EventsModule,
+        NgSelectModule
     ],
     bootstrap   : [
         AppComponent

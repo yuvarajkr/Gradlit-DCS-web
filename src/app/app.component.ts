@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { StudentHttpService } from './modules/student/student-utils-services/student-http.service';
 import { environment } from './environments/environment';
+import { DataService } from './services/data.service';
 @Component({
     selector   : 'app-root',
     templateUrl: './app.component.html',
@@ -13,7 +14,7 @@ export class AppComponent
      */
 
     auth_code ='';
-    constructor(private _studentHttp:StudentHttpService)
+    constructor(private _studentHttp:StudentHttpService,private _dataService:DataService)
     {
 
         // this._studentHttp.getAuthCode().subscribe((res:any)=>{

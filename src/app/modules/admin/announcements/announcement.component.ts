@@ -4,6 +4,7 @@ import { CreateStudentClubComponent } from 'app/modules/student/student-clubs/cr
 import { StudentHttpService } from 'app/modules/student/student-utils-services/student-http.service';
 import { CreateAnnouncementComponent } from './create-announcement/create-announcement.component';
 import { ActivatedRoute } from '@angular/router';
+import { DataService } from 'app/services/data.service';
 
 @Component({
   selector: 'app-announcement-clubs',
@@ -16,7 +17,7 @@ export class AnnouncementComponent {
   isCircExpanded = false;
   isAnncExpanded = false;
   selectedAnnDetails: any;
-  constructor(private _studentHttp:StudentHttpService, private _matDialog:MatDialog,private _activatedRoute:ActivatedRoute){
+  constructor(private _studentHttp:StudentHttpService, private _matDialog:MatDialog,private _activatedRoute:ActivatedRoute,private _dataService:DataService){
           // this._studentHttp.getAllCircualrs().subscribe({
           //   next: (allAnnouncementDetails)=>{
           //     this.allAnnouncement = allAnnouncementDetails.data.results;
@@ -24,6 +25,14 @@ export class AnnouncementComponent {
           // });
           this.isCircular = this._activatedRoute.snapshot.queryParamMap.get('circular');
           this.onTypeSelection(this.isCircular === 'announcement' ? 'Announcement' : 'Circular');
+          this._studentHttp.getAllDepartments().subscribe({
+            next: (allDeps:any) => {
+                this._dataService.setAllDepartments(allDeps.data);
+            },
+            error: (err)=>{
+              console.log('fetching departments failed...');
+            }
+          })
   }
 
   public onCreateCircular(dataType:string): void
