@@ -1,8 +1,8 @@
 <form [formGroup]="createStudentCircularForm" class="flex flex-col mt-4 pb-4 overflow-hidden">
     <div class="flex flex-col gt-xs:flex-row mt-8 w-1/2">
         <div class="font-medium">Depatrment to show to</div>
-        <ng-select  formControlName ="selectedDepId" [virtualScroll]="true">
-            <ng-option *ngFor="let eachdeps of departments" [value]="eachdeps.Id">{{eachdeps.Name}}</ng-option>
+        <ng-select [multiple]="true" formControlName ="selectedDepId" [virtualScroll]="true" (change)="onSelectAllDepsChange($event)">
+            <ng-option *ngFor="let eachdeps of departments"  [value]="eachdeps.Id">{{eachdeps.Name}}</ng-option>
          </ng-select>
     </div>           
     <div class="flex flex-col gt-xs:flex-row">

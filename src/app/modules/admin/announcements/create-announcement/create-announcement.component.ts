@@ -16,11 +16,19 @@ export class CreateAnnouncementComponent {
   image_file: any;
   departments: any;
   selectedDepId:any;
+  selectAllDeps = false;
   constructor(private _studentData:StudentDataService,@Optional() @Inject(MAT_DIALOG_DATA) public data: {type:string,allDeps:any}, private _studentHttp:StudentHttpService,private _data:DataService, private _dialogRef:MatDialogRef<CreateAnnouncementComponent>){
     this.createStudentCircularForm = this._studentData.getCreateCircularForm();
     this._studentHttp.getAllDepartments().subscribe({
       next: (allDeps:any) => {
           this.departments =  allDeps.data;
+          this.departments?.unshift({
+            "Id": 'All',
+            "Name": "Select All Departments",
+            "Description": "All",
+            "Logo": "",
+            "UserCount": 0
+        })
       },
       error: (err)=>{
         console.log('fetching departments failed...');
@@ -57,7 +65,7 @@ export class CreateAnnouncementComponent {
     let formData = new FormData();
     this.file && formData.append('file_name',this.file);
     this.image_file && formData.append('image_name',this.image_file);
-    formData.append('department_id',this.createStudentCircularForm.get('selectedDepId').value);
+    formData.append('department_id',this.createStudentCircularForm.get('selectedDepId').value?.join(''));
     formData.append('heading',this.createStudentCircularForm.get('heading').value);
     formData.append('group_name',this.createStudentCircularForm.get('group_name').value);
     formData.append('description',this.createStudentCircularForm.get('description').value);
@@ -75,5 +83,13 @@ export class CreateAnnouncementComponent {
 
   private _closeDialog(){
     this._dialogRef.close();
+  }
+
+  public onSelectAllDepsChange(data){
+    if(data.pop() === 'All'){
+      let allDeps = this.departments.map(e => e.Id);
+      allDeps.shift();
+      this.createStudentCircularForm.get('selectedDepId').setValue(allDeps);
+    }
   }
 }
