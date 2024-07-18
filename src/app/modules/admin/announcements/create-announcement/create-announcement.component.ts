@@ -23,7 +23,7 @@ export class CreateAnnouncementComponent {
       next: (allDeps:any) => {
           this.departments =  allDeps.data;
           this.departments?.unshift({
-            "Id": 'All',
+            "Id": '0',
             "Name": "Select All Departments",
             "Description": "All",
             "Logo": "",
@@ -65,7 +65,7 @@ export class CreateAnnouncementComponent {
     let formData = new FormData();
     this.file && formData.append('file_name',this.file);
     this.image_file && formData.append('image_name',this.image_file);
-    formData.append('department_id',this.createStudentCircularForm.get('selectedDepId').value?.join(''));
+    formData.append('department_id',this.createStudentCircularForm.get('selectedDepId').value);
     formData.append('heading',this.createStudentCircularForm.get('heading').value);
     formData.append('group_name',this.createStudentCircularForm.get('group_name').value);
     formData.append('description',this.createStudentCircularForm.get('description').value);
@@ -89,7 +89,7 @@ export class CreateAnnouncementComponent {
     if(data.pop() === 'All'){
       let allDeps = this.departments.map(e => e.Id);
       allDeps.shift();
-      this.createStudentCircularForm.get('selectedDepId').setValue(allDeps);
+      this.createStudentCircularForm.get('selectedDepId').setValue(0);
     }
   }
 }
